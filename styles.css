@@ -33,6 +33,16 @@
 
 html {
   scroll-behavior: smooth;
+  /* 10% larger author baseline (16px -> 17.6px) for rem-based type and
+     spacing throughout this file, for readability. Not a full equivalent
+     of browser zoom: fixed-px values (layout widths, borders, etc.) are
+     unaffected by design. */
+  font-size: 110%;
+  /* Prevent mobile browsers from auto-inflating text size based on how
+     content wraps on a given page — without this, nav links (and other
+     text) can render at inconsistent sizes from page to page. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -52,7 +62,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-charcoal);
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
@@ -203,7 +213,7 @@ nav.primary-nav {
 nav.primary-nav a {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  min-height: max(44px, 2.75rem);
   color: var(--color-charcoal);
   text-decoration: none;
   font-size: 0.92rem;
