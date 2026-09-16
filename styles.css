@@ -13,6 +13,8 @@
   --color-contour: #ddd7cc;
   --color-sage: #bfc6be;
   --color-surface: #fffdf9;
+  --color-rust: #a8542f;
+  --color-forest: #3b5c42;
 
   --font-serif: "Fraunces", "Source Serif 4", Georgia, serif;
   --font-sans: "Inter", "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -293,6 +295,14 @@ main > section:first-child {
   font-size: clamp(1.7rem, 3.5vw, 2.6rem);
   margin-bottom: var(--space-3);
 }
+
+.hero-text h1 .highlight {
+  font-weight: 700;
+}
+
+.hero-text h1 .highlight-1 { color: var(--color-rust); }
+.hero-text h1 .highlight-2 { color: var(--color-gold); }
+.hero-text h1 .highlight-3 { color: var(--color-forest); }
 
 .hero-text .subhead {
   color: var(--color-charcoal);
