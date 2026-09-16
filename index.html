@@ -3,42 +3,147 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Kristen Foster Marks">
-    <title>Kristen Foster Marks</title>
+    <meta name="description" content="Kristen Foster-Marks — learning designer, researcher, and educator working at the intersection of adult education, learning science, and workplace learning.">
+    <title>Kristen Foster-Marks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="index.html">About</a>
-        <a href="research-scholarship.html">Research & Scholarship</a>
-        <a href="learning-design-practice.html">Learning Design & Practice</a>
-        <a href="reflections.html">Reflections</a>
-        <a href="cv.html">CV</a>
-      </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <img class="contour-corner contour-corner--top" src="images/contour.png" alt="" aria-hidden="true">
+    <img class="contour-corner contour-corner--bottom" src="images/contour.png" alt="" aria-hidden="true">
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="site-title" href="index.html">KRISTEN FOSTER-MARKS</a>
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="index.html" aria-current="page">About</a>
+          <a href="research-scholarship.html">Research &amp; Scholarship</a>
+          <a href="learning-design-practice.html">Learning Design &amp; Practice</a>
+          <a href="reflections.html">Reflections</a>
+          <a href="cv.html">CV</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section id="welcome">
-        <h1>Kristen Foster Marks</h1>
-        <p>
-          Welcome statement: purpose and intended audience for this
-          portfolio go here.
-        </p>
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-text">
+            <p class="eyebrow">People / Learning / Meaningful Work</p>
+            <h1>I study how adults <br> learn, & design learning experiences that help<br> them do it.</h1>
+            <p class="subhead">
+              Learning designer, researcher, & educator working at the intersection
+              of adult education, learning science, workplace learning, & technical
+              education.
+            </p>
+            <div class="cta-row">
+              <a class="cta-link" href="research-scholarship.html">Explore my research &rarr;</a>
+              <a class="cta-link" href="learning-design-practice.html">Explore my learning design &rarr;</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="false">
+            <img
+              class="collage-photo"
+              src="images/hero-landscape.png"
+              alt="A calm alpine lake reflecting snow-capped mountains, framed by pine trees"
+            >
+            <img
+              class="collage-strip"
+              src="images/learning-helps-us-make-meaning.png"
+              alt="A torn paper strip reading: Learning helps us make meaning, grow, and build better worlds"
+            >
+          </div>
+        </div>
       </section>
 
-      <section id="about">
-        <h2>About</h2>
-        <p>Placeholder for an introduction to who I am.</p>
+      <!-- ============ QUESTIONS ============ -->
+      <section class="questions">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>Questions I keep returning to</h2>
+          </div>
+          <div class="questions-grid">
+            <article class="question">
+              <span class="question-number">01</span>
+              <h3>Why do adults choose to participate in learning?</h3>
+              <p class="question-tags">Motivation &middot; participation &middot; engagement</p>
+            </article>
+            <article class="question">
+              <span class="question-number">02</span>
+              <h3>How do people become self-directed learners?</h3>
+              <p class="question-tags">SDL &middot; metacognition &middot; learner beliefs</p>
+            </article>
+            <article class="question">
+              <span class="question-number">03</span>
+              <h3>What happens when we treat learning design as an evidence-based practice?</h3>
+              <p class="question-tags">Learning science &middot; workplace learning</p>
+            </article>
+          </div>
+        </div>
       </section>
 
-      <section id="philosophy">
-        <h2>Philosophy, Values, and Goals</h2>
-        <p>Placeholder for a statement of who I am and my philosophy,
-          values, and goals as they relate to this portfolio's audience
-          and focus.</p>
+      <!-- ============ WELCOME / PURPOSE (EDAE 521 requirement) ============ -->
+      <section class="prose-section" id="welcome">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>Welcome</h2>
+          </div>
+          <p>
+            <!-- Replace with your stated purpose and intended audience for this portfolio
+                 (e.g., job search tool, promotion tool, resource-sharing, personal archive,
+                 or a platform for a professional goal). A "best guess" is fine for Phase I. -->
+            Placeholder: this portfolio exists to [state your purpose] for [state your
+            intended audience]. The sections above and below reflect that focus &mdash;
+            research and scholarship, applied learning design work, and ongoing
+            reflections on practice.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ ABOUT ============ -->
+      <section class="prose-section" id="about">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>About</h2>
+          </div>
+          <p>
+            <!-- Short bio: who you are, your scholar-practitioner identity, current
+                 focus/research interests. A portrait photo is optional here. -->
+            Placeholder for a short introduction: your background, your current role,
+            and the thread connecting your research interests to your practice.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ PHILOSOPHY, VALUES, AND GOALS ============ -->
+      <section class="prose-section" id="philosophy">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>Philosophy, Values, and Goals</h2>
+          </div>
+          <p>
+            <!-- Statement of who you are and your philosophy, values, and goals as they
+                 relate to this portfolio's audience and focus (Phase II requirement). -->
+            Placeholder for a statement of your teaching/learning-design philosophy,
+            core values, and goals as they relate to the audience and purpose stated
+            above.
+          </p>
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>&copy; 2026 Kristen Foster-Marks</p>
+        <p><a href="cv.html">CV</a></p>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>

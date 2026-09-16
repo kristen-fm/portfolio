@@ -3,42 +3,111 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learning design and practice - Kristen Foster Marks portfolio">
-    <title>Learning Design & Practice | Kristen Foster Marks</title>
+    <meta name="description" content="Learning design and practice - Kristen Foster-Marks portfolio">
+    <title>Learning Design &amp; Practice | Kristen Foster-Marks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="index.html">About</a>
-        <a href="research-scholarship.html">Research & Scholarship</a>
-        <a href="learning-design-practice.html">Learning Design & Practice</a>
-        <a href="reflections.html">Reflections</a>
-        <a href="cv.html">CV</a>
-      </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <img class="contour-corner contour-corner--top" src="images/contour.png" alt="" aria-hidden="true">
+    <img class="contour-corner contour-corner--bottom" src="images/contour.png" alt="" aria-hidden="true">
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="site-title" href="index.html">KRISTEN FOSTER-MARKS</a>
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="index.html">About</a>
+          <a href="research-scholarship.html">Research &amp; Scholarship</a>
+          <a href="learning-design-practice.html" aria-current="page">Learning Design &amp; Practice</a>
+          <a href="reflections.html">Reflections</a>
+          <a href="cv.html">CV</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section id="section-intro">
-        <h1>Learning Design & Practice</h1>
-        <p>
-          Brief description of this section's focus and planned future
-          content goes here.
-        </p>
+    <main id="main">
+      <section class="prose-section" id="section-intro">
+        <div class="wrap">
+          <p class="eyebrow">Learning Design &amp; Practice</p>
+          <h1>Learning Design &amp; Practice</h1>
+          <p>
+            Placeholder: a short description of your applied learning design work
+            and the kinds of problems/contexts you design for.
+          </p>
+        </div>
       </section>
 
       <section id="items">
-        <h2>Items</h2>
-        <p>Placeholder for a student-created item, with a narrative
-          covering what it is, why it's included, and its connection to
-          theory/research.</p>
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>Case Studies</h2>
+          </div>
+
+          <!--
+            CASE STUDY TEMPLATE
+            Copy this .case-study block for each project. Each one should walk
+            through: Problem, Learners/Context, Evidence/Theory, Design Decisions,
+            Artifact, Outcomes/Reflection.
+          -->
+          <article class="case-study">
+            <p class="entry-meta">Case Study &middot; 2026</p>
+            <h3>Placeholder project title</h3>
+            <p>
+              One or two sentences summarizing the project before the detailed
+              breakdown below.
+            </p>
+            <div class="case-study-grid">
+              <div class="case-study-part">
+                <h4>Problem</h4>
+                <p>Placeholder: what problem or need prompted this work.</p>
+              </div>
+              <div class="case-study-part">
+                <h4>Learners / Context</h4>
+                <p>Placeholder: who the learners were and the setting.</p>
+              </div>
+              <div class="case-study-part">
+                <h4>Evidence / Theory</h4>
+                <p>Placeholder: the theory or evidence base informing the design.</p>
+              </div>
+              <div class="case-study-part">
+                <h4>Design Decisions</h4>
+                <p>Placeholder: key decisions made and why.</p>
+              </div>
+              <div class="case-study-part">
+                <h4>Artifact</h4>
+                <p>Placeholder: link to or description of the resulting artifact.</p>
+              </div>
+              <div class="case-study-part">
+                <h4>Outcomes / Reflection</h4>
+                <p>Placeholder: what happened, and what you'd do differently.</p>
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section id="references">
-        <h2>References</h2>
-        <p>Placeholder for APA-style references.</p>
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>References</h2>
+          </div>
+          <p>
+            Placeholder for APA-style references.
+          </p>
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>&copy; 2026 Kristen Foster-Marks</p>
+        <p><a href="cv.html">CV</a></p>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>

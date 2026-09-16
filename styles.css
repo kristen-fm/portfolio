@@ -1,50 +1,116 @@
+/* =========================================================
+   Kristen Foster-Marks — Portfolio
+   Design language: contemporary scholarly field notebook.
+   Editorial, quiet, warm academic serif + clean sans, subtle
+   topographic texture. See CONTENT-GUIDE.md for how to edit.
+   ========================================================= */
+
+:root {
+  --color-bg: #f7f3ec;
+  --color-teal: #183a43;
+  --color-gold: #b08a4a;
+  --color-charcoal: #444844;
+  --color-contour: #ddd7cc;
+  --color-sage: #bfc6be;
+  --color-surface: #fffdf9;
+
+  --font-serif: "Fraunces", "Source Serif 4", Georgia, serif;
+  --font-sans: "Inter", "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --content-max: 1180px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+  --space-4: 3.5rem;
+  --space-5: 6rem;
+}
+
+/* -------------------- Reset & base -------------------- */
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
 body {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: system-ui, sans-serif;
-  line-height: 1.6;
-  color: #1a1a1a;
+  position: relative;
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+/* Decorative topographic contour corners — see .contour-corner img markup
+   repeated near the top of <body> on each page. Scrolls with the page (one
+   copy anchored to the top of the document, one to the bottom), not fixed
+   to the viewport. Purely decorative. */
+.contour-corner {
+  position: absolute;
+  width: 36vw;
+  max-width: 620px;
+  height: auto;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
 }
 
-nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  min-width: 44px;
-  padding: 0.25rem 0.25rem;
+.contour-corner--top {
+  top: -30px;
+  right: -60px;
 }
 
-section {
-  margin: 5rem 0;
+.contour-corner--bottom {
+  bottom: -30px;
+  left: -60px;
+  transform: rotate(180deg);
+}
+
+@media (max-width: 640px) {
+  .contour-corner {
+    width: 60vw;
+    opacity: 0.3;
+  }
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--color-teal);
+  line-height: 1.15;
+  margin: 0 0 var(--space-2);
+  font-weight: 500;
+}
+
+h1 { font-size: clamp(2.1rem, 4.5vw, 3.4rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
+
+p {
+  margin: 0 0 var(--space-2);
+  max-width: 62ch;
 }
 
 a {
-  color: #075985;
+  color: var(--color-teal);
 }
 
-main,
-h1,
-h2,
-h3,
-p,
-li {
-  overflow-wrap: anywhere;
-}
-
-img,
-video,
-iframe {
+img, video, iframe {
   max-width: 100%;
   height: auto;
 }
@@ -54,40 +120,475 @@ table {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
-  border: 1px solid #d4d4d4;
+  border: 1px solid var(--color-sage);
 }
 
-/* Tablet and small laptop */
-@media (max-width: 800px) {
-  body {
-    padding: 1.5rem;
+main, h1, h2, h3, p, li {
+  overflow-wrap: anywhere;
+}
+
+/* -------------------- Accessibility helpers -------------------- */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--color-teal);
+  color: var(--color-bg);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  left: 0;
+  top: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* -------------------- Layout shell -------------------- */
+
+.wrap {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+
+header.site-header {
+  border-bottom: 1px solid var(--color-contour);
+  background-color: rgba(247, 243, 236, 0.9);
+  backdrop-filter: blur(2px);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.4rem;
+  padding-bottom: 1.4rem;
+}
+
+.site-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-size: 0.95rem;
+  color: var(--color-teal);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+nav.primary-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+
+nav.primary-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+nav.primary-nav a:hover,
+nav.primary-nav a:focus-visible {
+  color: var(--color-teal);
+  border-bottom-color: var(--color-gold);
+}
+
+nav.primary-nav a[aria-current="page"] {
+  color: var(--color-teal);
+  border-bottom-color: var(--color-gold);
+  font-weight: 600;
+}
+
+main {
+  display: block;
+}
+
+section {
+  margin: var(--space-5) 0;
+}
+
+main > section:first-child {
+  margin-top: var(--space-3);
+}
+
+/* -------------------- Eyebrow / labels -------------------- */
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-2);
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--color-contour);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.section-heading h2 {
+  margin: 0;
+}
+
+/* -------------------- Hero -------------------- */
+
+.hero {
+  margin-bottom: var(--space-3);
+}
+
+.hero .wrap {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-2);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.hero-text h1 {
+  font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+  margin-bottom: var(--space-3);
+}
+
+.hero-text .subhead {
+  color: var(--color-charcoal);
+  font-size: 1.08rem;
+  max-width: 46ch;
+  margin-bottom: var(--space-3);
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.cta-link {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-teal);
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--color-gold);
+  transition: color 0.2s ease, border-color 0.2s ease, padding-right 0.2s ease;
+}
+
+.cta-link:hover,
+.cta-link:focus-visible {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-teal);
+}
+
+/* -------------------- Hero collage -------------------- */
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  min-height: 420px;
+}
+
+.collage-photo {
+  z-index: 1;
+  display: block;
+  aspect-ratio: 4 / 5;
+  width: 85%;
+  object-fit: cover;
+  object-position: center 35%;
+  background-color: #1f3a3f;
+  box-shadow: 0 18px 34px rgba(24, 58, 67, 0.22);
+}
+
+.collage-strip {
+  z-index: 2;
+  width: 30%;
+  min-width: 90px;
+  max-width: 150px;
+  height: auto;
+  margin-top: 2.5rem;
+  margin-left: -4.5rem;
+  transform: rotate(-2deg);
+  filter: drop-shadow(0 12px 20px rgba(24, 58, 67, 0.18));
+}
+
+/* -------------------- Questions section -------------------- */
+
+.questions {
+  margin-top: var(--space-3);
+}
+
+.questions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.question-number {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.question h3 {
+  margin-bottom: var(--space-1);
+}
+
+.question-tags {
+  font-size: 0.82rem;
+  color: var(--color-charcoal);
+  letter-spacing: 0.02em;
+  border-top: 1px solid var(--color-contour);
+  padding-top: 0.6rem;
+  margin-top: var(--space-2);
+}
+
+/* -------------------- Prose / inner-page sections -------------------- */
+
+.prose-section h2 {
+  margin-bottom: var(--space-2);
+}
+
+.prose-section p {
+  max-width: 68ch;
+}
+
+/* -------------------- Article / list cards (Research, Reflections) -------------------- */
+
+.entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.entry {
+  border-bottom: 1px solid var(--color-contour);
+  padding-bottom: var(--space-3);
+}
+
+.entry:last-child {
+  border-bottom: none;
+}
+
+.entry-meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.entry h3 {
+  margin-bottom: 0.5rem;
+}
+
+.entry-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-teal);
+  border-bottom: 1px solid var(--color-gold);
+}
+
+.entry-link:hover,
+.entry-link:focus-visible {
+  color: var(--color-gold);
+}
+
+/* -------------------- Case study (Learning Design & Practice) -------------------- */
+
+.case-study {
+  background: var(--color-surface);
+  border: 1px solid var(--color-contour);
+  padding: var(--space-3);
+}
+
+.case-study h3 {
+  margin-bottom: var(--space-2);
+}
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3) var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.case-study-part h4 {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.case-study-part p {
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+/* -------------------- CV -------------------- */
+
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-teal);
+  color: var(--color-bg);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.4rem;
+  margin-bottom: var(--space-3);
+  transition: background-color 0.2s ease;
+}
+
+.cv-download:hover,
+.cv-download:focus-visible {
+  background-color: var(--color-gold);
+  color: var(--color-teal);
+}
+
+.cv-block + .cv-block {
+  margin-top: var(--space-3);
+}
+
+.cv-block h2 {
+  border-bottom: 1px solid var(--color-contour);
+  padding-bottom: 0.5rem;
+}
+
+/* -------------------- Footer -------------------- */
+
+footer.site-footer {
+  border-top: 1px solid var(--color-contour);
+  margin-top: var(--space-5);
+}
+
+footer.site-footer .wrap {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-charcoal);
+}
+
+footer.site-footer a {
+  color: var(--color-charcoal);
+}
+
+/* -------------------- Responsive -------------------- */
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 320px;
+    order: -1;
+    justify-content: center;
+  }
+
+  .collage-photo {
+    width: 72%;
+  }
+
+  .questions-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .case-study-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 1.25rem;
   }
 
   section {
-    margin: 3rem 0;
-  }
-}
-
-/* Mobile phones */
-@media (max-width: 480px) {
-  body {
-    padding: 1rem;
+    margin: var(--space-4) 0;
   }
 
-  nav {
+  nav.primary-nav {
+    width: 100%;
     flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .site-header .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .questions-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .cta-row {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .hero-visual {
     gap: 0.75rem;
   }
 
-  section {
-    margin: 2rem 0;
+  .collage-strip {
+    min-width: 60px;
+    max-width: 90px;
+    margin-left: -1.25rem;
   }
 
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  h2 {
-    font-size: 1.3rem;
+  footer.site-footer .wrap {
+    flex-direction: column;
   }
 }

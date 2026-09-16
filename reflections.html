@@ -3,31 +3,71 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Reflections - Kristen Foster Marks portfolio">
-    <title>Reflections | Kristen Foster Marks</title>
+    <meta name="description" content="Reflections - Kristen Foster-Marks portfolio">
+    <title>Reflections | Kristen Foster-Marks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="index.html">About</a>
-        <a href="research-scholarship.html">Research & Scholarship</a>
-        <a href="learning-design-practice.html">Learning Design & Practice</a>
-        <a href="reflections.html">Reflections</a>
-        <a href="cv.html">CV</a>
-      </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <img class="contour-corner contour-corner--top" src="images/contour.png" alt="" aria-hidden="true">
+    <img class="contour-corner contour-corner--bottom" src="images/contour.png" alt="" aria-hidden="true">
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="site-title" href="index.html">KRISTEN FOSTER-MARKS</a>
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="index.html">About</a>
+          <a href="research-scholarship.html">Research &amp; Scholarship</a>
+          <a href="learning-design-practice.html">Learning Design &amp; Practice</a>
+          <a href="reflections.html" aria-current="page">Reflections</a>
+          <a href="cv.html">CV</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section id="section-intro">
-        <h1>Reflections</h1>
-        <p>
-          Brief description of this section's focus and planned future
-          content goes here.
-        </p>
+    <main id="main">
+      <section class="prose-section" id="section-intro">
+        <div class="wrap">
+          <p class="eyebrow">Reflections</p>
+          <h1>Reflections</h1>
+          <p>
+            Placeholder: a short description of this section &mdash; short, thoughtful
+            essays on practice, research, and the questions above, rather than
+            casual posts.
+          </p>
+        </div>
       </section>
 
+      <section id="entries">
+        <div class="wrap">
+          <div class="entry-list">
+            <!-- One .entry per reflection. Use <time> for the date and keep tags subtle. -->
+            <article class="entry">
+              <p class="entry-meta">
+                <time datetime="2026-01-01">January 2026</time> &middot; Practice
+              </p>
+              <h3>Placeholder reflection title</h3>
+              <p>
+                Placeholder excerpt: two or three sentences introducing the
+                reflection's subject and why it matters to your practice.
+              </p>
+              <a class="entry-link" href="#">Continue reading &rarr;</a>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>&copy; 2026 Kristen Foster-Marks</p>
+        <p><a href="cv.html">CV</a></p>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>
