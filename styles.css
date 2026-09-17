@@ -410,7 +410,7 @@ main > section:first-child {
 }
 
 .prose-section p {
-  max-width: 68ch;
+  max-width: 100%;
 }
 
 /* -------------------- Article / list cards (Research, Reflections) -------------------- */
@@ -431,10 +431,15 @@ main > section:first-child {
 }
 
 .entry-meta {
+  display: inline-block;
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-rust);
+  background: color-mix(in srgb, var(--color-rust) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-rust) 30%, transparent);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
   margin-bottom: 0.5rem;
 }
 
@@ -582,6 +587,101 @@ main > section:first-child {
   font-family: var(--font-sans);
   font-weight: 600;
   margin-bottom: 0.4rem;
+}
+
+/* -------------------- Long-form post (Reflections entries) -------------------- */
+
+/* Narrower reading measure than the site default, centered in .wrap. */
+.post .wrap {
+  max-width: 900px;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-charcoal);
+  margin-bottom: var(--space-3);
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  color: var(--color-teal);
+}
+
+.post-header {
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-contour);
+  padding-bottom: var(--space-3);
+}
+
+.post-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  color: var(--color-charcoal);
+  margin: 0 0 var(--space-3);
+  max-width: 100%;
+}
+
+/* The article body already sits in a narrow column, so let text fill it. */
+.post-body p,
+.post-body li {
+  max-width: 100%;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.post-body h2 {
+  margin-top: var(--space-4);
+}
+
+/* No extra top margin on the first element — the header already spaces it. */
+.post-body > :first-child {
+  margin-top: 0;
+}
+
+.post-body h3 {
+  margin-top: var(--space-3);
+  color: var(--color-charcoal);
+}
+
+.post-body ul {
+  padding-left: 1.2rem;
+  margin: 0 0 var(--space-2);
+}
+
+.post-body li {
+  margin-bottom: var(--space-1);
+}
+
+/* Field-notebook margin note for the article's "SIDEBAR" asides. */
+.post-note {
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-gold);
+  padding: var(--space-2) var(--space-3);
+  margin: var(--space-3) 0;
+  font-size: 0.92rem;
+  color: var(--color-charcoal);
+}
+
+.post-note p {
+  margin: 0;
+}
+
+/* APA reference list with hanging indents. */
+.references {
+  margin-top: var(--space-2);
+}
+
+.references p {
+  padding-left: 1.6em;
+  text-indent: -1.6em;
+  font-size: 0.92rem;
+  max-width: 100%;
+  margin-bottom: var(--space-2);
 }
 
 /* -------------------- Footer -------------------- */
