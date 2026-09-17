@@ -477,6 +477,10 @@ main > section:first-child {
   margin-bottom: var(--space-2);
 }
 
+.portfolio-item > p {
+  max-width: 100%;
+}
+
 .portfolio-item-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
