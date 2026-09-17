@@ -691,6 +691,11 @@ main > section:first-child {
   margin: 0;
 }
 
+/* Space stacked lines in a multi-paragraph note (e.g. a chat transcript). */
+.post-note p + p {
+  margin-top: var(--space-2);
+}
+
 /* APA reference list with hanging indents. */
 .references {
   margin-top: var(--space-2);
