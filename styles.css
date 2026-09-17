@@ -662,6 +662,21 @@ main > section:first-child {
   margin-bottom: var(--space-1);
 }
 
+/* Pull quotes from cited authors. */
+.post-body blockquote {
+  margin: var(--space-3) 0;
+  padding: var(--space-1) 0 var(--space-1) var(--space-3);
+  border-left: 3px solid var(--color-gold);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-teal);
+}
+
+.post-body blockquote p {
+  margin: 0;
+}
+
 /* Field-notebook margin note for the article's "SIDEBAR" asides. */
 .post-note {
   background: var(--color-surface);
