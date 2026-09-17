@@ -520,6 +520,70 @@ main > section:first-child {
   padding-bottom: 0.5rem;
 }
 
+.cv-contact {
+  color: var(--color-charcoal);
+  font-size: 0.9rem;
+}
+
+.cv-role + .cv-role {
+  margin-top: var(--space-3);
+}
+
+.cv-role-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.cv-role-header h3 {
+  margin: 0;
+}
+
+.cv-role-org {
+  color: var(--color-gold);
+}
+
+.cv-role-dates {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  white-space: nowrap;
+}
+
+.cv-role-sub {
+  font-style: italic;
+  color: var(--color-charcoal);
+  margin: 0.15rem 0 0.5rem;
+}
+
+.cv-block ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.cv-block li {
+  margin-bottom: 0.3rem;
+}
+
+.cv-list-flat {
+  columns: 1;
+}
+
+.cv-list-group + .cv-list-group {
+  margin-top: var(--space-2);
+}
+
+.cv-list-group h3 {
+  font-size: 1rem;
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
 /* -------------------- Footer -------------------- */
 
 footer.site-footer {
