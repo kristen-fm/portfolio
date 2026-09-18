@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Think big, then scrutinize: evaluating thought leadership with scientific methods — a commentary by Kristen Foster-Marks reviewing Elazhary et al. (2021)">
+    <title>Think Big, Then Scrutinize | Kristen Foster-Marks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <img class="contour-corner contour-corner--top" src="/assets/images/contour.png" alt="" aria-hidden="true">
+    <img class="contour-corner contour-corner--bottom" src="/assets/images/contour.png" alt="" aria-hidden="true">
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="site-title" href="/">KRISTEN FOSTER-MARKS</a>
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="/">About</a>
+          <a href="/scholarship/" aria-current="page">Scholarship</a>
+          <a href="/learning-design/">Learning Design</a>
+          <a href="/reflections/">Reflections</a>
+          <a href="/cv/">CV</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <article class="post">
+        <div class="wrap">
+          <a class="back-link" href="/scholarship/">&larr; Back to Scholarship</a>
+
+          <header class="post-header">
+            <p class="entry-meta">
+              <time datetime="2024-11-18">November 18, 2024</time> &middot; Commentary
+            </p>
+            <h1>Think big, then scrutinize: evaluating thought leadership with scientific methods</h1>
+            <p class="post-provenance">
+              Originally published in the Developer Success Lab&rsquo;s
+              <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer Science Review</a>,
+              November 18, 2024. A commentary on Elazhary et al. (2021),
+              <em>Uncovering the Benefits and Challenges of Continuous Integration
+              Practices</em>. Reproduced here by the author.
+            </p>
+          </header>
+
+          <div class="post-body">
+            <p>Thank goodness we have thought leaders.</p>
+            <p>
+              These are individuals who are recognized as authorities in a particular
+              field, industry, or domain, and we trust them and follow them not only for
+              their deep domain knowledge, but also for their creative and innovative
+              thinking. The most influential thought leaders have the power to inspire
+              change at massive scale, sparking industry revolutions in tooling, processes,
+              philosophies and more.
+            </p>
+            <p>
+              But how do we know that these thought leaders are right? That the ideas they
+              propose are sound? That the methods and strategies and techniques they
+              evangelize are effective in achieving the gains they purport to achieve?
+            </p>
+            <p>
+              Too often, we don&rsquo;t. Too often, we accept the ideas of thought leaders
+              without holding them up to empirical scrutiny &ndash; without doing science
+              on them, if you will.
+            </p>
+            <p>
+              And so, thank goodness that in addition to thought leaders, we have
+              scientists. Like the ones who authored &ldquo;Uncovering the benefits and
+              challenges of continuous integration practices&rdquo; [1]. Using a
+              mixed-methods research design (i.e., analyzing both quantitative and
+              qualitative data), Omar Elazhary and his colleagues investigate a set of ten
+              core Continuous Integration (CI) practices that were proposed back in 2006
+              [2] by two thought leaders in the software industry:
+            </p>
+            <ul>
+              <li>Maintain a single source repository</li>
+              <li>Automate the build</li>
+              <li>Make your build self-testing</li>
+              <li>Everyone commits to the mainline every day</li>
+              <li>Every commit should build the mainline on an integration machine</li>
+              <li>Keep the build fast</li>
+              <li>Test in a clone of the production environment</li>
+              <li>Make it easy for anyone to get the latest executable</li>
+              <li>Ensure that system state and changes are visible</li>
+              <li>Automate deployment</li>
+            </ul>
+            <p>
+              These ten core CI practices were subsequently seen and adopted by a lot of
+              people, teams, and organizations. Not always all of them simultaneously on
+              any given project, of course &ndash; technical limitations and resource
+              constraints can hinder adoption as this paper partly shows &ndash; but these
+              CI practices were discussed and accepted and to varying degrees adopted by
+              Ops and Software Engineering teams.
+            </p>
+            <p>
+              And yet, fifteen years later, Elazhary and his co-authors write that while
+              there has been research studying CI&rsquo;s impact on software quality, at
+              the time this study was conducted, existing research had not yet contributed
+              to &ldquo;understanding how the ten CI practices each play a role in quality
+              improvement or developer productivity.&rdquo;
+            </p>
+            <p>
+              So, that&rsquo;s fifteen years that this list of core CI practices had been
+              around without being examined empirically. That&rsquo;s a long time, folks.
+              As the authors note, we lack empirical evidence around &ldquo;how or if
+              organizations implement the individual practices,&rdquo; as well as
+              developers&rsquo; perceptions of both their benefits and implementation
+              challenges. As software practitioners, we should be asking: Without this
+              empirical examination, how can we feel confident that these practices are
+              actually worth implementing?
+            </p>
+            <p>
+              In this paper, the authors fill this gap in the research by taking each of
+              the ten CI practices deemed &ldquo;core&rdquo; by the software thought
+              leaders who proposed them, and outlining what the existing empirical evidence
+              has to say about the practice (again, not a whole lot), as well as
+              contributing to what we do know by using evidence to elucidate how that
+              practice is implemented and rationalized, what trade-offs are perceived by
+              software practitioners, and how implementations differs between contexts.
+            </p>
+            <p>
+              Outside of the fact that it fills a research gap opened up by thought
+              leadership, there&rsquo;s a lot of other stuff I love about this paper:
+            </p>
+            <p>
+              <strong>Robust Treatment of Qualitative Data:</strong> This is a
+              mixed-methods study, meaning both quantitative and qualitative data were used
+              to answer the research questions. Qualitative data collection and analysis is
+              really challenging, and really time-consuming, and it is so easy to cut
+              corners here (I know this first-hand, having just collaborated with Dr. Carol
+              Lee and Dr. Cat Hicks on the qualitative data analysis for a study examining
+              the effectiveness of a code review anxiety intervention). The robustness with
+              which these researchers approached their qualitative data collection and
+              analysis (as described in their methods section) felt outstanding to me,
+              particularly when taken in the context of the larger body of software
+              engineering research, which in general and this moment in time does not
+              always follow best practices in qualitative methods [3] [4] [5].
+            </p>
+            <p>
+              <strong>Replication Package:</strong> A replication package in the context of
+              scientific research is a set of materials and resources provided by
+              researchers to enable others to replicate, reproduce, or verify the results
+              of their study. It typically includes all the data, code, scripts, and
+              documentation necessary for an independent researcher to repeat the original
+              analysis and check whether they obtain the same results. Replication packages
+              are important for promoting transparency, rigor, and reproducibility in
+              science, as well as building trust in the findings by making the research
+              process more open and accountable.
+            </p>
+            <p>
+              As a software practitioner who always reads research like this with a mind
+              toward adapting it to organizational contexts, I see replication packages as
+              potential blueprints for how to conduct case studies within my own
+              organization or team. I think in particular, the qualitative interview
+              materials provided in this study&rsquo;s replication package could be helpful
+              to folks hoping to put together an informal case study:
+            </p>
+            <blockquote>
+              <p>
+                &ldquo;The interviews helped us form case report profiles that give a
+                deeper introduction to the three organizations and how they use CI
+                practices. The interviews further helped us answer our three research
+                questions.&rdquo;
+              </p>
+            </blockquote>
+            <p>
+              Here, you can think about being your own scientist. The interview scripts
+              were developed by folks with deep expertise in research methods. By
+              replicating these methods, software practitioners can partly replicate the
+              research in their own organizations.
+            </p>
+            <p>
+              These authors also include implications for developers call-outs, which I
+              wish we saw more of in software engineering research. Reading empirical
+              research is cognitively-demanding as it is, without having to also answer the
+              question, &ldquo;How can we use this on our team?&rdquo;
+            </p>
+            <p>
+              <strong>Construct Development:</strong> The authors describe future research
+              they hope to do in order to develop a set of valid CI constructs, which is
+              huge. Construct development is a scientific practice that ensures we&rsquo;re
+              all talking about the same thing when we talk about a thing (e.g., grit,
+              developer experience, flow state, productivity, etc.). Developing a construct
+              is time-consuming and requires not only deep expertise in a field or domain,
+              but also a certain level of consensus-gathering in a community of practice,
+              and usually, multiple steps of empirical testing, validation and iteration
+              within the specific populations that you want to measure [6] [7].
+            </p>
+            <p>
+              As you read this research, I encourage you to think about other processes and
+              paradigms in the software space that are widely accepted, and then do a
+              little sleuthing to discover what kind of empirical research has been done to
+              validate that process or paradigm.
+            </p>
+            <p>
+              And if you can&rsquo;t find anything, maybe reach out to your favorite
+              software engineering scientist to put that research gap on their radar
+              &#128512;
+            </p>
+
+            <h2>References</h2>
+            <div class="references">
+              <p>
+                [1] Elazhary, O., Werner, C., Li, Z. S., Lowlind, D., Ernst, N. A., &amp;
+                Storey, M. A. (2021). Uncovering the benefits and challenges of continuous
+                integration practices. <em>IEEE Transactions on Software Engineering,
+                48</em>(7), 2570&ndash;2583.
+                <a href="https://doi.org/10.1109/TSE.2021.3064953" target="_blank" rel="noopener noreferrer">https://doi.org/10.1109/TSE.2021.3064953</a>
+              </p>
+              <p>
+                [2] Fowler, M., &amp; Foemmel, M. (2006). <em>Continuous integration</em>.
+                <a href="https://tinyurl.com/ycbl2uhj" target="_blank" rel="noopener noreferrer">https://tinyurl.com/ycbl2uhj</a>
+              </p>
+              <p>
+                [3] Lenberg, P., Feldt, R., Gren, L., Wallgren Tengberg, L. G., Tidefors,
+                I., &amp; Graziotin, D. (2024). Qualitative software engineering research:
+                Reflections and guidelines. <em>Journal of Software: Evolution and Process,
+                36</em>(6).
+                <a href="https://doi.org/10.1002/smr.2607" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/smr.2607</a>
+              </p>
+              <p>
+                [4] Melegati, J., Conboy, K., &amp; Graziotin, D. (2024). Qualitative
+                surveys in software engineering research: Definition, critical review, and
+                guidelines. <em>IEEE Transactions on Software Engineering, 14</em>(8).
+                <a href="https://doi.ieeecomputersociety.org/10.1109/TSE.2024.3474173" target="_blank" rel="noopener noreferrer">https://doi.ieeecomputersociety.org/10.1109/TSE.2024.3474173</a>
+              </p>
+              <p>
+                [5] Gonz&aacute;lez-Prieto, &Aacute;., Perez, J., Diaz, J., &amp;
+                L&oacute;pez-Fern&aacute;ndez, D. (2023). Reliability in software
+                engineering qualitative research through inter-coder agreement. <em>Journal
+                of Systems and Software, 202</em>.
+                <a href="https://doi.org/10.1016/j.jss.2023.111707" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.jss.2023.111707</a>
+              </p>
+              <p>
+                [6] Sj&oslash;berg, D. I. K., &amp; Bergersen, G. R. (2023). Construct
+                validity in software engineering. <em>IEEE Transactions on Software
+                Engineering, 49</em>(3), 1374&ndash;1396.
+                <a href="https://doi.org/10.1109/TSE.2022.3176725" target="_blank" rel="noopener noreferrer">https://doi.org/10.1109/TSE.2022.3176725</a>
+              </p>
+              <p>
+                [7] Ralph, P., &amp; Tempero, E. (2018). Construct validity in software
+                engineering research and software metrics. In <em>Proceedings of the 22nd
+                International Conference on Evaluation and Assessment in Software Engineering
+                2018</em> (pp. 13&ndash;23).
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>&copy; 2026 Kristen Foster-Marks</p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+  </body>
+</html>
