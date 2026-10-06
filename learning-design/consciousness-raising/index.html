@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Draft: remove noindex when this experience is linked from the Learning Design page. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Consciousness Raising &mdash; A Learning Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+
+    <header class="site-header">
+      <p class="site-header__title">Consciousness Raising</p>
+      <div class="site-header__meta">
+        <p>A learning experience<br>on adult education history</p>
+        <span class="editorial-rule" aria-hidden="true"></span>
+      </div>
+    </header>
+
+    <!--
+      Slides are read from the DOM in order. To add, remove, or reorder a
+      section, edit the <section class="slide"> elements below; the rail,
+      counter, and navigation are generated from them by script.js.
+      data-rail-label sets the short title shown in the section rail, and
+      each eyebrow's "01 —" number is added automatically from slide order.
+    -->
+    <main class="slide-stage" id="slide-stage">
+
+      <!-- 1. Introductory statement + archival image -->
+      <section class="slide slide--text-visual" aria-labelledby="slide-1-title" data-rail-label="Introduction">
+        <div class="slide-inner">
+          <div class="slide-text">
+            <p class="slide-eyebrow">Introduction</p>
+            <h1 class="slide-title" id="slide-1-title" tabindex="-1">Introductory<br>statement.</h1>
+            <p class="slide-copy">Short explanatory text will appear here. It introduces the subject and frames the question the experience will explore.</p>
+          </div>
+          <figure class="slide-visual archival-image">
+            <div class="image-placeholder" role="img" aria-label="Historical image placeholder">
+              <span>Historical image placeholder</span>
+            </div>
+            <figcaption class="handwritten-note handwritten-note--arrow">
+              Image caption placeholder
+              <svg class="annotation-arrow" viewBox="0 0 60 40" aria-hidden="true" focusable="false">
+                <path d="M4 34 C 18 32, 36 24, 52 8" />
+                <path d="M42 8 L 52 8 L 50 18" />
+              </svg>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 2. Short statement + three quote cards -->
+      <section class="slide slide--statement-cards" aria-labelledby="slide-2-title" data-rail-label="Shared experiences">
+        <div class="slide-inner">
+          <div class="slide-text">
+            <p class="slide-eyebrow">Section label</p>
+            <h2 class="slide-title" id="slide-2-title" tabindex="-1">Section heading.</h2>
+            <p class="slide-copy">Short explanatory text will appear here.</p>
+          </div>
+          <ul class="quote-grid" role="list">
+            <li class="quote-card">
+              <blockquote>
+                <p>&ldquo;Quotation placeholder one.&rdquo;</p>
+              </blockquote>
+              <p class="quote-card__source">Source placeholder</p>
+            </li>
+            <li class="quote-card">
+              <blockquote>
+                <p>&ldquo;Quotation placeholder two.&rdquo;</p>
+              </blockquote>
+              <p class="quote-card__source">Source placeholder</p>
+            </li>
+            <li class="quote-card">
+              <blockquote>
+                <p>&ldquo;Quotation placeholder three.&rdquo;</p>
+              </blockquote>
+              <p class="quote-card__source">Source placeholder</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3. Text + simple visual flow diagram -->
+      <section class="slide slide--text-visual" aria-labelledby="slide-3-title" data-rail-label="A different classroom">
+        <div class="slide-inner">
+          <div class="slide-text">
+            <p class="slide-eyebrow">Section label</p>
+            <h2 class="slide-title" id="slide-3-title" tabindex="-1">A different kind<br>of classroom.</h2>
+            <p class="slide-copy">Short explanatory text will appear here. A few sentences describe the process the diagram illustrates.</p>
+          </div>
+          <figure class="slide-visual diagram">
+            <svg class="flow-diagram" viewBox="0 0 520 200" role="img" aria-labelledby="flow-diagram-title">
+              <title id="flow-diagram-title">Placeholder diagram: three stages connected in sequence, ending with a highlighted final stage.</title>
+              <g class="diagram__connector">
+                <path d="M128 90 H 196" />
+                <path d="M188 84 L 196 90 L 188 96" />
+                <path d="M324 90 H 392" />
+                <path d="M384 84 L 392 90 L 384 96" />
+              </g>
+              <circle class="pattern-node" cx="76" cy="90" r="46" />
+              <circle class="pattern-node pattern-node--sand" cx="260" cy="90" r="46" />
+              <circle class="pattern-node pattern-node--selected" cx="444" cy="90" r="46" />
+              <text class="diagram__label" x="76" y="172">Stage one</text>
+              <text class="diagram__label" x="260" y="172">Stage two</text>
+              <text class="diagram__label diagram__label--selected" x="444" y="172">Stage three</text>
+            </svg>
+            <figcaption class="handwritten-note">Diagram annotation placeholder</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 4. Historical figure profile + image (visual-left) -->
+      <section class="slide slide--visual-text" aria-labelledby="slide-4-title" data-rail-label="Historical context">
+        <div class="slide-inner">
+          <figure class="slide-visual archival-image archival-image--portrait">
+            <div class="image-placeholder" role="img" aria-label="Portrait placeholder">
+              <span>Portrait placeholder</span>
+            </div>
+            <figcaption class="archival-image__caption">Caption and credit placeholder</figcaption>
+          </figure>
+          <div class="slide-text">
+            <p class="slide-eyebrow">Section label</p>
+            <h2 class="slide-title" id="slide-4-title" tabindex="-1">Profile<br>heading.</h2>
+            <p class="slide-copy">Short explanatory text will appear here. It introduces a historical figure and their role.</p>
+            <dl class="profile-facts">
+              <div>
+                <dt>Detail label</dt>
+                <dd>Detail placeholder</dd>
+              </div>
+              <div>
+                <dt>Detail label</dt>
+                <dd>Detail placeholder</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Pattern / connection diagram (full width) -->
+      <section class="slide slide--full-diagram" aria-labelledby="slide-5-title" data-rail-label="Patterns">
+        <div class="slide-inner">
+          <div class="slide-text">
+            <p class="slide-eyebrow">Section label</p>
+            <h2 class="slide-title" id="slide-5-title" tabindex="-1">Section heading.</h2>
+            <p class="slide-copy">Short explanatory text will appear here.</p>
+          </div>
+          <figure class="slide-visual diagram">
+            <svg class="pattern-diagram" viewBox="0 0 760 260" role="img" aria-labelledby="pattern-diagram-title">
+              <title id="pattern-diagram-title">Placeholder diagram: four surrounding ideas each connected to one central idea.</title>
+              <g class="diagram__connector">
+                <path d="M150 70 L 330 125" />
+                <path d="M150 200 L 330 145" />
+                <path d="M610 70 L 430 125" />
+                <path d="M610 200 L 430 145" />
+              </g>
+              <circle class="pattern-node" cx="110" cy="62" r="34" />
+              <circle class="pattern-node pattern-node--sand" cx="110" cy="208" r="34" />
+              <circle class="pattern-node pattern-node--sand" cx="650" cy="62" r="34" />
+              <circle class="pattern-node" cx="650" cy="208" r="34" />
+              <circle class="pattern-node pattern-node--selected" cx="380" cy="135" r="52" />
+              <text class="diagram__label" x="110" y="118">Idea A</text>
+              <text class="diagram__label" x="110" y="262" dy="-6">Idea B</text>
+              <text class="diagram__label" x="650" y="118">Idea C</text>
+              <text class="diagram__label" x="650" y="262" dy="-6">Idea D</text>
+              <text class="diagram__label diagram__label--selected" x="380" y="216">Central idea</text>
+            </svg>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 6. Reflection prompt + CTA (centered statement) -->
+      <section class="slide slide--centered" aria-labelledby="slide-6-title" data-rail-label="Reflection">
+        <div class="slide-inner">
+          <p class="slide-eyebrow">Reflection</p>
+          <h2 class="slide-title" id="slide-6-title" tabindex="-1">Reflection prompt<br>placeholder.</h2>
+          <p class="slide-copy">Short explanatory text will appear here, inviting the learner to connect the material to their own practice.</p>
+          <span class="editorial-rule editorial-rule--center" aria-hidden="true"></span>
+          <p class="handwritten-note">Marginal note placeholder</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Populated by script.js from the slides above. -->
+    <nav class="section-rail" aria-label="Learning experience sections">
+      <ol class="section-rail__list" role="list"></ol>
+    </nav>
+
+    <footer class="slide-controls">
+      <p class="slide-counter">
+        <span class="visually-hidden">Section</span>
+        <span class="slide-counter__current">01</span>
+        <span class="slide-counter__sep" aria-hidden="true">/</span>
+        <span class="visually-hidden">of</span>
+        <span class="slide-counter__total">06</span>
+      </p>
+      <p class="visually-hidden" aria-live="polite" data-slide-status></p>
+      <div class="slide-controls__buttons">
+        <button type="button" class="nav-button nav-button--secondary" data-nav="prev">
+          <span aria-hidden="true">&larr;</span> Previous
+        </button>
+        <!--
+          On the last slide this button becomes the final action.
+          Set data-final-href to a URL (e.g. the Canvas course) to make it
+          navigate there; while empty, the final action is shown but disabled.
+        -->
+        <button type="button" class="nav-button nav-button--primary" data-nav="next"
+                data-final-label="Continue to Canvas" data-final-href="">
+          <span class="nav-button__label">Next</span> <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
