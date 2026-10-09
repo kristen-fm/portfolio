@@ -1,7 +1,7 @@
-# Consciousness Raising — interactive learning experience
+# Consciousness-Raising — a mini-course for adult educators
 
-A full-screen, slide-by-slide learning experience in plain HTML, CSS, and
-vanilla JavaScript. Served at `/learning-design/consciousness-raising/`.
+A section-by-section mini-course in plain HTML, CSS, and vanilla JavaScript.
+Served at `/learning-design/consciousness-raising/`.
 
 **Status: draft, unlisted.** Nothing on the site links here yet, and the page
 carries `<meta name="robots" content="noindex, nofollow">`. Remove that tag and
@@ -13,35 +13,57 @@ portfolio's `/assets/css/styles.css`; it has its own design system.
 
 ## Files
 
-- `index.html` — the slides (one `<section class="slide">` each)
-- `styles.css` — design tokens (`:root`), layouts, components, responsive rules
-- `script.js` — navigation, keyboard controls, section rail, transitions
+- `index.html` — header, sections (one `<section class="lesson-section">`
+  each), icon sprite, hero template, and the About/Glossary dialogs
+- `styles.css` — design tokens (`:root`), layout, components, responsive rules
+- `script.js` — navigation, outline, accordions, scroll cue, dialogs, keyboard
+- `images/` — artwork (see below)
 
-## Editing slides
+## Editing sections
 
-The rail, counter, eyebrow numbers ("03 —"), and navigation are all generated
-from the `.slide` elements in order, so adding, removing, or reordering a
-`<section>` needs no JavaScript changes. Each slide needs:
+The sidebar outline, "Section N of 12" labels, and previous/next labels are all
+generated from the `.lesson-section` elements in order, so adding, removing, or
+reordering a `<section>` needs no JavaScript changes. Each section needs:
 
-- `aria-labelledby` pointing at its `.slide-title`
-- a `.slide-title` with a unique `id` and `tabindex="-1"` (it receives focus)
-- `data-rail-label` — the short title shown in the section rail
+- `aria-labelledby` pointing at its `.lesson-title`
+- a `.lesson-title` with a unique `id` and `tabindex="-1"` (it receives focus)
+- optionally, `data-outline-label` — the short title shown in the outline and
+  in the previous/next buttons (defaults to the heading text)
 
-Layout variants (class on the `<section>`): `slide--text-visual`,
-`slide--visual-text`, `slide--statement-cards`, `slide--full-diagram`,
-`slide--centered`.
+Leave `<p class="lesson-eyebrow"></p>` empty; the script fills it in. The
+shared hero collage is copied from `<template id="hero-template">` into every
+section's `.lesson-header`, so edit it in one place.
 
-Keep to roughly one title, one short paragraph, and one visual per slide, and
-at most one `.handwritten-note`. If a slide gets crowded, add another slide.
+### Accordions
+
+Copy an `.accordion__item` from section 8. Set `aria-expanded="true"` on the
+trigger that should start open (at most one); the script wires up ids,
+`aria-controls`, and `hidden`. Only one panel per accordion is open at a time.
+Add `accordion__body--with-quote` to a body to lay out a paragraph next to a
+`.pull-quote`. Icons come from the sprite at the top of `index.html`
+(`#icon-file`, `#icon-users`, `#icon-gear`, `#icon-scale`, `#icon-book`).
+
+## Artwork
+
+All in `images/`, exported as WebP from the ChatGPT originals:
+
+- `hero-collage.webp` — collage frame (circles, torn paper, pines). Its open
+  oval holds the quote tag. To add an archival photo later, layer it *behind*
+  `.hero-collage__art` so the frame's torn edges sit on top, credit it in APA
+  style in Further resources, and move the tag toward the lower left.
+- `paper-tag.webp` — torn-paper background for the quote tag.
+- `topo-light.webp` / `topo-dark.webp` — seamless contour tiles for the page
+  and sidebar, set via `--texture-paper` and `--texture-forest`. Both come from
+  the same tile, recoloured (muted green for the page, cream for the sidebar).
 
 ## Final action
 
-On the last slide, Next becomes the button defined by `data-final-label` and
+On the last section, Next becomes the button defined by `data-final-label` and
 `data-final-href` in `index.html`. While `data-final-href` is empty, the button
 is shown but disabled.
 
 ## Preview locally
 
 From the repo root: `python3 -m http.server 8642 --bind 127.0.0.1`, then open
-<http://127.0.0.1:8642/learning-design/consciousness-raising/>. Append `#3` (etc.)
+<http://127.0.0.1:8642/learning-design/consciousness-raising/>. Append `#8` (etc.)
 to open a specific section.

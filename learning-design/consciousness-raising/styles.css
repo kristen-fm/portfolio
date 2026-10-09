@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consciousness Raising — interactive learning experience
+   Consciousness-Raising — a mini-course for adult educators
    Standalone design system; intentionally independent of the portfolio's
    /assets/css/styles.css.
    ========================================================================== */
@@ -8,31 +8,42 @@
 
 :root {
   /* Palette */
-  --color-paper: #F3EFE6;
-  --color-ink: #201E1B;
-  --color-ink-muted: #686158;
-  --color-accent: #A83F2C;
-  --color-accent-dark: #8C3322;
-  --color-blush: #E8CCC2;
-  --color-sand: #DED2BD;
-  --color-soft-rust: #C87A67;
-  --color-rule: #D4CEC4;
+  --color-paper: #F5F0E6;
+  --color-paper-raised: #FBF8F2;
+  --color-card: #FFFDF9;
+  --color-ink: #1D1F1B;
+  --color-ink-muted: #55564F;
+  --color-rule: #DCD3C3;
+  --color-forest: #213A2E;
+  --color-forest-dark: #182C22;
+  --color-on-forest: #EFE9DC;
+  --color-on-forest-muted: rgba(239, 233, 220, 0.62);
+  --color-gold: #C9963F;
+  --color-gold-dark: #A9792A;
+  --color-tan: #EBDDC6;
+  --color-sage: #9DAA90;
+  --color-sage-tint: #E6E7DA;
+  --color-terracotta: #C7714D;
+  --color-parchment: #EFE3CD;
 
-  /* Type. Slide titles scale by --font-scale-display; every other font
-     size on the page scales by --font-scale-text. */
-  --font-scale-display: 1;
-  --font-scale-text: 1.5;
+  /* Topographic background textures (seamless tiles). */
+  --texture-paper: url("images/topo-light.webp") 0 0 / 627px repeat;
+  --texture-forest: url("images/topo-dark.webp") 0 0 / 627px repeat;
+
+  /* Type */
   --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
   --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-hand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
 
-  --text-title: clamp(2.5rem, min(4.25vw, 8.5dvh), 5.5rem);
-  --text-copy: clamp(1.05rem, 1.3vw, 1.35rem);
-  --text-meta: 0.78rem;
+  --text-title: clamp(2.4rem, min(3.9vw, 7.5dvh), 4.25rem);
+  --text-lead: clamp(0.95rem, 1vw, 1.05rem);
+  --text-accordion: clamp(1.15rem, 1.4vw, 1.45rem);
+  --text-eyebrow: 0.75rem;
 
   /* Space */
-  --gutter: clamp(2rem, 5vw, 6rem);
-  --gap: clamp(2rem, 5vw, 5rem);
+  --sidebar-width: clamp(15rem, 19vw, 19rem);
+  --gutter: clamp(1.5rem, 4vw, 4.5rem);
+  --content-max-width: 76rem;
 
   /* Motion */
   --ease-out: cubic-bezier(.22, .61, .36, 1);
@@ -40,7 +51,8 @@
   --dur-fade: 320ms;
   --dur-move: 380ms;
 
-  --shadow-soft: 0 4px 18px rgba(30, 25, 20, 0.06);
+  --shadow-soft: 0 6px 20px rgba(30, 30, 20, 0.07);
+  --radius: 10px;
 }
 
 /* ---------- Base ---------- */
@@ -62,10 +74,7 @@ body {
   height: 100dvh;
   overflow: hidden;
   color: var(--color-ink);
-  background:
-    radial-gradient(rgba(40, 30, 20, 0.025) 0.7px, transparent 0.8px),
-    var(--color-paper);
-  background-size: 4px 4px;
+  background: var(--texture-paper), var(--color-paper);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -75,18 +84,37 @@ h1, h2, h3, p, figure, blockquote, ul, ol, dl, dd {
   margin: 0;
 }
 
+ul[role="list"],
+ol[role="list"] {
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
 img {
   display: block;
   max-width: 100%;
 }
 
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 :focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
+  outline: 2px solid var(--color-forest);
+  outline-offset: 3px;
 }
 
 /* Headings receive programmatic focus on navigation; don't ring them. */
-.slide-title:focus {
+.lesson-title:focus {
   outline: none;
 }
 
@@ -102,16 +130,44 @@ img {
   border: 0;
 }
 
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--dur-hover) ease;
+}
+
+.icon-button:hover {
+  background: rgba(33, 58, 46, 0.08);
+}
+
+.icon-button svg {
+  width: 22px;
+  height: 22px;
+}
+
 /* ---------- App shell ---------- */
 
 .app-shell {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
   grid-template-areas:
-    "header   header"
-    "stage    rail"
-    "controls controls";
+    "header  header"
+    "outline lesson";
   height: 100%;
 }
 
@@ -120,76 +176,185 @@ img {
 .site-header {
   grid-area: header;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 1.4rem var(--gutter) 1.2rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem var(--gutter) 0.9rem clamp(1.25rem, 2.5vw, 2.5rem);
+  background: var(--color-paper-raised);
   border-bottom: 1px solid var(--color-rule);
 }
 
-.site-header__title {
-  font-family: var(--font-serif);
-  font-size: calc(1.35rem * var(--font-scale-text));
-  font-weight: 500;
-  letter-spacing: -0.005em;
-}
-
-.site-header__meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.6rem;
-  text-align: right;
-}
-
-.site-header__meta p {
-  color: var(--color-ink-muted);
-  font-size: calc(0.7rem * var(--font-scale-text));
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.09em;
+.site-header__brand {
+  display: grid;
+  gap: 0.15rem;
+  margin-right: auto;
   text-transform: uppercase;
 }
 
-/* ---------- Decorative rules ---------- */
-
-.editorial-rule {
-  display: block;
-  width: 2.5rem;
-  height: 2px;
-  background: var(--color-accent);
+.site-header__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
 }
 
-.editorial-rule--center {
-  margin-inline: auto;
+.site-header__title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
 }
 
-/* ---------- Slide stage + transitions ---------- */
+.site-header__tagline {
+  color: var(--color-ink-muted);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+}
 
-.slide-stage {
-  grid-area: stage;
+.site-header__nav ul {
+  display: flex;
+  gap: clamp(0.25rem, 2vw, 2rem);
+}
+
+.header-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  text-underline-offset: 0.3em;
+}
+
+.header-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+}
+
+/* Only shown on narrow screens, where the outline is a drawer. */
+.outline-toggle {
+  display: none;
+}
+
+/* ---------- Course outline (sidebar) ---------- */
+
+.course-outline {
+  grid-area: outline;
+  min-height: 0;
+  overflow-y: auto;
+  padding: clamp(1.5rem, 4dvh, 3rem) clamp(0.75rem, 1.5vw, 1.5rem);
+  color: var(--color-on-forest);
+  background: var(--texture-forest), var(--color-forest);
+}
+
+.course-outline__list {
+  position: relative;
+  display: grid;
+  gap: clamp(0rem, 0.6dvh, 0.4rem);
+}
+
+/* Vertical line connecting the number circles. */
+.course-outline__list::before {
+  content: "";
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: calc(0.75rem + 0.875rem - 0.5px);
+  width: 1px;
+  background: var(--color-on-forest-muted);
+  opacity: 0.6;
+}
+
+.course-outline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.3rem 0.75rem;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--color-on-forest);
+  font-size: 1rem;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--dur-hover) ease, color var(--dur-hover) ease;
+}
+
+.course-outline__item:hover {
+  background: rgba(239, 233, 220, 0.06);
+}
+
+.course-outline__item:focus-visible {
+  outline-color: var(--color-gold);
+  outline-offset: 0;
+}
+
+.course-outline__number {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1.5px solid var(--color-on-forest-muted);
+  border-radius: 50%;
+  background: var(--color-forest);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition: background-color var(--dur-hover) ease, border-color var(--dur-hover) ease;
+}
+
+.course-outline__item--active {
+  color: var(--color-gold);
+}
+
+.course-outline__item--active .course-outline__number {
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  color: var(--color-forest-dark);
+  font-weight: 600;
+}
+
+.outline-backdrop {
+  display: none;
+}
+
+/* ---------- Lesson column + section transitions ---------- */
+
+.lesson-column {
+  grid-area: lesson;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 0;
+}
+
+.lesson-stage {
   position: relative;
   min-height: 0;
 }
 
-.slide {
+.lesson-section {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: safe center;
-  padding: clamp(1.5rem, 4dvh, 3rem) var(--gutter);
   overflow-y: auto;
+  padding: clamp(1.5rem, 5dvh, 3.5rem) var(--gutter) 1.5rem;
 
   opacity: 0;
   visibility: hidden;
-  transform: translateY(var(--slide-offset, 8px));
+  transform: translateY(var(--section-offset, 8px));
   transition:
     opacity var(--dur-fade) ease,
     transform var(--dur-move) var(--ease-out),
     visibility 0s linear var(--dur-move);
 }
 
-.slide--active {
+.lesson-section--active {
   opacity: 1;
   visibility: visible;
   transform: none;
@@ -199,728 +364,639 @@ img {
     visibility 0s;
 }
 
-/* Applied for one frame to place an incoming slide without animating. */
-.slide--instant {
+/* Applied for one frame to place an incoming section without animating. */
+.lesson-section--instant {
   transition: none;
 }
 
-/* ---------- Slide layouts ---------- */
-
-.slide-inner {
-  width: min(100%, 76rem);
+.lesson-section__inner {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: var(--gap);
+  gap: 1.5rem;
+  width: min(100%, var(--content-max-width));
+  margin-inline: auto;
+}
+
+/* ---------- Section header ---------- */
+
+.lesson-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.lesson-header__text {
+  display: grid;
+  gap: clamp(1rem, 2.5dvh, 1.5rem);
+  padding-bottom: 0.5rem;
+}
+
+.lesson-eyebrow {
+  display: flex;
   align-items: center;
-}
-
-/* Visual first, text second. */
-.slide--visual-text .slide-inner {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-}
-
-/* Text above a row of cards or a full-width diagram. */
-.slide--statement-cards .slide-inner,
-.slide--full-diagram .slide-inner {
-  grid-template-columns: minmax(0, 1fr);
-  gap: clamp(1.75rem, 5dvh, 3.5rem);
-}
-
-/* Centered statement / quotation / final CTA. */
-.slide--centered .slide-inner {
-  width: min(100%, 48rem);
-  grid-template-columns: minmax(0, 1fr);
-  justify-items: center;
-  gap: clamp(1.25rem, 3dvh, 2rem);
-  text-align: center;
-}
-
-.slide-text {
-  display: grid;
-  gap: clamp(1rem, 2.5dvh, 1.6rem);
-  align-content: center;
-}
-
-/* ---------- Slide typography ---------- */
-
-.slide-eyebrow {
-  color: var(--color-accent);
-  font-family: var(--font-sans);
-  font-size: calc(var(--text-meta) * var(--font-scale-text));
-  font-weight: 600;
-  letter-spacing: 0.09em;
+  gap: 1.25rem;
+  color: var(--color-ink-muted);
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
 }
 
-.slide-title {
+.lesson-eyebrow::after {
+  content: "";
+  width: 5rem;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+.lesson-title {
   font-family: var(--font-serif);
-  font-size: calc(var(--text-title) * var(--font-scale-display));
-  font-weight: 400;
-  line-height: 1;
+  font-size: var(--text-title);
+  font-weight: 500;
+  line-height: 1.05;
   letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
-.slide-copy {
-  max-width: 35rem;
-  color: var(--color-ink);
-  font-family: var(--font-serif);
-  font-size: calc(var(--text-copy) * var(--font-scale-text));
+.lesson-lead {
+  max-width: 44rem;
+  color: var(--color-ink-muted);
+  font-size: var(--text-lead);
   line-height: 1.5;
-  text-wrap: pretty;
 }
 
-.slide--centered .slide-copy {
-  margin-inline: auto;
-  color: var(--color-ink-muted);
+.lesson-lead strong {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--color-ink);
+  font-weight: 600;
 }
 
-/* ---------- Handwritten annotation (≈ one per slide) ---------- */
-
-.handwritten-note {
-  position: relative;
-  display: inline-block;
-  color: var(--color-ink-muted);
-  font-family: var(--font-hand);
-  font-size: calc(clamp(1.25rem, 1.6vw, 1.55rem) * var(--font-scale-text));
-  font-weight: 400;
-  line-height: 1.15;
-  transform: rotate(-1.5deg);
-}
-
-.handwritten-note--arrow {
-  padding-left: 4.25rem;
-}
-
-.annotation-arrow {
-  position: absolute;
-  left: 0;
-  bottom: 0.4rem;
-  width: 3.5rem;
-  height: auto;
-  overflow: visible;
-  fill: none;
-  stroke: var(--color-ink-muted);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* ---------- Archival photography ---------- */
-
-.slide-visual {
-  display: grid;
-  gap: 1rem;
-  min-width: 0;
-}
-
-/* Width is capped by viewport height so images keep their aspect ratio
-   on short screens instead of being squashed. */
-.archival-image {
-  justify-self: center;
-  width: min(100%, 69dvh);
-}
-
-.archival-image img,
-.image-placeholder {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  filter: grayscale(1);
-}
-
-.archival-image--portrait {
-  width: min(100%, 26rem, 46dvh);
-}
-
-.archival-image--portrait img,
-.archival-image--portrait .image-placeholder {
-  aspect-ratio: 4 / 5;
-}
-
-/* Neutral stand-in until real archival images are supplied. */
-.image-placeholder {
+/* Stand-in body for sections that don't have content yet. */
+.content-placeholder {
   display: grid;
   place-items: center;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(32, 30, 27, 0.035) 0 1px,
-      transparent 1px 9px
-    ),
-    #D9D5CE;
+  min-height: 16rem;
+  border: 1.5px dashed var(--color-rule);
+  border-radius: var(--radius);
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
 }
 
-.image-placeholder span {
-  color: var(--color-ink-muted);
-  font-size: calc(var(--text-meta) * var(--font-scale-text));
+/* ---------- Hero collage ---------- */
+
+.hero-collage {
+  position: relative;
+  width: clamp(16rem, 25vw, 26rem);
+  aspect-ratio: 10 / 7;
+  margin-bottom: -1.5rem;
+}
+
+.hero-collage__art {
+  position: absolute;
+  inset: 0;
+  background: url("images/hero-collage.webp") center / contain no-repeat;
+}
+
+/* Torn-paper quote tag, centred in the frame's open oval. */
+.hero-collage__tag {
+  position: absolute;
+  left: 60%;
+  top: 45%;
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  width: 48%;
+  padding: 1rem 0.75rem 0.9rem;
+  background: url("images/paper-tag.webp") center / 100% 100% no-repeat;
+  filter: drop-shadow(0 4px 8px rgba(30, 30, 20, 0.12));
+  font-family: var(--font-hand);
+  font-size: clamp(1.15rem, 1.6vw, 1.6rem);
   font-weight: 500;
-  letter-spacing: 0.09em;
+  line-height: 1.05;
+  text-align: center;
+  transform: translate(-50%, -50%) rotate(-6deg);
+}
+
+.hero-collage__credit {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
-.archival-image__caption {
+/* ---------- Accordion ---------- */
+
+.accordion {
+  position: relative; /* sits above the hero collage's overhang */
+  display: grid;
+  gap: 0.75rem;
+}
+
+.accordion__item {
+  overflow: hidden;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius);
+  background: var(--color-card);
+}
+
+.accordion__item:has([aria-expanded="true"]) {
+  border-color: var(--color-forest);
+  box-shadow: var(--shadow-soft);
+}
+
+.accordion__trigger {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.85rem, 1.5vw, 1.4rem);
+  width: 100%;
+  padding: 0.45rem clamp(0.85rem, 1.5vw, 1.4rem);
+  border: 0;
+  background: transparent;
+  font-family: var(--font-serif);
+  font-size: var(--text-accordion);
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--dur-hover) ease, color var(--dur-hover) ease;
+}
+
+.accordion__trigger:hover {
+  background: rgba(33, 58, 46, 0.04);
+}
+
+.accordion__trigger[aria-expanded="true"] {
+  background: var(--color-forest);
+  color: var(--color-on-forest);
+}
+
+.accordion__trigger:focus-visible {
+  outline-offset: -4px;
+}
+
+.accordion__trigger[aria-expanded="true"]:focus-visible {
+  outline-color: var(--color-gold);
+}
+
+.accordion__icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-tan);
+  color: var(--color-ink);
+}
+
+.accordion__trigger[aria-expanded="true"] .accordion__icon {
+  background: var(--color-gold);
+  color: var(--color-paper-raised);
+}
+
+.accordion__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Plus/minus drawn with two bars; the vertical one hides when open. */
+.accordion__toggle {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+.accordion__toggle::before,
+.accordion__toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.9rem;
+  height: 1.5px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform var(--dur-hover) ease;
+}
+
+.accordion__toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.accordion__trigger[aria-expanded="true"] .accordion__toggle::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.accordion__body {
+  padding: 1.25rem clamp(1.25rem, 3vw, 2.5rem) 1.5rem calc(2.75rem + 2 * clamp(0.85rem, 1.5vw, 1.4rem));
   color: var(--color-ink-muted);
-  font-size: calc(0.8rem * var(--font-scale-text));
+  font-size: var(--text-lead);
+  line-height: 1.6;
+}
+
+.accordion__body--with-quote {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+/* ---------- Pull quote ---------- */
+
+.pull-quote {
+  position: relative;
+  padding: 1.25rem 1.75rem 1.1rem 4.25rem;
+  border-radius: 6px;
+  background: var(--color-sage-tint);
+}
+
+.pull-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.35rem;
+  left: 1.1rem;
+  color: var(--color-sage);
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.pull-quote blockquote {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.4vw, 1.4rem);
+  font-style: italic;
   line-height: 1.4;
 }
 
-/* ---------- Quote cards ---------- */
-
-.quote-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  padding: 0;
-  list-style: none;
-}
-
-.quote-card {
-  display: grid;
-  align-content: start;
-  gap: 1rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-rule);
-  position: relative;
-}
-
-.quote-card::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 1.75rem;
-  height: 2px;
-  background: var(--color-accent);
-}
-
-.quote-card blockquote {
-  font-family: var(--font-serif);
-  font-size: calc(clamp(1.25rem, 1.8vw, 1.7rem) * var(--font-scale-text));
-  font-style: italic;
-  line-height: 1.3;
-}
-
-.quote-card__source {
+.pull-quote figcaption {
+  margin-top: 0.6rem;
   color: var(--color-ink-muted);
-  font-size: calc(var(--text-meta) * var(--font-scale-text));
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.24em;
+  text-align: right;
   text-transform: uppercase;
-}
-
-/* ---------- Profile details ---------- */
-
-.profile-facts {
-  display: grid;
-  max-width: 35rem;
-  border-top: 1px solid var(--color-rule);
-}
-
-.profile-facts > div {
-  display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: 1rem;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--color-rule);
-}
-
-.profile-facts dt {
-  color: var(--color-ink-muted);
-  font-size: calc(var(--text-meta) * var(--font-scale-text));
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding-top: 0.2rem;
-}
-
-.profile-facts dd {
-  font-family: var(--font-serif);
-  font-size: calc(1.05rem * var(--font-scale-text));
-}
-
-/* ---------- Diagrams ---------- */
-
-.diagram {
-  justify-items: center;
-}
-
-.diagram svg {
-  width: 100%;
-  height: auto;
-  max-height: 44dvh;
-  overflow: visible;
-}
-
-.slide--full-diagram .diagram svg {
-  max-width: 50rem;
-}
-
-.diagram__connector path {
-  fill: none;
-  stroke: var(--color-ink-muted);
-  stroke-width: 1.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.pattern-node {
-  fill: var(--color-blush);
-  stroke: var(--color-soft-rust);
-  stroke-width: 1.25;
-}
-
-.pattern-node--sand {
-  fill: var(--color-sand);
-  stroke: #B9AB92;
-}
-
-.pattern-node--selected {
-  fill: var(--color-accent);
-  stroke: var(--color-accent);
-}
-
-.diagram__label {
-  fill: var(--color-ink-muted);
-  font-family: var(--font-sans);
-  font-size: calc(13px * var(--font-scale-text));
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-anchor: middle;
-  text-transform: uppercase;
-}
-
-.diagram__label--selected {
-  fill: var(--color-accent);
-  font-weight: 600;
-}
-
-/* ---------- Future interaction components ----------
-   Base styles so later slides can drop these in without new design work.
-   Interactions should reveal meaning, never score. */
-
-.choice-card,
-.reveal-card {
-  display: grid;
-  gap: 0.6rem;
-  width: 100%;
-  padding: 1.1rem 1.25rem;
-  color: inherit;
-  background: rgba(255, 255, 255, 0.35);
-  border: 1px solid var(--color-rule);
-  border-radius: 2px;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition:
-    border-color var(--dur-hover) ease,
-    background-color var(--dur-hover) ease,
-    transform var(--dur-hover) ease;
-}
-
-.choice-card:hover,
-.reveal-card:hover {
-  border-color: var(--color-soft-rust);
-  transform: translateY(-1px);
-}
-
-.choice-card[aria-pressed="true"],
-.choice-card[aria-checked="true"] {
-  border-color: var(--color-accent);
-  box-shadow: inset 3px 0 0 var(--color-accent);
-}
-
-.reveal-card__answer[hidden] {
-  display: none;
-}
-
-.timeline-item {
-  position: relative;
-  padding-left: 1.5rem;
-  border-left: 1px solid var(--color-rule);
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -5px;
-  top: 0.45rem;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--color-paper);
-  border: 1.5px solid var(--color-soft-rust);
-}
-
-.person-node {
-  display: inline-grid;
-  justify-items: center;
-  gap: 0.4rem;
-  color: var(--color-ink-muted);
-  font-size: calc(var(--text-meta) * var(--font-scale-text));
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.interactive-image {
-  position: relative;
-}
-
-.annotation {
-  color: var(--color-ink-muted);
-  font-family: var(--font-hand);
-  font-size: calc(1.3rem * var(--font-scale-text));
-}
-
-/* ---------- Section rail ---------- */
-
-.section-rail {
-  grid-area: rail;
-  display: flex;
-  align-items: center;
-  padding-right: clamp(1.25rem, 2.5vw, 3rem);
-}
-
-.section-rail__list {
-  position: relative;
-  display: grid;
-  gap: 0.25rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* The thin vertical line connecting the markers. */
-.section-rail__list::before {
-  content: "";
-  position: absolute;
-  top: 0.4rem;
-  bottom: 0.4rem;
-  left: 5.5px;
-  width: 1px;
-  background: var(--color-rule);
-}
-
-.section-rail__item {
-  position: relative;
-  display: grid;
-  grid-template-columns: 12px auto 1fr;
-  align-items: center;
-  gap: 0.7rem;
-  width: 100%;
-  min-height: 44px;
-  padding: 0;
-  color: var(--color-ink-muted);
-  background: none;
-  border: 0;
-  font-family: var(--font-sans);
-  font-size: calc(0.82rem * var(--font-scale-text));
-  text-align: left;
-  cursor: pointer;
-  transition: color var(--dur-hover) ease;
-}
-
-.section-rail__marker {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-paper);
-  border: 1.5px solid var(--color-ink-muted);
-  transition:
-    background-color var(--dur-hover) ease,
-    border-color var(--dur-hover) ease,
-    transform var(--dur-hover) ease;
-}
-
-.section-rail__number {
-  font-size: calc(0.72rem * var(--font-scale-text));
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  font-variant-numeric: tabular-nums;
-}
-
-.section-rail__label {
-  line-height: 1.3;
-  white-space: nowrap;
-}
-
-.section-rail__item:hover {
-  color: var(--color-ink);
-}
-
-.section-rail__item:hover .section-rail__marker {
-  border-color: var(--color-accent);
-}
-
-.section-rail__item:focus-visible {
-  outline-offset: 2px;
-}
-
-.section-rail__item--active {
-  color: var(--color-ink);
-}
-
-.section-rail__item--active .section-rail__marker {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  transform: scale(1.1);
-}
-
-.section-rail__item--active .section-rail__number {
-  color: var(--color-accent);
-}
-
-.section-rail__item--active .section-rail__label {
-  font-weight: 600;
 }
 
 /* ---------- Bottom controls ---------- */
 
-.slide-controls {
-  grid-area: controls;
+.lesson-controls {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
-  padding: 1rem var(--gutter);
-  border-top: 1px solid var(--color-rule);
+  padding: 0.5rem var(--gutter) 0.9rem;
 }
 
-.slide-counter {
-  white-space: nowrap;
-  color: var(--color-ink-muted);
-  font-size: calc(0.85rem * var(--font-scale-text));
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  font-variant-numeric: tabular-nums;
+/* Fades section content out as it scrolls under the controls. */
+.lesson-controls::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 100% 0;
+  height: 1.5rem;
+  background: linear-gradient(to bottom, transparent, var(--color-paper));
+  pointer-events: none;
 }
 
-.slide-counter__current {
-  color: var(--color-ink);
-}
-
-.slide-counter__sep {
-  margin-inline: 0.3em;
-  color: var(--color-rule);
-}
-
-.slide-controls__buttons {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.nav-button {
+.step-button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
   min-height: 44px;
-  padding: 0.65rem 1.35rem;
-  border: 1px solid var(--color-accent);
-  border-radius: 2px;
-  font-family: var(--font-sans);
-  font-size: calc(0.9rem * var(--font-scale-text));
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 1rem;
   cursor: pointer;
-  transition:
-    background-color var(--dur-hover) ease,
-    border-color var(--dur-hover) ease,
-    color var(--dur-hover) ease,
-    transform var(--dur-hover) ease;
 }
 
-.nav-button--secondary {
-  color: var(--color-accent);
-  background: transparent;
+.step-button--prev {
+  justify-self: start;
 }
 
-.nav-button--secondary:hover:not(:disabled) {
-  background: rgba(168, 63, 44, 0.06);
-  transform: translateX(-1px);
+.step-button--next {
+  justify-self: end;
 }
 
-.nav-button--primary {
-  color: var(--color-paper);
-  background: var(--color-accent);
+.step-button__circle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 50%;
+  background: var(--color-forest);
+  color: var(--color-on-forest);
+  transition: background-color var(--dur-hover) ease, transform var(--dur-hover) ease;
 }
 
-.nav-button--primary:hover:not(:disabled) {
-  background: var(--color-accent-dark);
-  border-color: var(--color-accent-dark);
-  transform: translateX(1px);
+.step-button__circle svg {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
-/* Disabled controls stay legible: muted ink on paper with a quiet border. */
-.nav-button:disabled {
+.step-button__text {
+  font-weight: 500;
+}
+
+/* Name of the neighbouring section, set off by a thin divider. */
+.step-button__target {
+  padding-inline: 1rem;
   color: var(--color-ink-muted);
-  background: transparent;
-  border-color: var(--color-rule);
+}
+
+.step-button--prev .step-button__target {
+  border-left: 1px solid var(--color-rule);
+}
+
+.step-button--next .step-button__target {
+  border-right: 1px solid var(--color-rule);
+}
+
+.step-button__target:empty {
+  display: none;
+}
+
+.step-button:hover:not(:disabled) .step-button__circle {
+  background: var(--color-forest-dark);
+}
+
+.step-button--prev:hover:not(:disabled) .step-button__circle {
+  transform: translateX(-2px);
+}
+
+.step-button--next:hover:not(:disabled) .step-button__circle {
+  transform: translateX(2px);
+}
+
+.step-button:disabled {
+  color: var(--color-ink-muted);
   cursor: default;
+}
+
+.step-button:disabled .step-button__circle {
+  background: transparent;
+  border: 1.5px solid var(--color-rule);
+  color: var(--color-ink-muted);
+}
+
+.scroll-cue {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+  transition: opacity var(--dur-fade) ease, visibility 0s;
+}
+
+.scroll-cue__circle {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-gold-dark);
+  color: #FFFFFF;
+  transition: transform var(--dur-hover) ease;
+}
+
+.scroll-cue__circle svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.scroll-cue:hover .scroll-cue__circle {
+  transform: translateY(2px);
+}
+
+.scroll-cue__label {
+  color: var(--color-ink-muted);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.scroll-cue--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-fade) ease, visibility 0s linear var(--dur-fade);
+}
+
+/* ---------- Dialogs (About, Glossary) ---------- */
+
+.info-dialog {
+  width: min(100% - 2rem, 36rem);
+  padding: 1.5rem 1.75rem 2rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--color-paper-raised);
+  color: var(--color-ink);
+  box-shadow: 0 20px 60px rgba(20, 25, 20, 0.25);
+  line-height: 1.6;
+}
+
+.info-dialog::backdrop {
+  background: rgba(24, 44, 34, 0.45);
+}
+
+.info-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.info-dialog h2 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.glossary {
+  display: grid;
+  gap: 1rem;
+}
+
+.glossary dt {
+  font-weight: 600;
+}
+
+.glossary dd {
+  color: var(--color-ink-muted);
 }
 
 /* ---------- Responsive: laptop ---------- */
 
 @media (max-width: 1200px) {
-  :root {
-    --gutter: clamp(1.75rem, 4vw, 3.5rem);
-    --gap: clamp(1.75rem, 4vw, 3.5rem);
+  .accordion__body--with-quote {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 /* Short viewports (small laptops, landscape tablets). */
 @media (max-height: 760px) and (min-width: 901px) {
-  :root {
-    --text-title: clamp(2.25rem, min(4vw, 8dvh), 4.5rem);
-  }
-
   .site-header {
-    padding-block: 1rem 0.9rem;
+    padding-block: 0.6rem;
   }
 
-  .slide-controls {
-    padding-block: 0.75rem;
-  }
-
-  .section-rail__item {
+  .course-outline__item {
     min-height: 38px;
+  }
+
+  .hero-collage {
+    width: clamp(14rem, 22vw, 22rem);
   }
 }
 
 /* ---------- Responsive: tablet + mobile ---------- */
 
 @media (max-width: 900px) {
-  :root {
-    --gutter: clamp(1rem, 4vw, 2rem);
-    --text-title: clamp(2.1rem, 8vw, 3.5rem);
-    --text-copy: clamp(1.02rem, 2.4vw, 1.2rem);
-  }
-
   .app-shell {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       "header"
-      "stage"
-      "rail"
-      "controls";
+      "lesson";
   }
 
-  /* The rail becomes a compact row of progress dots. */
-  .section-rail {
-    width: auto;
-    justify-content: center;
-    padding: 0.25rem var(--gutter) 0;
+  .site-header {
+    padding-inline: 0.5rem 1rem;
   }
 
-  .section-rail__list {
-    display: flex;
-    gap: 0;
+  .outline-toggle {
+    display: inline-grid;
   }
 
-  .section-rail__list::before {
+  /* The outline becomes an off-canvas drawer. */
+  .course-outline {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 20;
+    width: min(20rem, 85vw);
+    transform: translateX(-100%);
+    transition: transform var(--dur-move) var(--ease-out), visibility 0s linear var(--dur-move);
+    visibility: hidden;
+  }
+
+  .course-outline--open {
+    transform: none;
+    visibility: visible;
+    transition: transform var(--dur-move) var(--ease-out), visibility 0s;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .outline-backdrop:not([hidden]) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: rgba(24, 44, 34, 0.45);
+  }
+
+  .lesson-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-collage {
+    justify-self: center;
+    width: min(100%, 26rem);
+    margin-bottom: 0;
+  }
+
+  .hero-collage__tag {
+    font-size: 1.5rem;
+  }
+
+  .accordion__body {
+    padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .step-button__target {
     display: none;
-  }
-
-  .section-rail__item {
-    display: grid;
-    place-items: center;
-    width: 32px;
-    min-height: 32px;
-  }
-
-  .section-rail__number,
-  .section-rail__label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
-  .section-rail__marker {
-    width: 9px;
-    height: 9px;
-  }
-
-  /* Stack every layout into one column. */
-  .slide-inner,
-  .slide--visual-text .slide-inner {
-    grid-template-columns: minmax(0, 1fr);
-    gap: clamp(1.25rem, 4dvh, 2rem);
-  }
-
-  .slide {
-    padding-block: 1.5rem;
-  }
-
-  .archival-image {
-    width: min(100%, 34dvh);
-  }
-
-  .archival-image--portrait {
-    width: min(100%, 18rem, 20dvh);
-  }
-
-  .quote-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
-  }
-
-  .diagram svg {
-    max-height: 34dvh;
-  }
-
-  .slide-controls {
-    grid-template-columns: auto 1fr;
-    padding-block: 0.75rem;
-  }
-
-  .slide-controls__buttons {
-    justify-self: end;
   }
 }
 
-@media (max-width: 560px) {
-  .site-header {
-    padding-block: 0.9rem;
+@media (max-width: 640px) {
+  :root {
+    --gutter: 1rem;
+    --text-title: clamp(2rem, 9vw, 2.75rem);
   }
 
-  .site-header__meta {
+  .site-header {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+
+  .site-header__tagline {
     display: none;
   }
 
-  .nav-button {
+  .site-header__nav {
+    flex-basis: 100%;
+    padding-left: 44px;
+  }
+
+  .site-header__nav ul {
+    gap: 0.25rem;
+  }
+
+  .header-link {
+    min-height: 36px;
+    font-size: 0.9rem;
+  }
+
+  /* The same image repeats on every section; skip it on phones so content
+     starts above the fold. */
+  .hero-collage {
+    display: none;
+  }
+
+  .accordion__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .accordion__body {
     padding-inline: 1rem;
   }
 
-  .profile-facts > div {
-    grid-template-columns: 7rem 1fr;
+  .scroll-cue__label {
+    display: none;
   }
 }
 
 /* ---------- Reduced motion ----------
    Kept last so it overrides every hover/active transform above.
-   No movement anywhere; slides use a brief opacity change. */
+   No movement anywhere; sections use a brief opacity change. */
 @media (prefers-reduced-motion: reduce) {
-  .slide {
+  .lesson-section {
     transform: none;
     transition: opacity 150ms ease, visibility 0s linear 150ms;
   }
 
-  .slide--active {
+  .lesson-section--active {
     transition: opacity 150ms ease, visibility 0s;
   }
 
-  .slide--instant {
+  .lesson-section--instant,
+  .course-outline,
+  .course-outline--open {
     transition: none;
   }
 
-  .nav-button:hover:not(:disabled),
-  .choice-card:hover,
-  .reveal-card:hover,
-  .section-rail__item--active .section-rail__marker {
+  .step-button:hover:not(:disabled) .step-button__circle,
+  .scroll-cue:hover .scroll-cue__circle {
     transform: none;
   }
 }

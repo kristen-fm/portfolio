@@ -1,23 +1,32 @@
-// Slide navigation for the learning experience.
-// Everything is derived from the .slide elements in the DOM, so adding,
-// removing, or reordering slides in index.html needs no changes here.
+// Section navigation for the mini-course.
+// Everything is derived from the .lesson-section elements in the DOM, so
+// adding, removing, or reordering sections in index.html needs no changes here.
 (function () {
   "use strict";
 
-  const stage = document.getElementById("slide-stage");
-  const slides = Array.from(stage.querySelectorAll(".slide"));
-  const railList = document.querySelector(".section-rail__list");
-  const counterCurrent = document.querySelector(".slide-counter__current");
-  const counterTotal = document.querySelector(".slide-counter__total");
-  const status = document.querySelector("[data-slide-status]");
+  const stage = document.getElementById("lesson-stage");
+  const sections = Array.from(stage.querySelectorAll(".lesson-section"));
+  const outline = document.getElementById("course-outline");
+  const outlineList = outline.querySelector(".course-outline__list");
+  const outlineToggle = document.querySelector(".outline-toggle");
+  const outlineBackdrop = document.querySelector(".outline-backdrop");
+  const heroTemplate = document.getElementById("hero-template");
+  const status = document.querySelector("[data-section-status]");
   const prevButton = document.querySelector('[data-nav="prev"]');
   const nextButton = document.querySelector('[data-nav="next"]');
-  const nextLabel = nextButton.querySelector(".nav-button__label");
+  const prevTarget = prevButton.querySelector("[data-nav-target]");
+  const nextTarget = nextButton.querySelector("[data-nav-target]");
+  const nextText = nextButton.querySelector(".step-button__text");
+  const scrollCue = document.querySelector("[data-scroll-cue]");
   const finalLabel = nextButton.dataset.finalLabel || "Finish";
   const finalHref = nextButton.dataset.finalHref || "";
 
-  // Vertical distance (px) slides travel while fading in or out.
-  const SLIDE_OFFSET = 8;
+  // Vertical distance (px) sections travel while fading in or out.
+  const SECTION_OFFSET = 8;
+
+  // Below this width the outline is an off-canvas drawer (matches styles.css).
+  const drawerQuery = matchMedia("(max-width: 900px)");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 
   // Arrow keys belong to these controls when they have focus.
   const ARROW_KEY_OWNERS = [
@@ -34,77 +43,72 @@
     "[data-arrow-keys]",
   ].join(",");
 
-  let currentSlide = -1;
+  let currentSection = -1;
 
-  const pad = (n) => String(n).padStart(2, "0");
-  const titleOf = (slide) => slide.querySelector(".slide-title");
+  const titleOf = (section) => section.querySelector(".lesson-title");
+  const titleText = (section) => titleOf(section).textContent.replace(/\s+/g, " ").trim();
+  const labels = sections.map((section) => section.dataset.outlineLabel || titleText(section));
+  const scrollBehavior = () => (reducedMotion.matches ? "auto" : "smooth");
 
-  // Heading text with <br> line breaks read as spaces.
-  function titleText(slide) {
-    const clone = titleOf(slide).cloneNode(true);
-    clone.querySelectorAll("br").forEach((br) => br.replaceWith(" "));
-    return clone.textContent.replace(/\s+/g, " ").trim();
-  }
+  // ---------- Build outline, eyebrows, and heroes from the DOM ----------
 
-  // ---------- Build rail + numbering from the DOM ----------
+  const outlineButtons = sections.map((section, i) => {
+    const eyebrow = section.querySelector(".lesson-eyebrow");
+    if (eyebrow) eyebrow.textContent = `Section ${i + 1} of ${sections.length}`;
 
-  const railButtons = slides.map((slide, i) => {
-    const number = pad(i + 1);
-    const label = slide.dataset.railLabel || titleText(slide);
+    const header = section.querySelector(".lesson-header");
+    if (header && heroTemplate) header.appendChild(heroTemplate.content.cloneNode(true));
 
-    const eyebrow = slide.querySelector(".slide-eyebrow");
-    if (eyebrow) eyebrow.prepend(`${number} — `);
-
-    slide.id = slide.id || `slide-${i + 1}`;
-    slide.inert = true;
+    section.id = section.id || `section-${i + 1}`;
+    section.inert = true;
 
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "section-rail__item";
-    button.setAttribute("aria-controls", slide.id);
+    button.className = "course-outline__item";
+    button.setAttribute("aria-controls", section.id);
     button.innerHTML =
-      '<span class="section-rail__marker" aria-hidden="true"></span>' +
-      `<span class="section-rail__number">${number}</span>` +
-      '<span class="section-rail__label"></span>';
-    button.querySelector(".section-rail__label").textContent = label;
-    button.addEventListener("click", () => goToSlide(i));
+      `<span class="course-outline__number" aria-hidden="true">${i + 1}</span>` +
+      '<span class="course-outline__label"></span>';
+    button.querySelector(".course-outline__label").textContent = labels[i];
+    button.addEventListener("click", () => {
+      goToSection(i);
+      closeOutline();
+    });
 
     const item = document.createElement("li");
     item.appendChild(button);
-    railList.appendChild(item);
+    outlineList.appendChild(item);
     return button;
   });
 
-  counterTotal.textContent = pad(slides.length);
-
   // ---------- Navigation ----------
 
-  function goToSlide(index, { announce = true } = {}) {
-    if (!Number.isInteger(index) || index < 0 || index >= slides.length) return;
-    if (index === currentSlide) return;
+  function goToSection(index, { announce = true } = {}) {
+    if (!Number.isInteger(index) || index < 0 || index >= sections.length) return;
+    if (index === currentSection) return;
 
-    const direction = index > currentSlide ? 1 : -1;
-    const outgoing = slides[currentSlide];
-    const incoming = slides[index];
+    const direction = index > currentSection ? 1 : -1;
+    const outgoing = sections[currentSection];
+    const incoming = sections[index];
     const focusWasInOutgoing = outgoing && outgoing.contains(document.activeElement);
 
     if (outgoing) {
-      outgoing.style.setProperty("--slide-offset", `${-direction * SLIDE_OFFSET}px`);
-      outgoing.classList.remove("slide--active");
+      outgoing.style.setProperty("--section-offset", `${-direction * SECTION_OFFSET}px`);
+      outgoing.classList.remove("lesson-section--active");
       outgoing.inert = true;
     }
 
-    // Place the incoming slide at its starting offset without animating,
+    // Place the incoming section at its starting offset without animating,
     // then let it transition into place.
-    incoming.classList.add("slide--instant");
-    incoming.style.setProperty("--slide-offset", `${direction * SLIDE_OFFSET}px`);
+    incoming.classList.add("lesson-section--instant");
+    incoming.style.setProperty("--section-offset", `${direction * SECTION_OFFSET}px`);
     void incoming.offsetHeight;
-    incoming.classList.remove("slide--instant");
-    incoming.classList.add("slide--active");
+    incoming.classList.remove("lesson-section--instant");
+    incoming.classList.add("lesson-section--active");
     incoming.inert = false;
     incoming.scrollTop = 0;
 
-    currentSlide = index;
+    currentSection = index;
     updateControls();
 
     if (location.hash !== `#${index + 1}`) {
@@ -118,90 +122,201 @@
     // live region; only if focus would otherwise be lost, move it to the new
     // heading instead and let the focus change do the announcing.
     const active = document.activeElement;
-    if (focusWasInOutgoing || !active || active === document.body || active.disabled) {
+    if (focusWasInOutgoing || !active || active === document.body || active.disabled || outline.contains(active)) {
       status.textContent = "";
       titleOf(incoming).focus({ preventScroll: true });
     } else {
       status.textContent =
-        `Section ${index + 1} of ${slides.length}: ${titleText(incoming)}`;
+        `Section ${index + 1} of ${sections.length}: ${titleText(incoming)}`;
     }
   }
 
   function updateControls() {
-    const isFirst = currentSlide === 0;
-    const isLast = currentSlide === slides.length - 1;
+    const isFirst = currentSection === 0;
+    const isLast = currentSection === sections.length - 1;
 
-    railButtons.forEach((button, i) => {
-      const active = i === currentSlide;
-      button.classList.toggle("section-rail__item--active", active);
+    outlineButtons.forEach((button, i) => {
+      const active = i === currentSection;
+      button.classList.toggle("course-outline__item--active", active);
       if (active) button.setAttribute("aria-current", "step");
       else button.removeAttribute("aria-current");
     });
 
-    counterCurrent.textContent = pad(currentSlide + 1);
     prevButton.disabled = isFirst;
+    prevTarget.textContent = isFirst ? "" : `${currentSection}. ${labels[currentSection - 1]}`;
 
     if (isLast) {
-      nextLabel.textContent = finalLabel;
+      nextText.textContent = finalLabel;
+      nextTarget.textContent = "";
       // Placeholder until a destination is configured in data-final-href.
       nextButton.disabled = !finalHref;
     } else {
-      nextLabel.textContent = "Next";
+      nextText.textContent = "Next";
+      nextTarget.textContent = `${currentSection + 2}. ${labels[currentSection + 1]}`;
       nextButton.disabled = false;
     }
+
+    updateScrollCue();
   }
 
-  const next = () => goToSlide(currentSlide + 1);
-  const previous = () => goToSlide(currentSlide - 1);
+  const next = () => goToSection(currentSection + 1);
+  const previous = () => goToSection(currentSection - 1);
 
   prevButton.addEventListener("click", previous);
   nextButton.addEventListener("click", () => {
-    if (currentSlide === slides.length - 1) {
+    if (currentSection === sections.length - 1) {
       if (finalHref) window.location.assign(finalHref);
       return;
     }
     next();
   });
 
+  // ---------- Scroll cue ----------
+
+  // Shown only while the active section has more content below the fold.
+  function updateScrollCue() {
+    const section = sections[currentSection];
+    if (!section) return;
+    const remaining = section.scrollHeight - section.clientHeight - section.scrollTop;
+    scrollCue.classList.toggle("scroll-cue--hidden", remaining <= 4);
+  }
+
+  scrollCue.addEventListener("click", () => {
+    const section = sections[currentSection];
+    section.scrollBy({ top: section.clientHeight * 0.75, behavior: scrollBehavior() });
+  });
+
+  // Scroll events don't bubble, so listen in the capture phase.
+  stage.addEventListener("scroll", updateScrollCue, { capture: true, passive: true });
+  // Catches resizes, font loading, and accordions opening or closing.
+  const resizeObserver = new ResizeObserver(updateScrollCue);
+  sections.forEach((section) => {
+    resizeObserver.observe(section);
+    resizeObserver.observe(section.firstElementChild);
+  });
+
+  // ---------- Accordions (one panel open at a time) ----------
+
+  document.querySelectorAll(".accordion").forEach((accordion, a) => {
+    const triggers = Array.from(accordion.querySelectorAll(".accordion__trigger"));
+
+    triggers.forEach((trigger, i) => {
+      const panel = trigger.closest(".accordion__item").querySelector(".accordion__panel");
+      trigger.id = `accordion-${a + 1}-trigger-${i + 1}`;
+      panel.id = `accordion-${a + 1}-panel-${i + 1}`;
+      trigger.setAttribute("aria-controls", panel.id);
+      panel.setAttribute("role", "region");
+      panel.setAttribute("aria-labelledby", trigger.id);
+      panel.hidden = trigger.getAttribute("aria-expanded") !== "true";
+
+      trigger.addEventListener("click", () => {
+        const opening = trigger.getAttribute("aria-expanded") !== "true";
+        triggers.forEach((other) => setExpanded(other, opening && other === trigger));
+      });
+    });
+  });
+
+  function setExpanded(trigger, expanded) {
+    trigger.setAttribute("aria-expanded", String(expanded));
+    document.getElementById(trigger.getAttribute("aria-controls")).hidden = !expanded;
+  }
+
+  // ---------- Outline drawer (narrow screens) ----------
+
+  function setOutlineOpen(open) {
+    outline.classList.toggle("course-outline--open", open);
+    outlineToggle.setAttribute("aria-expanded", String(open));
+    outlineBackdrop.hidden = !open;
+    syncOutlineInert();
+  }
+
+  function closeOutline() {
+    if (!outline.classList.contains("course-outline--open")) return;
+    setOutlineOpen(false);
+    outlineToggle.focus();
+  }
+
+  // On narrow screens the closed drawer is off-canvas, so keep it out of the
+  // tab order; while it's open, the rest of the page is inert instead.
+  function syncOutlineInert() {
+    const drawer = drawerQuery.matches;
+    const open = outline.classList.contains("course-outline--open");
+    outline.inert = drawer && !open;
+    document.querySelector(".lesson-column").inert = drawer && open;
+  }
+
+  outlineToggle.addEventListener("click", () => {
+    const open = !outline.classList.contains("course-outline--open");
+    setOutlineOpen(open);
+    if (open) (outline.querySelector("[aria-current]") || outlineButtons[0]).focus();
+  });
+  outlineBackdrop.addEventListener("click", closeOutline);
+  drawerQuery.addEventListener("change", () => {
+    if (!drawerQuery.matches) setOutlineOpen(false);
+    syncOutlineInert();
+  });
+  syncOutlineInert();
+
+  // ---------- Header dialogs ----------
+
+  document.querySelectorAll("[data-dialog]").forEach((button) => {
+    const dialog = document.getElementById(button.dataset.dialog);
+    button.addEventListener("click", () => dialog.showModal());
+  });
+
+  // Clicking the backdrop (outside the dialog box) closes it.
+  document.querySelectorAll(".info-dialog").forEach((dialog) => {
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+
   // ---------- Keyboard ----------
 
-  // Pixels one arrow press scrolls an overflowing slide.
+  // Pixels one arrow press scrolls an overflowing section.
   const ARROW_SCROLL_STEP = 48;
 
-  // When the active slide's content overflows (mostly on phones), vertical
-  // scrolling keys scroll it first; they only change slides once the slide
-  // is already at the matching top or bottom edge. Returns true if it
-  // scrolled. Left/Right always navigate.
-  function scrollActiveSlide(key) {
-    const slide = slides[currentSlide];
-    const maxScroll = slide.scrollHeight - slide.clientHeight;
+  // When the active section's content overflows, vertical scrolling keys
+  // scroll it first; they only change sections once it's already at the
+  // matching top or bottom edge. Returns true if it scrolled. Left/Right
+  // always navigate.
+  function scrollActiveSection(key) {
+    const section = sections[currentSection];
+    const maxScroll = section.scrollHeight - section.clientHeight;
     if (maxScroll <= 1) return false;
 
-    const atTop = slide.scrollTop <= 1;
-    const atBottom = slide.scrollTop >= maxScroll - 1;
-    const page = slide.clientHeight * 0.85;
-    const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    const atTop = section.scrollTop <= 1;
+    const atBottom = section.scrollTop >= maxScroll - 1;
+    const page = section.clientHeight * 0.85;
 
     let top;
     switch (key) {
-      case "ArrowDown": if (atBottom) return false; top = slide.scrollTop + ARROW_SCROLL_STEP; break;
-      case "PageDown":  if (atBottom) return false; top = slide.scrollTop + page; break;
+      case "ArrowDown": if (atBottom) return false; top = section.scrollTop + ARROW_SCROLL_STEP; break;
+      case "PageDown":  if (atBottom) return false; top = section.scrollTop + page; break;
       case "End":       if (atBottom) return false; top = maxScroll; break;
-      case "ArrowUp":   if (atTop) return false; top = slide.scrollTop - ARROW_SCROLL_STEP; break;
-      case "PageUp":    if (atTop) return false; top = slide.scrollTop - page; break;
+      case "ArrowUp":   if (atTop) return false; top = section.scrollTop - ARROW_SCROLL_STEP; break;
+      case "PageUp":    if (atTop) return false; top = section.scrollTop - page; break;
       case "Home":      if (atTop) return false; top = 0; break;
       default: return false;
     }
-    slide.scrollTo({ top, behavior });
+    section.scrollTo({ top, behavior: scrollBehavior() });
     return true;
   }
 
   document.addEventListener("keydown", (event) => {
     if (event.defaultPrevented) return;
+    if (document.querySelector("dialog[open]")) return;
+
+    if (event.key === "Escape") {
+      closeOutline();
+      return;
+    }
+
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.target instanceof Element && event.target.closest(ARROW_KEY_OWNERS)) return;
+    if (outline.classList.contains("course-outline--open")) return;
 
-    if (scrollActiveSlide(event.key)) {
+    if (scrollActiveSection(event.key)) {
       event.preventDefault();
       return;
     }
@@ -218,10 +333,10 @@
         previous();
         break;
       case "Home":
-        goToSlide(0);
+        goToSection(0);
         break;
       case "End":
-        goToSlide(slides.length - 1);
+        goToSection(sections.length - 1);
         break;
       default:
         return;
@@ -231,12 +346,12 @@
 
   // ---------- Deep links (#3 opens section 3) ----------
 
-  function slideFromHash() {
+  function sectionFromHash() {
     const n = parseInt(location.hash.slice(1), 10);
-    return Number.isInteger(n) && n >= 1 && n <= slides.length ? n - 1 : 0;
+    return Number.isInteger(n) && n >= 1 && n <= sections.length ? n - 1 : 0;
   }
 
-  window.addEventListener("hashchange", () => goToSlide(slideFromHash()));
+  window.addEventListener("hashchange", () => goToSection(sectionFromHash()));
 
-  goToSlide(slideFromHash(), { announce: false });
+  goToSection(sectionFromHash(), { announce: false });
 })();
