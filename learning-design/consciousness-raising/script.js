@@ -54,7 +54,9 @@
 
   const outlineButtons = sections.map((section, i) => {
     const header = section.querySelector(".lesson-header");
-    if (header && heroTemplate) header.appendChild(heroTemplate.content.cloneNode(true));
+    if (header && heroTemplate && section.dataset.noHero === undefined) {
+      header.appendChild(heroTemplate.content.cloneNode(true));
+    }
 
     section.id = section.id || `section-${i + 1}`;
     section.inert = true;
@@ -217,6 +219,44 @@
     trigger.setAttribute("aria-expanded", String(expanded));
     document.getElementById(trigger.getAttribute("aria-controls")).hidden = !expanded;
   }
+
+  // ---------- Reflection (progressive disclosure) ----------
+  // Reflection 2 stays hidden until the learner clicks Continue. Because
+  // sections persist in the DOM across navigation, the revealed state and any
+  // typed text survive moving to another section and back during the session.
+  document.querySelectorAll("[data-reflection]").forEach((reflection) => {
+    const revealButton = reflection.querySelector("[data-reflection-reveal]");
+    const continueBlock = reflection.querySelector("[data-reflection-continue]");
+    const second = reflection.querySelector(".reflect-card--second");
+
+    if (revealButton && second) {
+      revealButton.addEventListener("click", () => {
+        second.hidden = false;
+
+        if (!reducedMotion.matches) {
+          // Start the card low and faded, then let it settle into place.
+          second.classList.add("reflect-card--entering");
+          void second.offsetHeight;
+          second.classList.remove("reflect-card--entering");
+        }
+
+        // Move focus to the new question so it's announced, then retire the
+        // Continue affordance now that Reflection 2 is on screen.
+        second.querySelector(".reflect-card__question").focus({ preventScroll: true });
+        second.scrollIntoView({ behavior: scrollBehavior(), block: "nearest" });
+        if (continueBlock) continueBlock.hidden = true;
+      });
+    }
+
+    // Reflection fields grow to fit what's typed instead of scrolling inside.
+    reflection.querySelectorAll("[data-reflection-input]").forEach((input) => {
+      const grow = () => {
+        input.style.height = "auto";
+        input.style.height = `${input.scrollHeight}px`;
+      };
+      input.addEventListener("input", grow);
+    });
+  });
 
   // ---------- Outline drawer (narrow screens) ----------
 
