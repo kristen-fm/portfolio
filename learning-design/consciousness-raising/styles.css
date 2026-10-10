@@ -391,24 +391,6 @@ svg {
   padding-bottom: 0.5rem;
 }
 
-.lesson-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  color: var(--color-ink-muted);
-  font-size: var(--text-eyebrow);
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-}
-
-.lesson-eyebrow::after {
-  content: "";
-  width: 5rem;
-  height: 2px;
-  background: var(--color-gold);
-}
-
 .lesson-title {
   font-family: var(--font-serif);
   font-size: var(--text-title);
@@ -448,7 +430,7 @@ svg {
 
 .hero-collage {
   position: relative;
-  width: clamp(16rem, 25vw, 26rem);
+  width: clamp(20rem, 32vw, 34rem);
   aspect-ratio: 10 / 7;
   margin-bottom: -1.5rem;
 }
@@ -484,6 +466,94 @@ svg {
   font-size: 0.55rem;
   font-weight: 600;
   letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ---------- Title section (hero) ---------- */
+
+/* Give the hero room to breathe and sit alongside the title, not below it. */
+.lesson-section--title .lesson-header {
+  align-items: center;
+}
+
+.lesson-section--title .lesson-header__text {
+  gap: clamp(1.25rem, 3dvh, 2rem);
+}
+
+/* Controlled line breaks to match the designed title; <br>s set the shape. */
+.lesson-title--display {
+  text-wrap: initial;
+}
+
+/* "Consciousness-Raising": terracotta word on a painted tan highlight, with a
+   loose sage brush-stroke beneath it. */
+.title-mark {
+  position: relative;
+  display: inline-block;
+  color: var(--color-terracotta);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.title-mark::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.18em;
+  right: -0.18em;
+  top: 0.04em;
+  bottom: 0.1em;
+  background: var(--color-tan);
+  border-radius: 42% 56% 48% 52% / 58% 44% 62% 40%;
+  transform: rotate(-0.6deg);
+}
+
+.title-mark::after {
+  content: "";
+  position: absolute;
+  left: 0.02em;
+  right: -0.04em;
+  bottom: -0.02em;
+  height: 0.09em;
+  background: var(--color-sage);
+  border-radius: 999px;
+  transform: rotate(-0.4deg);
+}
+
+/* The descriptive second half of the title, set a touch smaller. */
+.title-sub {
+  font-size: 0.82em;
+}
+
+/* Short gold accent between the title and the quote. */
+.title-rule {
+  width: 4rem;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--color-gold);
+}
+
+.title-quote {
+  max-width: 40rem;
+}
+
+.title-quote p {
+  color: var(--color-ink-muted);
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.title-quote cite {
+  display: block;
+  margin-top: 0.9rem;
+  color: var(--color-sage);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
@@ -856,7 +926,7 @@ svg {
   }
 
   .hero-collage {
-    width: clamp(14rem, 22vw, 22rem);
+    width: clamp(17rem, 28vw, 29rem);
   }
 }
 

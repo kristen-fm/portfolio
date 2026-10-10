@@ -30,8 +30,7 @@ reordering a `<section>` needs no JavaScript changes. Each section needs:
 - optionally, `data-outline-label` — the short title shown in the outline and
   in the previous/next buttons (defaults to the heading text)
 
-Leave `<p class="lesson-eyebrow"></p>` empty; the script fills it in. The
-shared hero collage is copied from `<template id="hero-template">` into every
+The shared hero collage is copied from `<template id="hero-template">` into every
 section's `.lesson-header`, so edit it in one place.
 
 ### Accordions

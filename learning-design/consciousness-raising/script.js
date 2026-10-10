@@ -50,12 +50,9 @@
   const labels = sections.map((section) => section.dataset.outlineLabel || titleText(section));
   const scrollBehavior = () => (reducedMotion.matches ? "auto" : "smooth");
 
-  // ---------- Build outline, eyebrows, and heroes from the DOM ----------
+  // ---------- Build outline and heroes from the DOM ----------
 
   const outlineButtons = sections.map((section, i) => {
-    const eyebrow = section.querySelector(".lesson-eyebrow");
-    if (eyebrow) eyebrow.textContent = `Section ${i + 1} of ${sections.length}`;
-
     const header = section.querySelector(".lesson-header");
     if (header && heroTemplate) header.appendChild(heroTemplate.content.cloneNode(true));
 
