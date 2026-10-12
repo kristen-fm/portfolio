@@ -131,7 +131,7 @@
               </p>
               <h2 class="reflect-card__question" id="reflection-1-question">Think of a time when you struggled with something you thought was a personal problem, only to discover that others had experienced something similar.</h2>
               <p class="reflect-card__field">
-                <label class="visually-hidden" for="reflection-1-input">Your reflection on the first question (optional)</label>
+                <label class="visually-hidden" for="reflection-1-input">Your reflection on the first question (required to continue)</label>
                 <textarea class="reflect-card__input" id="reflection-1-input" rows="3" placeholder="Jot down your thoughts." data-reflection-input></textarea>
               </p>
               <div class="reflect-card__continue" data-reflection-continue>
@@ -149,11 +149,16 @@
               </p>
               <h2 class="reflect-card__question" id="reflection-2-question" tabindex="-1">How did you come to discover that other people were experiencing something similar? What led to that realization?</h2>
               <p class="reflect-card__field">
-                <label class="visually-hidden" for="reflection-2-input">Your reflection on the second question (optional)</label>
+                <label class="visually-hidden" for="reflection-2-input">Your reflection on the second question (required to continue)</label>
                 <textarea class="reflect-card__input" id="reflection-2-input" rows="3" placeholder="Jot down your thoughts." data-reflection-input></textarea>
               </p>
             </article>
           </div>
+
+          <p class="reflect-gate-hint" data-gate-hint hidden>
+            <span class="reflect-gate-hint__icon" aria-hidden="true"><svg><use href="#icon-arrow-right"/></svg></span>
+            Respond to both prompts to unlock the rest of the course.
+          </p>
         </div>
       </section>
 
@@ -344,6 +349,29 @@
               <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
             </div>
           </header>
+
+          <div class="reflection-recap" data-reflection-recap>
+            <p class="reflection-recap__intro">At the start of this mini-course, you paused to reflect. Here is what you wrote &mdash; carry it with you into the activity.</p>
+
+            <article class="recap-card" data-recap-for="reflection-1-input">
+              <p class="recap-card__eyebrow">
+                <span class="recap-card__icon" aria-hidden="true"><svg><use href="#icon-users"/></svg></span>
+                Your first reflection
+              </p>
+              <p class="recap-card__question" data-recap-question></p>
+              <blockquote class="recap-card__answer" data-recap-answer></blockquote>
+            </article>
+
+            <article class="recap-card" data-recap-for="reflection-2-input">
+              <p class="recap-card__eyebrow">
+                <span class="recap-card__icon" aria-hidden="true"><svg><use href="#icon-users"/></svg></span>
+                Your second reflection
+              </p>
+              <p class="recap-card__question" data-recap-question></p>
+              <blockquote class="recap-card__answer" data-recap-answer></blockquote>
+            </article>
+          </div>
+
           <div class="content-placeholder">Section content placeholder</div>
         </div>
       </section>

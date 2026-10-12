@@ -84,6 +84,16 @@
 
   function goToSection(index, { announce = true } = {}) {
     if (!Number.isInteger(index) || index < 0 || index >= sections.length) return;
+
+    // Hold the learner at the Reflect section until both prompts are answered.
+    // Every way forward (Next, arrow keys, outline, deep links) runs through
+    // here, so this one guard locks them all.
+    if (sectionLocked(index)) {
+      if (currentSection !== gateIndex) goToSection(gateIndex, { announce });
+      if (announce) nudgeReflection();
+      return;
+    }
+
     if (index === currentSection) return;
 
     const direction = index > currentSection ? 1 : -1;
@@ -155,6 +165,7 @@
       nextButton.disabled = false;
     }
 
+    refreshGate();
     updateScrollCue();
   }
 
@@ -220,43 +231,167 @@
     document.getElementById(trigger.getAttribute("aria-controls")).hidden = !expanded;
   }
 
-  // ---------- Reflection (progressive disclosure) ----------
-  // Reflection 2 stays hidden until the learner clicks Continue. Because
-  // sections persist in the DOM across navigation, the revealed state and any
-  // typed text survive moving to another section and back during the session.
+  // ---------- Reflection (progressive disclosure + persistence) ----------
+  // Reflection 2 stays hidden until the learner clicks Continue. Typed answers
+  // are saved to localStorage keyed by the textarea id, so they survive reloads
+  // and return visits and can be echoed back in the Activity section. Storage
+  // may be unavailable (private mode, blocked cookies); every access is guarded.
+  const STORAGE_PREFIX = "cr-reflection:";
+
+  function readStored(key) {
+    try {
+      return localStorage.getItem(STORAGE_PREFIX + key);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function writeStored(key, value) {
+    try {
+      localStorage.setItem(STORAGE_PREFIX + key, value);
+    } catch (error) {
+      // Storage unavailable; answers still persist in the DOM this session.
+    }
+  }
+
   document.querySelectorAll("[data-reflection]").forEach((reflection) => {
     const revealButton = reflection.querySelector("[data-reflection-reveal]");
     const continueBlock = reflection.querySelector("[data-reflection-continue]");
     const second = reflection.querySelector(".reflect-card--second");
 
-    if (revealButton && second) {
-      revealButton.addEventListener("click", () => {
-        second.hidden = false;
+    function revealSecond({ animate }) {
+      if (!second || !second.hidden) return;
+      second.hidden = false;
 
-        if (!reducedMotion.matches) {
-          // Start the card low and faded, then let it settle into place.
-          second.classList.add("reflect-card--entering");
-          void second.offsetHeight;
-          second.classList.remove("reflect-card--entering");
-        }
+      if (animate && !reducedMotion.matches) {
+        // Start the card low and faded, then let it settle into place.
+        second.classList.add("reflect-card--entering");
+        void second.offsetHeight;
+        second.classList.remove("reflect-card--entering");
+      }
 
-        // Move focus to the new question so it's announced, then retire the
-        // Continue affordance now that Reflection 2 is on screen.
+      if (animate) {
+        // Move focus to the new question so it's announced.
         second.querySelector(".reflect-card__question").focus({ preventScroll: true });
         second.scrollIntoView({ behavior: scrollBehavior(), block: "nearest" });
-        if (continueBlock) continueBlock.hidden = true;
-      });
+      }
+
+      // Retire the Continue affordance now that Reflection 2 is on screen.
+      if (continueBlock) continueBlock.hidden = true;
+    }
+
+    if (revealButton && second) {
+      revealButton.addEventListener("click", () => revealSecond({ animate: true }));
     }
 
     // Reflection fields grow to fit what's typed instead of scrolling inside.
+    // Restore any saved answer first, then save and re-echo on every edit.
     reflection.querySelectorAll("[data-reflection-input]").forEach((input) => {
       const grow = () => {
         input.style.height = "auto";
         input.style.height = `${input.scrollHeight}px`;
       };
-      input.addEventListener("input", grow);
+
+      const stored = readStored(input.id);
+      if (stored) input.value = stored;
+
+      input.addEventListener("input", () => {
+        grow();
+        writeStored(input.id, input.value);
+        updateRecap();
+        refreshGate();
+      });
+
+      grow();
     });
+
+    // A returning learner who already answered Reflection 2 should see it
+    // restored without having to click Continue again.
+    const secondInput = second && second.querySelector("[data-reflection-input]");
+    if (secondInput && secondInput.value.trim()) revealSecond({ animate: false });
   });
+
+  // ---------- Reflection recap (Activity section echoes saved answers) ----------
+  // Each [data-recap-for] names a reflection textarea; we mirror that question
+  // and the learner's saved answer here, read-only, and keep it current on every
+  // edit. The question text is pulled from the source card so it can't drift.
+  const recapCards = Array.from(document.querySelectorAll("[data-recap-for]"));
+
+  function updateRecap() {
+    recapCards.forEach((card) => {
+      const input = document.getElementById(card.dataset.recapFor);
+      if (!input) return;
+
+      const sourceQuestion = input.closest(".reflect-card").querySelector(".reflect-card__question");
+      const questionSlot = card.querySelector("[data-recap-question]");
+      if (questionSlot && sourceQuestion) questionSlot.textContent = sourceQuestion.textContent;
+
+      const answer = input.value.trim();
+      const answerSlot = card.querySelector("[data-recap-answer]");
+      answerSlot.textContent = answer || "You haven't written a response to this one yet.";
+      answerSlot.classList.toggle("recap-card__answer--empty", !answer);
+    });
+  }
+
+  updateRecap();
+
+  // ---------- Reflection gate ----------
+  // Sections past the Reflect section stay locked until the learner has written
+  // something in both prompts. Everything is derived from the DOM: whichever
+  // section holds the reflection inputs is the gate, so reordering is safe.
+  const reflectionInputs = Array.from(document.querySelectorAll("[data-reflection-input]"));
+  const gateIndex = sections.findIndex((section) =>
+    reflectionInputs.some((input) => section.contains(input)));
+  const gateActive = gateIndex !== -1 && reflectionInputs.length > 0;
+  const gateHint = document.querySelector("[data-gate-hint]");
+
+  const reflectionsComplete = () =>
+    !gateActive || reflectionInputs.every((input) => input.value.trim() !== "");
+
+  // A section is locked when it sits beyond the gate and the gate isn't cleared.
+  const sectionLocked = (index) =>
+    gateActive && index > gateIndex && !reflectionsComplete();
+
+  const isVisible = (element) => !!(element && element.offsetParent);
+
+  // Reflect the current gate state in the controls: disable Next on the Reflect
+  // section, lock the outline entries beyond it, and show the standing hint.
+  function refreshGate() {
+    if (!gateActive) return;
+    const complete = reflectionsComplete();
+
+    outlineButtons.forEach((button, i) => {
+      const locked = i > gateIndex && !complete;
+      button.disabled = locked;
+      button.classList.toggle("course-outline__item--locked", locked);
+    });
+
+    if (currentSection === gateIndex) nextButton.disabled = !complete;
+    if (gateHint) gateHint.hidden = !(currentSection === gateIndex && !complete);
+  }
+
+  // Called when the learner tries to leave early: announce why, pulse the hint,
+  // and send focus to whatever still needs their attention — the first empty
+  // visible field, or the Continue button if the second prompt isn't shown yet.
+  function nudgeReflection() {
+    if (!gateActive) return;
+
+    status.textContent = "Please respond to both reflection prompts before moving on.";
+
+    if (gateHint) {
+      gateHint.hidden = false;
+      gateHint.classList.remove("reflect-gate-hint--pulse");
+      void gateHint.offsetWidth; // restart the animation
+      gateHint.classList.add("reflect-gate-hint--pulse");
+    }
+
+    const revealButton = sections[gateIndex].querySelector("[data-reflection-reveal]");
+    const target =
+      reflectionInputs.find((input) => isVisible(input) && !input.value.trim()) ||
+      (isVisible(revealButton) ? revealButton : null) ||
+      reflectionInputs.find((input) => !input.value.trim());
+    if (target) target.focus();
+  }
 
   // ---------- Outline drawer (narrow screens) ----------
 
