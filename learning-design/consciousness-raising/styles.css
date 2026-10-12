@@ -73,6 +73,13 @@ body {
   height: 100%;
 }
 
+/* Root scale: every type size in this file is rem/em, so this one value
+   scales all text proportionally. Percentage (not px) respects a user's
+   browser font-size preference. 112.5% = 18px baseline. */
+html {
+  font-size: 125%;
+}
+
 body {
   height: 100vh;
   height: 100dvh;
@@ -529,6 +536,7 @@ svg {
 /* Controlled line breaks to match the designed title; <br>s set the shape. */
 .lesson-title--display {
   text-wrap: initial;
+  font-size: clamp(2rem, min(3.3vw, 6.4dvh), 3.6rem);
 }
 
 /* "Consciousness-Raising": terracotta word on a painted tan highlight, with a
