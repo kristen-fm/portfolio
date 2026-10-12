@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,49 +9,53 @@
   <title>Consciousness-Raising &mdash; A Mini-Course for Adult Educators</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- Icon sprite (outline icons, 24×24 grid). Reference with <use href="#icon-…">. -->
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
     <symbol id="icon-file" viewBox="0 0 24 24">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-      <path d="M14 2v6h6"/>
-      <path d="M16 13H8M16 17H8M10 9H8"/>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <path d="M14 2v6h6" />
+      <path d="M16 13H8M16 17H8M10 9H8" />
     </symbol>
     <symbol id="icon-users" viewBox="0 0 24 24">
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-      <circle cx="9" cy="7" r="4"/>
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
     </symbol>
     <symbol id="icon-gear" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="3"/>
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      <circle cx="12" cy="12" r="3" />
+      <path
+        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
     </symbol>
     <symbol id="icon-scale" viewBox="0 0 24 24">
-      <path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
-      <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/>
-      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/>
+      <path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+      <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z" />
+      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z" />
     </symbol>
     <symbol id="icon-book" viewBox="0 0 24 24">
-      <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/>
-      <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>
+      <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z" />
+      <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z" />
     </symbol>
     <symbol id="icon-arrow-left" viewBox="0 0 24 24">
-      <path d="M19 12H5M12 19l-7-7 7-7"/>
+      <path d="M19 12H5M12 19l-7-7 7-7" />
     </symbol>
     <symbol id="icon-arrow-right" viewBox="0 0 24 24">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
+      <path d="M5 12h14M12 5l7 7-7 7" />
     </symbol>
     <symbol id="icon-arrow-down" viewBox="0 0 24 24">
-      <path d="M12 5v14M19 12l-7 7-7-7"/>
+      <path d="M12 5v14M19 12l-7 7-7-7" />
     </symbol>
     <symbol id="icon-menu" viewBox="0 0 24 24">
-      <path d="M4 6h16M4 12h16M4 18h16"/>
+      <path d="M4 6h16M4 12h16M4 18h16" />
     </symbol>
     <symbol id="icon-close" viewBox="0 0 24 24">
-      <path d="M18 6 6 18M6 6l12 12"/>
+      <path d="M18 6 6 18M6 6l12 12" />
     </symbol>
   </svg>
 
@@ -58,8 +63,8 @@
   <template id="hero-template">
     <figure class="hero-collage" aria-hidden="true">
       <div class="hero-collage__art"></div>
-      <!-- TODO: confirm attribution before publishing (see README.md). -->
-      <p class="hero-collage__tag"><span>&ldquo;The personal<br>is political.&rdquo;</span><span class="hero-collage__credit">&mdash; Kathie Sarachild</span></p>
+      <p class="hero-collage__tag"><span>&ldquo;Sisterhood<br>is powerful.&rdquo;</span><span
+          class="hero-collage__credit">&mdash; Kathie Sarachild</span></p>
     </figure>
   </template>
 
@@ -67,7 +72,9 @@
 
     <header class="site-header">
       <button type="button" class="icon-button outline-toggle" aria-expanded="false" aria-controls="course-outline">
-        <svg aria-hidden="true"><use href="#icon-menu"/></svg>
+        <svg aria-hidden="true">
+          <use href="#icon-menu" />
+        </svg>
         <span class="visually-hidden">Sections</span>
       </button>
       <div class="site-header__brand">
@@ -100,306 +107,474 @@
       -->
       <main class="lesson-stage" id="lesson-stage">
 
-      <section class="lesson-section lesson-section--title" aria-labelledby="section-1-title" data-outline-label="Title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title lesson-title--display" id="section-1-title" tabindex="-1">Kathie Sarachild<br>&amp; <span class="title-mark">Consciousness-Raising</span><br><span class="title-sub">as a Method of Inquiry,<br>Knowledge Production, &amp; Education</span></h1>
-              <p class="title-rule" aria-hidden="true"></p>
-              <blockquote class="title-quote">
-                <p>&ldquo;In our groups, let&rsquo;s share our feelings and pool them. Let&rsquo;s let ourselves go and see where our feelings lead us. Our feelings will lead us to ideas and then to actions.&rdquo;</p>
-                <cite>&mdash; Kathie Sarachild, 1970</cite>
-              </blockquote>
-            </div>
-          </header>
-        </div>
-      </section>
-
-      <section class="lesson-section lesson-section--reflect" aria-labelledby="section-2-title" data-no-hero>
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-2-title" tabindex="-1">Reflect</h1>
-            </div>
-          </header>
-
-          <div class="reflection" data-reflection>
-            <article class="reflect-card" aria-labelledby="reflection-1-question">
-              <p class="reflect-card__eyebrow">
-                <span class="reflect-card__icon" aria-hidden="true"><svg><use href="#icon-users"/></svg></span>
-                Reflection 1 of 2
-              </p>
-              <h2 class="reflect-card__question" id="reflection-1-question">Think of a time when you struggled with something you thought was a personal problem, only to discover that others had experienced something similar.</h2>
-              <p class="reflect-card__field">
-                <label class="visually-hidden" for="reflection-1-input">Your reflection on the first question (required to continue)</label>
-                <textarea class="reflect-card__input" id="reflection-1-input" rows="3" placeholder="Jot down your thoughts." data-reflection-input></textarea>
-              </p>
-              <div class="reflect-card__continue" data-reflection-continue>
-                <button type="button" class="reflect-button" data-reflection-reveal aria-controls="reflection-2">
-                  <span class="reflect-button__text">Continue</span>
-                  <span class="reflect-button__icon" aria-hidden="true"><svg><use href="#icon-arrow-right"/></svg></span>
-                </button>
+        <section class="lesson-section lesson-section--title" aria-labelledby="section-1-title"
+          data-outline-label="Title">
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title lesson-title--display" id="section-1-title" tabindex="-1">Kathie
+                  Sarachild<br>&amp; <span class="title-mark">Consciousness-Raising</span><br><span class="title-sub">as
+                    a Method of Inquiry,<br>Knowledge Production, &amp; Education</span></h1>
+                <p class="title-rule" aria-hidden="true"></p>
+                <blockquote class="title-quote">
+                  <p>&ldquo;In our groups, let&rsquo;s share our feelings and pool them. Let&rsquo;s let ourselves go
+                    and see where our feelings lead us. Our feelings will lead us to ideas and then to actions.&rdquo;
+                  </p>
+                  <cite>&mdash; Kathie Sarachild, 1970</cite>
+                </blockquote>
               </div>
-            </article>
-
-            <article class="reflect-card reflect-card--second" id="reflection-2" aria-labelledby="reflection-2-question" hidden>
-              <p class="reflect-card__eyebrow">
-                <span class="reflect-card__icon" aria-hidden="true"><svg><use href="#icon-users"/></svg></span>
-                Reflection 2 of 2
-              </p>
-              <h2 class="reflect-card__question" id="reflection-2-question" tabindex="-1">How did you come to discover that other people were experiencing something similar? What led to that realization?</h2>
-              <p class="reflect-card__field">
-                <label class="visually-hidden" for="reflection-2-input">Your reflection on the second question (required to continue)</label>
-                <textarea class="reflect-card__input" id="reflection-2-input" rows="3" placeholder="Jot down your thoughts." data-reflection-input></textarea>
-              </p>
-            </article>
+            </header>
           </div>
+        </section>
 
-          <p class="reflect-gate-hint" data-gate-hint hidden>
-            <span class="reflect-gate-hint__icon" aria-hidden="true"><svg><use href="#icon-arrow-right"/></svg></span>
-            Respond to both prompts to unlock the rest of the course.
-          </p>
-        </div>
-      </section>
+        <section class="lesson-section lesson-section--reflect" aria-labelledby="section-2-title" data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-2-title" tabindex="-1">Reflect</h1>
+              </div>
+            </header>
 
-      <section class="lesson-section" aria-labelledby="section-3-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-3-title" tabindex="-1">History</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
+            <div class="reflection" data-reflection>
+              <article class="reflect-card" aria-labelledby="reflection-1-question">
+                <p class="reflect-card__eyebrow">
+                  <span class="reflect-card__icon" aria-hidden="true"><svg>
+                      <use href="#icon-users" />
+                    </svg></span>
+                  Reflection 1 of 2
+                </p>
+                <h2 class="reflect-card__question" id="reflection-1-question">Think of a time when you struggled with
+                  something you thought was a personal problem, only to discover that others had experienced something
+                  similar.</h2>
+                <p class="reflect-card__field">
+                  <label class="visually-hidden" for="reflection-1-input">Your reflection on the first question
+                    (required to continue)</label>
+                  <textarea class="reflect-card__input" id="reflection-1-input" rows="3"
+                    placeholder="Jot down your thoughts." data-reflection-input></textarea>
+                </p>
+                <div class="reflect-card__continue" data-reflection-continue>
+                  <button type="button" class="reflect-button" data-reflection-reveal aria-controls="reflection-2">
+                    <span class="reflect-button__text">Continue</span>
+                    <span class="reflect-button__icon" aria-hidden="true"><svg>
+                        <use href="#icon-arrow-right" />
+                      </svg></span>
+                  </button>
+                </div>
+              </article>
+
+              <article class="reflect-card reflect-card--second" id="reflection-2"
+                aria-labelledby="reflection-2-question" hidden>
+                <p class="reflect-card__eyebrow">
+                  <span class="reflect-card__icon" aria-hidden="true"><svg>
+                      <use href="#icon-users" />
+                    </svg></span>
+                  Reflection 2 of 2
+                </p>
+                <h2 class="reflect-card__question" id="reflection-2-question" tabindex="-1">How did you come to discover
+                  that other people were experiencing something similar? What led to that realization?</h2>
+                <p class="reflect-card__field">
+                  <label class="visually-hidden" for="reflection-2-input">Your reflection on the second question
+                    (required to continue)</label>
+                  <textarea class="reflect-card__input" id="reflection-2-input" rows="3"
+                    placeholder="Jot down your thoughts." data-reflection-input></textarea>
+                </p>
+              </article>
             </div>
-          </header>
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
 
-      <section class="lesson-section" aria-labelledby="section-4-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-4-title" tabindex="-1">What are CR groups?</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
-            </div>
-          </header>
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
+            <p class="reflect-gate-hint" data-gate-hint hidden>
+              <span class="reflect-gate-hint__icon" aria-hidden="true"><svg>
+                  <use href="#icon-arrow-right" />
+                </svg></span>
+              Respond to both prompts to unlock the rest of the course.
+            </p>
+          </div>
+        </section>
 
-      <section class="lesson-section" aria-labelledby="section-5-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-5-title" tabindex="-1">What is consciousness-raising?</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
-            </div>
-          </header>
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
+        <section class="lesson-section" aria-labelledby="section-3-title" data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-3-title" tabindex="-1">Historical Context</h1>
+                <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
+                  framing what this section covers and why it matters.</p>
+              </div>
+            </header>
 
-      <section class="lesson-section" aria-labelledby="section-6-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-6-title" tabindex="-1">How CR works</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
-            </div>
-          </header>
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
-
-      <section class="lesson-section" aria-labelledby="section-7-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-7-title" tabindex="-1">Example</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
-            </div>
-          </header>
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
-
-      <section class="lesson-section" aria-labelledby="section-8-title" data-outline-label="CR as a way of knowing">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-8-title" tabindex="-1">CR as a Way of Knowing</h1>
-              <p class="lesson-lead"><strong>Consciousness-raising is more than a method&mdash;it offers a different way of knowing.</strong> It values lived experience, collective meaning-making, and the knowledge that emerges when people speak, listen, and connect their stories to larger social patterns.</p>
-            </div>
-          </header>
-
-          <div class="accordion">
-            <div class="accordion__item">
-              <h2 class="accordion__heading">
-                <button type="button" class="accordion__trigger" aria-expanded="true">
-                  <span class="accordion__icon" aria-hidden="true"><svg><use href="#icon-file"/></svg></span>
-                  <span class="accordion__label">What counts as evidence?</span>
-                  <span class="accordion__toggle" aria-hidden="true"></span>
-                </button>
-              </h2>
-              <div class="accordion__panel">
-                <div class="accordion__body accordion__body--with-quote">
-                  <p>In CR, lived experience is a valid and vital form of evidence. Personal stories are not seen as merely anecdotal, but as data that can reveal broader social patterns when shared and analyzed collectively.</p>
-                  <!-- TODO: verify this wording against the source and add an APA in-text citation (author, year, page). -->
-                  <figure class="pull-quote">
-                    <blockquote>
-                      <p>&ldquo;Our experience, as women, is a valid source of knowledge.&rdquo;</p>
-                    </blockquote>
-                    <figcaption>&mdash; Kathie Sarachild</figcaption>
-                  </figure>
+            <div class="accordion">
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="true">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-book" />
+                      </svg></span>
+                    <span class="accordion__label">The Social Context</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>"Consciousness-raising as a method for developing epistemically well-founded claims about women's
+                      oppression arose from a range of women's discussion groups in the 1970s. By 1973, it is estimated
+                      that over 100,000 women participated in consciousness-raising groups in the U.S. alone, and many
+                      such groups had also arisen overseas" (Engelstad, 2026, p. 3).</p>
+                    <br>
+                    <p>"At the time, sexism and gendered oppression were not well known or understood phenomena.
+                      Instead, women were generally seen as inherently submissive, weka irrational, emotional, and
+                      caring, and therefore best suited for domestic labour and submission to a male head of household.
+                      Individual women would often take it as a personal failure if they struggled to conform to these
+                      expectations" (Engelstad, 2026, p. 3).</p>
+                    <br>
+                    <figure class="source-quote">
+                      <blockquote>
+                        <p>Many of us have been taught from a very early age to distrust other females, to be protective
+                          of our families and bosses, to see marriage as the ultimate form of happiness and fulfillment,
+                          and to be both emotionally and economically dependent on the various men in our lives.
+                          [&hellip;] Consequently, many of us feel that everything limiting and painful in our lives is
+                          due to our own failings and that, if something weren&rsquo;t wrong with us in the first place,
+                          we would be happy and fulfilled in our female role.</p>
+                      </blockquote>
+                      <figcaption>Sharpe et al., 2017, as cited in Engelstad, 2026, p. 3</figcaption>
+                    </figure>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="accordion__item">
-              <h2 class="accordion__heading">
-                <button type="button" class="accordion__trigger" aria-expanded="false">
-                  <span class="accordion__icon" aria-hidden="true"><svg><use href="#icon-users"/></svg></span>
-                  <span class="accordion__label">Who gets to be a knower?</span>
-                  <span class="accordion__toggle" aria-hidden="true"></span>
-                </button>
-              </h2>
-              <div class="accordion__panel">
-                <div class="accordion__body">
-                  <p>Content placeholder.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion__item">
-              <h2 class="accordion__heading">
-                <button type="button" class="accordion__trigger" aria-expanded="false">
-                  <span class="accordion__icon" aria-hidden="true"><svg><use href="#icon-gear"/></svg></span>
-                  <span class="accordion__label">How is knowledge produced?</span>
-                  <span class="accordion__toggle" aria-hidden="true"></span>
-                </button>
-              </h2>
-              <div class="accordion__panel">
-                <div class="accordion__body">
-                  <p>Content placeholder.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion__item">
-              <h2 class="accordion__heading">
-                <button type="button" class="accordion__trigger" aria-expanded="false">
-                  <span class="accordion__icon" aria-hidden="true"><svg><use href="#icon-scale"/></svg></span>
-                  <span class="accordion__label">Hermeneutic injustice</span>
-                  <span class="accordion__toggle" aria-hidden="true"></span>
-                </button>
-              </h2>
-              <div class="accordion__panel">
-                <div class="accordion__body">
-                  <p>Content placeholder.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion__item">
-              <h2 class="accordion__heading">
-                <button type="button" class="accordion__trigger" aria-expanded="false">
-                  <span class="accordion__icon" aria-hidden="true"><svg><use href="#icon-book"/></svg></span>
-                  <span class="accordion__label">Connections to autoethnography &amp; grounded theory</span>
-                  <span class="accordion__toggle" aria-hidden="true"></span>
-                </button>
-              </h2>
-              <div class="accordion__panel">
-                <div class="accordion__body">
-                  <p>Content placeholder.</p>
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-file" />
+                      </svg></span>
+                    <span class="accordion__label">Kathie Sarachild & The New York Radical Women</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>Kathie Sarachild is a writer, radical feminist, and the person most closely associated with
+                      Consciousness-Raising Groups.</p>
+                    <br>
+                    <p>The exact origins of CR can’t be attributed to a single person, and in fact, historical accounts
+                      trace elements of the practice to labor and Black liberation organizing, in which participants
+                      examined their experiences collectively as a means of developing political understanding.</p>
+                    <br>
+                    <p>But Sarachild played an important role in articulating and disseminating the method. Having
+                      participated in the Civil Rights Movement, she was familiar with the political possibilities of
+                      sharing grievances and collective experiences. She and the <strong>New York Radical Women</strong>
+                      were instrumental in popularizing the practice.</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="lesson-section" aria-labelledby="section-9-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-9-title" tabindex="-1">Tensions &amp; critiques</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
+        <section class="lesson-section" aria-labelledby="section-4-title" data-outline-label="Consciousness-Raising"
+          data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-4-title" tabindex="-1">Consciousness-Raising</h1>
+                <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
+                  framing what this section covers and why it matters.</p>
+              </div>
+            </header>
+
+            <div class="accordion">
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="true">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-book" />
+                      </svg></span>
+                    <span class="accordion__label">What is consciousness-raising?</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>The term consciousness-raising emerged with the New York Radical Women. According to accounts of the group’s early meeting, Anne Forer suggested that members describe ways they had experienced oppression as women because she wanted to “raise” her own consciousness about women’s oppression.</p>
+                    <p>show picture of Anne Forer</p>
+                    <p>Sarachild subsequently adopted consciousness-raising as the name for the social practice. In 1968, she distributed the [genre?] A Program for Feminist Consciousness-Raising at a national women’s liberation conference, and she later provided a more extensive explanation of the practice in the article “Consciousness-Raising: A Radical Weapon.”</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-users" />
+                      </svg></span>
+                    <span class="accordion__label">What are CR groups?</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>small groups of women gathered together to discuss their experiences with marriage, work, sexuality, motherhood, housework, and other aspects of their lives.</p>
+                    <p>CR was not simply a discussion technique, but a distinctive form of collective knowledge production.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-gear" />
+                      </svg></span>
+                    <span class="accordion__label">How CR works</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>In practice, CR was meant to begin with women’s real, lived experiences rather than existing theory of women’s oppression, which had been critiqued by women as having been produced by men, their oppressors.</p>
+                    <p>Members of CR groups typically considered a particular subject and took turns describing their own experiences with it. Many groups had explicit rules that asked them to wait to debate, evaluate, or theorize on those experiences, instead allowing participants the space to articulate and establish what had actually happened in their lives. The group could then compare accounts, and look for recurring patterns across what they previously thought had been individual, idiosyncratic experiences.</p>
+                    <p>CR in practice basically moved through several related stages:</p>
+                    <p>Individual experience → recognition of shared patterns → analysis of social conditions producing those experiences → political action based on that analysis.</p>
+                    <p>CR was never meant to end with personal disclosure, but rather provide the empirical material from which an explanation could be constructed, and then ultimately acted upon. Things that were found to have been experienced by many were considered a sort of knowledge.</p>
+                    <p>Fundamentally, CR was considered a method for investigating women’s social conditions, developing feminist theory from lived experience, and using the knowledge produced through that inquiry as a basis for political action.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-file" />
+                      </svg></span>
+                    <span class="accordion__label">Example</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>Consider the distribution of household labor. A woman who performs substantially more domestic work than her husband might initially explain the situation through the particular characteristics of her marriage: perhaps she married an inconsiderate man, failed to negotiate responsibilities effectively, or is uniquely bothered by household disorder. These explanations cause her to live quietly with her anger, disappointment, resentment, and whatever other negative emotions arise from her situation.</p>
+                    <p>But consider that this woman learns that many other women are living under similar arrangements, and are equally discontent with their situations. In this way, alternative explanations become plausible. Rather than asking only why one husband behaves in a particular way, participants can ask why domestic labor is repeatedly assigned to women across different households. An apparently private relationship problem then becomes evidence for investigating a broader gendered social arrangement.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </header>
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
-
-      <section class="lesson-section" aria-labelledby="section-10-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-10-title" tabindex="-1">Adult education today</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
-            </div>
-          </header>
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
-
-      <section class="lesson-section" aria-labelledby="section-11-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-11-title" tabindex="-1">Activity / reflection</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
-            </div>
-          </header>
-
-          <div class="reflection-recap" data-reflection-recap>
-            <p class="reflection-recap__intro">At the start of this mini-course, you paused to reflect. Here is what you wrote &mdash; carry it with you into the activity.</p>
-
-            <article class="recap-card" data-recap-for="reflection-1-input">
-              <p class="recap-card__eyebrow">
-                <span class="recap-card__icon" aria-hidden="true"><svg><use href="#icon-users"/></svg></span>
-                Your first reflection
-              </p>
-              <p class="recap-card__question" data-recap-question></p>
-              <blockquote class="recap-card__answer" data-recap-answer></blockquote>
-            </article>
-
-            <article class="recap-card" data-recap-for="reflection-2-input">
-              <p class="recap-card__eyebrow">
-                <span class="recap-card__icon" aria-hidden="true"><svg><use href="#icon-users"/></svg></span>
-                Your second reflection
-              </p>
-              <p class="recap-card__question" data-recap-question></p>
-              <blockquote class="recap-card__answer" data-recap-answer></blockquote>
-            </article>
           </div>
+        </section>
 
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
+        <section class="lesson-section" aria-labelledby="section-8-title" data-outline-label="CR as a way of knowing"
+          data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-8-title" tabindex="-1">CR as a Way of Knowing</h1>
+                <p class="lesson-lead"><strong>Consciousness-raising is more than a method&mdash;it offers a different
+                    way of knowing.</strong> It values lived experience, collective meaning-making, and the knowledge
+                  that emerges when people speak, listen, and connect their stories to larger social patterns.</p>
+              </div>
+            </header>
 
-      <section class="lesson-section" aria-labelledby="section-12-title">
-        <div class="lesson-section__inner">
-          <header class="lesson-header">
-            <div class="lesson-header__text">
-              <h1 class="lesson-title" id="section-12-title" tabindex="-1">Further resources</h1>
-              <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here, framing what this section covers and why it matters.</p>
+            <div class="accordion">
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="true">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-file" />
+                      </svg></span>
+                    <span class="accordion__label">What counts as evidence?</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body accordion__body--with-quote">
+                    <p>In CR, lived experience is a valid and vital form of evidence. Personal stories are not seen as
+                      merely anecdotal, but as data that can reveal broader social patterns when shared and analyzed
+                      collectively.</p>
+                    <figure class="pull-quote">
+                      <blockquote>
+                        <p>&ldquo;We assume that our feelings are telling us something from which we can learn&hellip;
+                          that our feelings mean something worth analyzing.&rdquo;</p>
+                      </blockquote>
+                      <figcaption>&mdash; Kathie Sarachild, 1970</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-users" />
+                      </svg></span>
+                    <span class="accordion__label">Who gets to be a knower?</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>Content placeholder.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-gear" />
+                      </svg></span>
+                    <span class="accordion__label">How is knowledge produced?</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>Content placeholder.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-scale" />
+                      </svg></span>
+                    <span class="accordion__label">Hermeneutic injustice</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>Content placeholder.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-book" />
+                      </svg></span>
+                    <span class="accordion__label">Connections to autoethnography &amp; grounded theory</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>Content placeholder.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </header>
-          <div class="content-placeholder">Section content placeholder</div>
-        </div>
-      </section>
+          </div>
+        </section>
+
+        <section class="lesson-section" aria-labelledby="section-9-title" data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-9-title" tabindex="-1">Tensions &amp; critiques</h1>
+                <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
+                  framing what this section covers and why it matters.</p>
+              </div>
+            </header>
+            <div class="content-placeholder">Section content placeholder</div>
+          </div>
+        </section>
+
+        <section class="lesson-section" aria-labelledby="section-10-title" data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-10-title" tabindex="-1">Adult education today</h1>
+                <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
+                  framing what this section covers and why it matters.</p>
+              </div>
+            </header>
+            <div class="content-placeholder">Section content placeholder</div>
+          </div>
+        </section>
+
+        <section class="lesson-section" aria-labelledby="section-11-title" data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-11-title" tabindex="-1">Activity / reflection</h1>
+                <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
+                  framing what this section covers and why it matters.</p>
+              </div>
+            </header>
+
+            <div class="reflection-recap" data-reflection-recap>
+              <p class="reflection-recap__intro">At the start of this mini-course, you paused to reflect. Here is what
+                you wrote &mdash; carry it with you into the activity.</p>
+
+              <article class="recap-card" data-recap-for="reflection-1-input">
+                <p class="recap-card__eyebrow">
+                  <span class="recap-card__icon" aria-hidden="true"><svg>
+                      <use href="#icon-users" />
+                    </svg></span>
+                  Your first reflection
+                </p>
+                <p class="recap-card__question" data-recap-question></p>
+                <blockquote class="recap-card__answer" data-recap-answer></blockquote>
+              </article>
+
+              <article class="recap-card" data-recap-for="reflection-2-input">
+                <p class="recap-card__eyebrow">
+                  <span class="recap-card__icon" aria-hidden="true"><svg>
+                      <use href="#icon-users" />
+                    </svg></span>
+                  Your second reflection
+                </p>
+                <p class="recap-card__question" data-recap-question></p>
+                <blockquote class="recap-card__answer" data-recap-answer></blockquote>
+              </article>
+            </div>
+
+            <div class="content-placeholder">Section content placeholder</div>
+          </div>
+        </section>
+
+        <section class="lesson-section" aria-labelledby="section-12-title" data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-12-title" tabindex="-1">Further resources</h1>
+                <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
+                  framing what this section covers and why it matters.</p>
+              </div>
+            </header>
+
+            <h2 class="references-heading">References</h2>
+            <ul class="references-list">
+              <li class="reference">Sarachild, K. (1970). A program for feminist &ldquo;consciousness-raising.&rdquo; In
+                S. Firestone &amp; A. Koedt (Eds.), <cite>Notes from the second year: Women&rsquo;s liberation</cite>
+                (pp. 78&ndash;80). Radical Feminism. (Original work presented 1968)</li>
+            </ul>
+
+            <div class="content-placeholder">Section content placeholder</div>
+          </div>
+        </section>
       </main>
 
       <footer class="lesson-controls">
         <p class="visually-hidden" aria-live="polite" data-section-status></p>
 
         <button type="button" class="step-button step-button--prev" data-nav="prev">
-          <span class="step-button__circle" aria-hidden="true"><svg><use href="#icon-arrow-left"/></svg></span>
+          <span class="step-button__circle" aria-hidden="true"><svg>
+              <use href="#icon-arrow-left" />
+            </svg></span>
           <span class="step-button__text">Previous</span>
           <span class="step-button__target" data-nav-target></span>
         </button>
 
         <button type="button" class="scroll-cue" data-scroll-cue>
-          <span class="scroll-cue__circle" aria-hidden="true"><svg><use href="#icon-arrow-down"/></svg></span>
+          <span class="scroll-cue__circle" aria-hidden="true"><svg>
+              <use href="#icon-arrow-down" />
+            </svg></span>
           <span class="scroll-cue__label">Scroll to explore</span>
         </button>
 
@@ -409,10 +584,12 @@
           navigate there; while empty, the final action is shown but disabled.
         -->
         <button type="button" class="step-button step-button--next" data-nav="next"
-                data-final-label="Continue to Canvas" data-final-href="">
+          data-final-label="Continue to Canvas" data-final-href="">
           <span class="step-button__target" data-nav-target></span>
           <span class="step-button__text">Next</span>
-          <span class="step-button__circle" aria-hidden="true"><svg><use href="#icon-arrow-right"/></svg></span>
+          <span class="step-button__circle" aria-hidden="true"><svg>
+              <use href="#icon-arrow-right" />
+            </svg></span>
         </button>
       </footer>
     </div>
@@ -423,17 +600,22 @@
     <div class="info-dialog__header">
       <h2 id="about-dialog-title">About this course</h2>
       <form method="dialog">
-        <button class="icon-button" aria-label="Close"><svg aria-hidden="true"><use href="#icon-close"/></svg></button>
+        <button class="icon-button" aria-label="Close"><svg aria-hidden="true">
+            <use href="#icon-close" />
+          </svg></button>
       </form>
     </div>
-    <p>Course description placeholder. Who the course is for, what learners will explore, and roughly how long it takes.</p>
+    <p>Course description placeholder. Who the course is for, what learners will explore, and roughly how long it takes.
+    </p>
   </dialog>
 
   <dialog class="info-dialog" id="glossary-dialog" aria-labelledby="glossary-dialog-title">
     <div class="info-dialog__header">
       <h2 id="glossary-dialog-title">Glossary</h2>
       <form method="dialog">
-        <button class="icon-button" aria-label="Close"><svg aria-hidden="true"><use href="#icon-close"/></svg></button>
+        <button class="icon-button" aria-label="Close"><svg aria-hidden="true">
+            <use href="#icon-close" />
+          </svg></button>
       </form>
     </div>
     <dl class="glossary">
@@ -450,4 +632,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

@@ -205,7 +205,7 @@
     resizeObserver.observe(section.firstElementChild);
   });
 
-  // ---------- Accordions (one panel open at a time) ----------
+  // ---------- Accordions (panels toggle independently) ----------
 
   document.querySelectorAll(".accordion").forEach((accordion, a) => {
     const triggers = Array.from(accordion.querySelectorAll(".accordion__trigger"));
@@ -221,7 +221,7 @@
 
       trigger.addEventListener("click", () => {
         const opening = trigger.getAttribute("aria-expanded") !== "true";
-        triggers.forEach((other) => setExpanded(other, opening && other === trigger));
+        setExpanded(trigger, opening);
       });
     });
   });
