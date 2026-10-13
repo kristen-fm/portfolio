@@ -55,11 +55,10 @@ All in `images/`, exported as WebP from the ChatGPT originals:
   and sidebar, set via `--texture-paper` and `--texture-forest`. Both come from
   the same tile, recoloured (muted green for the page, cream for the sidebar).
 
-## Final action
+## Navigation
 
-On the last section, Next becomes the button defined by `data-final-label` and
-`data-final-href` in `index.html`. While `data-final-href` is empty, the button
-is shown but disabled.
+Previous hides on the first section and Next hides on the last, so the controls
+only ever offer valid moves.
 
 ## Preview locally
 

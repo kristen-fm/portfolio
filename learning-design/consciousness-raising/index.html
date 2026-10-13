@@ -78,15 +78,12 @@
         <span class="visually-hidden">Sections</span>
       </button>
       <div class="site-header__brand">
-        <p class="site-header__name">Kathie Sarachild</p>
         <p class="site-header__title">Consciousness-Raising</p>
         <p class="site-header__tagline">A mini-course for adult educators</p>
       </div>
       <nav class="site-header__nav" aria-label="Course">
         <ul role="list">
           <li><button type="button" class="header-link" data-dialog="about-dialog">About</button></li>
-          <li><a class="header-link" href="#12">Resources</a></li>
-          <li><button type="button" class="header-link" data-dialog="glossary-dialog">Glossary</button></li>
         </ul>
       </nav>
     </header>
@@ -101,7 +98,7 @@
       <!--
         Sections are read from the DOM in order. To add, remove, or reorder
         one, edit the <section class="lesson-section"> elements below; the
-        outline, "Section N of 12" labels, and navigation are generated from
+        outline, "Section N of M" labels, and navigation are generated from
         them by script.js. data-outline-label sets the short title shown in
         the outline (defaults to the section's heading).
       -->
@@ -112,9 +109,9 @@
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
-                <h1 class="lesson-title lesson-title--display" id="section-1-title" tabindex="-1">Kathie
-                  Sarachild<br>&amp; <span class="title-mark">Consciousness-Raising</span><br><span class="title-sub">as
-                    a Method of Inquiry,<br>Knowledge Production, &amp; Education</span></h1>
+                <h1 class="lesson-title lesson-title--display" id="section-1-title" tabindex="-1"><span
+                    class="title-name">Kathie Sarachild &amp;</span> <span
+                    class="title-mark">Consciousness-Raising</span></h1>
                 <p class="title-rule" aria-hidden="true"></p>
                 <blockquote class="title-quote">
                   <p>&ldquo;In our groups, let&rsquo;s share our feelings and pool them. Let&rsquo;s let ourselves go
@@ -203,7 +200,7 @@
             <div class="accordion">
               <div class="accordion__item">
                 <h2 class="accordion__heading">
-                  <button type="button" class="accordion__trigger" aria-expanded="true">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
                     <span class="accordion__icon" aria-hidden="true"><svg>
                         <use href="#icon-book" />
                       </svg></span>
@@ -283,7 +280,7 @@
             <div class="accordion">
               <div class="accordion__item">
                 <h2 class="accordion__heading">
-                  <button type="button" class="accordion__trigger" aria-expanded="true">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
                     <span class="accordion__icon" aria-hidden="true"><svg>
                         <use href="#icon-book" />
                       </svg></span>
@@ -380,6 +377,52 @@
           </div>
         </section>
 
+        <section class="lesson-section" aria-labelledby="section-5-title"
+          data-outline-label="Significance of CR" data-no-hero>
+          <div class="lesson-section__inner">
+            <header class="lesson-header">
+              <div class="lesson-header__text">
+                <h1 class="lesson-title" id="section-5-title" tabindex="-1">Significance of CR</h1>
+                <p class="lesson-lead"><strong>What was the social, intellectual, and theoretical significance of
+                    CR?</strong> Its force came from a simple but radical move: treating women&rsquo;s own lived
+                  experience as evidence worth investigating.</p>
+              </div>
+            </header>
+
+            <div class="accordion">
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-book" />
+                      </svg></span>
+                    <span class="accordion__label">Lived experience as evidence</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>CR encouraged women to take seriously their own lived experiences as evidence. Sarachild
+                      explicitly objected to the assumption that established authorities already possessed the
+                      conceptual and theoretical tools necessary to explain women&rsquo;s experiences. She argued that
+                      instead, women could investigate their own conditions collectively and develop theory from what
+                      they discovered.</p>
+                    <br>
+                    <p>Consciousness-raising was therefore simultaneously experiential and analytical. Personal
+                      experiences constituted a starting point for inquiry, but individual interpretation was not
+                      necessarily its endpoint. Experiences became especially politically revealing when compared,
+                      questioned, and situated alongside the experiences of other women.</p>
+                    <br>
+                    <p>CR surfaced &ldquo;how gender norms and social practices do not map on to an inherently natural
+                      or necessary set of gender norms and relations, but instead function as harmful and oppressive
+                      tools for patriarchal control&rdquo; (Engelstad, 2026, p. 3).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="lesson-section" aria-labelledby="section-8-title" data-outline-label="CR as a way of knowing"
           data-no-hero>
           <div class="lesson-section__inner">
@@ -395,7 +438,7 @@
             <div class="accordion">
               <div class="accordion__item">
                 <h2 class="accordion__heading">
-                  <button type="button" class="accordion__trigger" aria-expanded="true">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
                     <span class="accordion__icon" aria-hidden="true"><svg>
                         <use href="#icon-file" />
                       </svg></span>
@@ -405,6 +448,13 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body accordion__body--with-quote">
+                    <!-- TODO: confirm the source/page for the "epistemically forceful" quote; attributed to Engelstad, 2026, p. 3 as a best guess. -->
+                    <p>Scholars have examined CR as an epistemological practice&mdash;in other words, a method concerned
+                      with how knowledge is produced and justified. When participants discover that seemingly personal
+                      experiences recur systematically, they acquire evidence that explanations located solely within
+                      individuals may be insufficient. In this way, &ldquo;consciousness-raising is recognised as
+                      epistemically forceful in a range of philosophical literature&rdquo; (Engelstad, 2026, p. 3).</p>
+                    <br>
                     <p>In CR, lived experience is a valid and vital form of evidence. Personal stories are not seen as
                       merely anecdotal, but as data that can reveal broader social patterns when shared and analyzed
                       collectively.</p>
@@ -431,7 +481,13 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p>Content placeholder.</p>
+                    <p>CR challenged the assumption that only credentialed experts&mdash;historically men&mdash;could
+                      produce legitimate knowledge about women&rsquo;s lives. By treating ordinary women as capable
+                      analysts of their own conditions, CR redistributed epistemic authority: the people living an
+                      experience were positioned as those best placed to investigate and explain it.</p>
+                    <br>
+                    <p>This raises a question that feminist epistemologists continue to pursue&mdash;who is recognized as
+                      a credible knower, and whose testimony is dismissed before it can be heard?</p>
                   </div>
                 </div>
               </div>
@@ -448,7 +504,13 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p>Content placeholder.</p>
+                    <p>In CR, knowledge was produced collectively rather than handed down. Individual testimony became
+                      knowledge through a social process&mdash;shared, compared, and tested against others&rsquo;
+                      accounts until recurring patterns emerged. What first looked like private, idiosyncratic
+                      experience was reinterpreted as evidence of shared social conditions.</p>
+                    <br>
+                    <p>Knowledge, in this view, is not discovered by a detached, outside observer, but built together by
+                      the people reflecting on and theorizing from their own lives.</p>
                   </div>
                 </div>
               </div>
@@ -465,7 +527,16 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p>Content placeholder.</p>
+                    <p>Sometimes people undergo an experience but lack the concepts needed to name or make sense of it.
+                      In <cite>Epistemic Injustice</cite>, philosopher Miranda Fricker (2007) shows how marginalized
+                      groups often lack the shared interpretive resources&mdash;the &ldquo;hermeneutic tools&rdquo;&mdash;to
+                      understand and express the ways in which they are being wronged, and she argues that this gap is
+                      itself an injustice, which she terms <em>hermeneutical injustice</em>.</p>
+                    <br>
+                    <p>CR can be understood as a direct response. By naming shared experiences collectively, participants
+                      generated the very concepts&mdash;for example, recognizing unequal domestic labor as a political
+                      arrangement rather than a personal failing&mdash;that allowed them to understand and describe their
+                      own situations.</p>
                   </div>
                 </div>
               </div>
@@ -482,7 +553,14 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p>Content placeholder.</p>
+                    <p>CR&rsquo;s way of knowing anticipates methods later formalized in qualitative social research. Like
+                      <strong>autoethnography</strong>, it treats personal, lived experience as a legitimate source of
+                      data and analysis rather than mere anecdote.</p>
+                    <br>
+                    <p>Like <strong>grounded theory</strong>, it builds explanation inductively&mdash;beginning with
+                      concrete accounts and allowing patterns and theory to emerge from them, rather than imposing an
+                      existing framework. Seen this way, CR was not only a political practice but an early form of
+                      participatory, experience-grounded inquiry.</p>
                   </div>
                 </div>
               </div>
@@ -495,11 +573,65 @@
             <header class="lesson-header">
               <div class="lesson-header__text">
                 <h1 class="lesson-title" id="section-9-title" tabindex="-1">Tensions &amp; critiques</h1>
-                <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
-                  framing what this section covers and why it matters.</p>
+                <p class="lesson-lead"><strong>CR was not without its critics.</strong> Two tensions in particular have
+                  shaped how the practice is understood: whether it was really just a form of therapy, and whose
+                  experiences it centered.</p>
               </div>
             </header>
-            <div class="content-placeholder">Section content placeholder</div>
+
+            <div class="accordion">
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-scale" />
+                      </svg></span>
+                    <span class="accordion__label">Was CR just psychotherapy?</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>Outsiders to the practice sometimes dismissed CR as merely a form of psychotherapy, but Sarachild
+                      was insistent that it should not be reduced to that term. She acknowledged that CR and
+                      psychotherapy might superficially resemble one another, given that both involved small groups,
+                      intimate disclosures, and discussions of emotions and personal challenges.</p>
+                    <br>
+                    <p>The difference lay in the question each asked. Whereas therapy might ask how an individual woman
+                      could change her perceptions, beliefs, and behaviors, CR instead asked whether a recurring
+                      personal difficulty revealed something about the larger social organization of women&rsquo;s
+                      lives.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion__item">
+                <h2 class="accordion__heading">
+                  <button type="button" class="accordion__trigger" aria-expanded="false">
+                    <span class="accordion__icon" aria-hidden="true"><svg>
+                        <use href="#icon-users" />
+                      </svg></span>
+                    <span class="accordion__label">Whose experience? Intersectionality &amp; difference</span>
+                    <span class="accordion__toggle" aria-hidden="true"></span>
+                  </button>
+                </h2>
+                <div class="accordion__panel">
+                  <div class="accordion__body">
+                    <p>Second-wave feminist organizing has been criticized for universalizing experiences particularly
+                      associated with white, middle-class women, and CR groups were certainly subject to this same
+                      critique. The underlying argument is that the category <em>women</em> does not describe a
+                      homogeneous social group: women&rsquo;s experiences are shaped simultaneously by race, class,
+                      sexuality, disability, nationality, and other dimensions of social life.</p>
+                    <br>
+                    <p>In her paper &ldquo;The Personal Is Epistemological: The Epistemic Force of
+                      Consciousness-Raising,&rdquo; Engelstad (2026) argues that an intersectional CR can investigate
+                      differences as well as similarities. Rather than asking &ldquo;What experience do all women
+                      share?&rdquo; it asks &ldquo;What patterns and differences emerge when these experiences are
+                      compared, and what social conditions might explain them?&rdquo;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -520,7 +652,7 @@
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
-                <h1 class="lesson-title" id="section-11-title" tabindex="-1">Activity / reflection</h1>
+                <h1 class="lesson-title" id="section-11-title" tabindex="-1">Activity</h1>
                 <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
                   framing what this section covers and why it matters.</p>
               </div>
@@ -561,14 +693,16 @@
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
-                <h1 class="lesson-title" id="section-12-title" tabindex="-1">Further resources</h1>
-                <p class="lesson-lead"><strong>Lead sentence placeholder.</strong> Supporting text will appear here,
-                  framing what this section covers and why it matters.</p>
+                <h1 class="lesson-title" id="section-12-title" tabindex="-1">References</h1>
               </div>
             </header>
 
-            <h2 class="references-heading">References</h2>
             <ul class="references-list">
+              <!-- TODO: add full publication details (journal/volume/issue/pages or DOI) for the Engelstad article. -->
+              <li class="reference">Engelstad, [A.]. (2026). The personal is epistemological: The epistemic force of
+                consciousness-raising. [Publication details to be added.]</li>
+              <li class="reference">Fricker, M. (2007). <cite>Epistemic injustice: Power and the ethics of knowing</cite>.
+                Oxford University Press.</li>
               <li class="reference">Sarachild, K. (1970). A program for feminist &ldquo;consciousness-raising.&rdquo; In
                 S. Firestone &amp; A. Koedt (Eds.), <cite>Notes from the second year: Women&rsquo;s liberation</cite>
                 (pp. 78&ndash;80). Radical Feminism. (Original work presented 1968)</li>
@@ -576,8 +710,6 @@
               <li class="reference">[Author, A. A.] ([Year], [Month Day]). <cite>[Title of article]</cite>. The New
                 York Times. [https://www.nytimes.com/&hellip;]</li>
             </ul>
-
-            <div class="content-placeholder">Section content placeholder</div>
           </div>
         </section>
       </main>
@@ -590,7 +722,6 @@
               <use href="#icon-arrow-left" />
             </svg></span>
           <span class="step-button__text">Previous</span>
-          <span class="step-button__target" data-nav-target></span>
         </button>
 
         <button type="button" class="scroll-cue" data-scroll-cue>
@@ -600,14 +731,7 @@
           <span class="scroll-cue__label">Scroll to explore</span>
         </button>
 
-        <!--
-          On the last section this button becomes the final action.
-          Set data-final-href to a URL (e.g. the Canvas course) to make it
-          navigate there; while empty, the final action is shown but disabled.
-        -->
-        <button type="button" class="step-button step-button--next" data-nav="next"
-          data-final-label="Continue to Canvas" data-final-href="">
-          <span class="step-button__target" data-nav-target></span>
+        <button type="button" class="step-button step-button--next" data-nav="next">
           <span class="step-button__text">Next</span>
           <span class="step-button__circle" aria-hidden="true"><svg>
               <use href="#icon-arrow-right" />
@@ -627,29 +751,8 @@
           </svg></button>
       </form>
     </div>
-    <p>Course description placeholder. Who the course is for, what learners will explore, and roughly how long it takes.
-    </p>
-  </dialog>
-
-  <dialog class="info-dialog" id="glossary-dialog" aria-labelledby="glossary-dialog-title">
-    <div class="info-dialog__header">
-      <h2 id="glossary-dialog-title">Glossary</h2>
-      <form method="dialog">
-        <button class="icon-button" aria-label="Close"><svg aria-hidden="true">
-            <use href="#icon-close" />
-          </svg></button>
-      </form>
-    </div>
-    <dl class="glossary">
-      <div>
-        <dt>Term placeholder</dt>
-        <dd>Definition placeholder.</dd>
-      </div>
-      <div>
-        <dt>Term placeholder</dt>
-        <dd>Definition placeholder.</dd>
-      </div>
-    </dl>
+    <p>This course was created by Kristen Foster-Marks in satisfaction of the course &ldquo;Adult
+      Education&rdquo; at Colorado State University.</p>
   </dialog>
 
   <script src="script.js"></script>

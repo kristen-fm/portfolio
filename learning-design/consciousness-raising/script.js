@@ -14,12 +14,8 @@
   const status = document.querySelector("[data-section-status]");
   const prevButton = document.querySelector('[data-nav="prev"]');
   const nextButton = document.querySelector('[data-nav="next"]');
-  const prevTarget = prevButton.querySelector("[data-nav-target]");
-  const nextTarget = nextButton.querySelector("[data-nav-target]");
-  const nextText = nextButton.querySelector(".step-button__text");
+  const prevText = prevButton.querySelector(".step-button__text");
   const scrollCue = document.querySelector("[data-scroll-cue]");
-  const finalLabel = nextButton.dataset.finalLabel || "Finish";
-  const finalHref = nextButton.dataset.finalHref || "";
 
   // Vertical distance (px) sections travel while fading in or out.
   const SECTION_OFFSET = 8;
@@ -151,19 +147,13 @@
       else button.removeAttribute("aria-current");
     });
 
+    prevButton.hidden = isFirst;
     prevButton.disabled = isFirst;
-    prevTarget.textContent = isFirst ? "" : `${currentSection}. ${labels[currentSection - 1]}`;
+    prevText.textContent = isFirst ? "" : "Previous";
 
-    if (isLast) {
-      nextText.textContent = finalLabel;
-      nextTarget.textContent = "";
-      // Placeholder until a destination is configured in data-final-href.
-      nextButton.disabled = !finalHref;
-    } else {
-      nextText.textContent = "Next";
-      nextTarget.textContent = `${currentSection + 2}. ${labels[currentSection + 1]}`;
-      nextButton.disabled = false;
-    }
+    // Next hides on the last section, mirroring Previous on the first.
+    nextButton.hidden = isLast;
+    nextButton.disabled = isLast;
 
     refreshGate();
     updateScrollCue();
@@ -173,13 +163,7 @@
   const previous = () => goToSection(currentSection - 1);
 
   prevButton.addEventListener("click", previous);
-  nextButton.addEventListener("click", () => {
-    if (currentSection === sections.length - 1) {
-      if (finalHref) window.location.assign(finalHref);
-      return;
-    }
-    next();
-  });
+  nextButton.addEventListener("click", next);
 
   // ---------- Scroll cue ----------
 

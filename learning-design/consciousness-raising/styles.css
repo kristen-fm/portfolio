@@ -201,16 +201,10 @@ svg {
   text-transform: uppercase;
 }
 
-.site-header__name {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-}
-
 .site-header__title {
-  font-size: 0.8rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.16em;
 }
 
 .site-header__tagline {
@@ -319,6 +313,10 @@ svg {
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   transition: background-color var(--dur-hover) ease, border-color var(--dur-hover) ease;
+}
+
+.course-outline__label {
+  font-size: 0.8rem;
 }
 
 /* Sections beyond the reflection gate, until both prompts are answered. */
@@ -483,7 +481,7 @@ svg {
 
 .hero-collage {
   position: relative;
-  width: clamp(20rem, 32vw, 34rem);
+  width: clamp(22rem, 37vw, 40rem);
   aspect-ratio: 10 / 7;
   margin-bottom: -1.5rem;
 }
@@ -507,7 +505,7 @@ svg {
   background: url("images/paper-tag.webp") center / 100% 100% no-repeat;
   filter: drop-shadow(0 4px 8px rgba(30, 30, 20, 0.12));
   font-family: var(--font-hand);
-  font-size: clamp(1.15rem, 1.6vw, 1.6rem);
+  font-size: clamp(1.45rem, 2vw, 2rem);
   font-weight: 500;
   line-height: 1.05;
   text-align: center;
@@ -524,19 +522,42 @@ svg {
 
 /* ---------- Title section (hero) ---------- */
 
-/* Give the hero room to breathe and sit alongside the title, not below it. */
+/* Center the two-column hero vertically within the section so it isn't anchored
+   to the top with a pool of empty space beneath it. */
+.lesson-section--title {
+  display: grid;
+  align-content: center;
+}
+
+/* A deliberate two-column hero: the title and quote form one column on the
+   left, the collage sits close beside it on the right, and the pair is pulled
+   together so it reads as a single composition rather than two drifting halves. */
 .lesson-section--title .lesson-header {
   align-items: center;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1rem, 2.4vw, 2.25rem);
 }
 
+/* Keep the title, divider, and quote tightly grouped as a single column so the
+   quote sits directly beneath the headline. */
 .lesson-section--title .lesson-header__text {
-  gap: clamp(1.25rem, 3dvh, 2rem);
+  gap: clamp(0.85rem, 1.8dvh, 1.35rem);
 }
 
-/* Controlled line breaks to match the designed title; <br>s set the shape. */
+/* Let the collage carry more weight and settle slightly lower, aligned to the
+   height of the title rather than floating toward the upper-right. */
+.lesson-section--title .hero-collage {
+  margin-top: clamp(1rem, 3dvh, 2.5rem);
+}
+
+/* Controlled line breaks to match the designed title; <br>s set the shape.
+   Larger and tighter so "Kathie Sarachild" and "Consciousness-Raising" read as
+   the primary anchors. */
 .lesson-title--display {
   text-wrap: initial;
-  font-size: clamp(2rem, min(3.3vw, 6.4dvh), 3.6rem);
+  font-size: clamp(2.3rem, min(4.1vw, 7.4dvh), 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 /* "Consciousness-Raising": terracotta word on a painted tan highlight, with a
@@ -574,6 +595,12 @@ svg {
   transform: rotate(-0.4deg);
 }
 
+/* "Kathie Sarachild &" — the lead-in to the title, set smaller so
+   "Consciousness-Raising" stays the primary anchor. */
+.title-name {
+  font-size: 0.82em;
+}
+
 /* The descriptive second half of the title, set a touch smaller. */
 .title-sub {
   font-size: 0.82em;
@@ -588,13 +615,13 @@ svg {
 }
 
 .title-quote {
-  max-width: 40rem;
+  max-width: 32rem;
 }
 
 .title-quote p {
   color: var(--color-ink-muted);
   font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  font-size: clamp(1.31rem, 1.75vw, 1.63rem);
   font-style: italic;
   line-height: 1.55;
 }
@@ -1144,6 +1171,10 @@ svg {
   pointer-events: none;
 }
 
+.step-button[hidden] {
+  display: none;
+}
+
 .step-button {
   display: inline-flex;
   align-items: center;
@@ -1156,11 +1187,15 @@ svg {
   cursor: pointer;
 }
 
+/* Pin each control to its column so Next stays right-aligned even when Previous
+   is hidden (e.g. the title section) and drops out of the grid flow. */
 .step-button--prev {
+  grid-column: 1;
   justify-self: start;
 }
 
 .step-button--next {
+  grid-column: 3;
   justify-self: end;
 }
 
@@ -1183,24 +1218,6 @@ svg {
 
 .step-button__text {
   font-weight: 500;
-}
-
-/* Name of the neighbouring section, set off by a thin divider. */
-.step-button__target {
-  padding-inline: 1rem;
-  color: var(--color-ink-muted);
-}
-
-.step-button--prev .step-button__target {
-  border-left: 1px solid var(--color-rule);
-}
-
-.step-button--next .step-button__target {
-  border-right: 1px solid var(--color-rule);
-}
-
-.step-button__target:empty {
-  display: none;
 }
 
 .step-button:hover:not(:disabled) .step-button__circle {
@@ -1227,6 +1244,7 @@ svg {
 }
 
 .scroll-cue {
+  grid-column: 2;
   display: grid;
   justify-items: center;
   gap: 0.35rem;
@@ -1272,7 +1290,7 @@ svg {
   transition: opacity var(--dur-fade) ease, visibility 0s linear var(--dur-fade);
 }
 
-/* ---------- Dialogs (About, Glossary) ---------- */
+/* ---------- Dialogs (About) ---------- */
 
 .info-dialog {
   width: min(100% - 2rem, 36rem);
@@ -1303,19 +1321,6 @@ svg {
   font-weight: 500;
 }
 
-.glossary {
-  display: grid;
-  gap: 1rem;
-}
-
-.glossary dt {
-  font-weight: 600;
-}
-
-.glossary dd {
-  color: var(--color-ink-muted);
-}
-
 /* ---------- Responsive: laptop ---------- */
 
 @media (max-width: 1200px) {
@@ -1335,7 +1340,7 @@ svg {
   }
 
   .hero-collage {
-    width: clamp(17rem, 28vw, 29rem);
+    width: clamp(19rem, 31vw, 33rem);
   }
 }
 
@@ -1387,22 +1392,27 @@ svg {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /* Undo the desktop two-column hero so the collage stacks under the title. */
+  .lesson-section--title .lesson-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .hero-collage {
     justify-self: center;
     width: min(100%, 26rem);
     margin-bottom: 0;
   }
 
+  .lesson-section--title .hero-collage {
+    margin-top: 0;
+  }
+
   .hero-collage__tag {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
   }
 
   .accordion__body {
     padding-left: clamp(1.25rem, 3vw, 2.5rem);
-  }
-
-  .step-button__target {
-    display: none;
   }
 }
 
