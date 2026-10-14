@@ -872,8 +872,7 @@ svg {
 .reflection {
   display: grid;
   gap: clamp(1rem, 2.5dvh, 1.75rem);
-  width: min(100%, 52rem);
-  margin-inline: auto;
+  width: 100%;
 }
 
 .reflect-card {
@@ -955,77 +954,9 @@ svg {
   border-color: var(--color-forest);
 }
 
-.reflect-card__continue {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.85rem 1.5rem;
-  margin-top: clamp(1.25rem, 3vw, 1.75rem);
-}
-
-/* The flex rule above would otherwise defeat [hidden]; keep it gone once the
-   learner has revealed Reflection 2. */
-.reflect-card__continue[hidden] {
-  display: none;
-}
-
-.reflect-card__cue {
-  color: var(--color-ink-muted);
-  font-size: 0.85rem;
-  font-style: italic;
-}
-
-.reflect-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  min-height: 44px;
-  padding: 0.55rem 1.4rem;
-  border: 0;
-  border-radius: 999px;
-  background: var(--color-forest);
-  color: var(--color-on-forest);
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color var(--dur-hover) ease;
-}
-
-.reflect-button:hover {
-  background: var(--color-forest-dark);
-}
-
-.reflect-button__icon {
-  display: grid;
-  place-items: center;
-  transition: transform var(--dur-hover) ease;
-}
-
-.reflect-button__icon svg {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-
-.reflect-button:hover .reflect-button__icon {
-  transform: translateX(2px);
-}
-
 /* The revealed heading takes focus programmatically; don't ring it. */
 .reflect-card__question:focus {
   outline: none;
-}
-
-/* Second card fades and rises into place when revealed. */
-.reflect-card--second {
-  transition:
-    opacity var(--dur-fade) ease,
-    transform var(--dur-move) var(--ease-out);
-}
-
-.reflect-card--entering {
-  opacity: 0;
-  transform: translateY(12px);
 }
 
 /* Standing hint below the reflection cards while the gate is unmet. */
@@ -1077,8 +1008,7 @@ svg {
 .reflection-recap {
   display: grid;
   gap: clamp(1rem, 2.5dvh, 1.75rem);
-  width: min(100%, 52rem);
-  margin-inline: auto;
+  width: 100%;
 }
 
 .reflection-recap__intro {
@@ -1489,17 +1419,7 @@ svg {
   }
 
   .step-button:hover:not(:disabled) .step-button__circle,
-  .scroll-cue:hover .scroll-cue__circle,
-  .reflect-button:hover .reflect-button__icon {
-    transform: none;
-  }
-
-  /* Reveal the second reflection card without movement. */
-  .reflect-card--second {
-    transition: opacity 150ms ease;
-  }
-
-  .reflect-card--entering {
+  .scroll-cue:hover .scroll-cue__circle {
     transform: none;
   }
 }

@@ -81,7 +81,7 @@
   function goToSection(index, { announce = true } = {}) {
     if (!Number.isInteger(index) || index < 0 || index >= sections.length) return;
 
-    // Hold the learner at the Reflect section until both prompts are answered.
+    // Hold the learner at the Reflect section until the prompt is answered.
     // Every way forward (Next, arrow keys, outline, deep links) runs through
     // here, so this one guard locks them all.
     if (sectionLocked(index)) {
@@ -239,35 +239,6 @@
   }
 
   document.querySelectorAll("[data-reflection]").forEach((reflection) => {
-    const revealButton = reflection.querySelector("[data-reflection-reveal]");
-    const continueBlock = reflection.querySelector("[data-reflection-continue]");
-    const second = reflection.querySelector(".reflect-card--second");
-
-    function revealSecond({ animate }) {
-      if (!second || !second.hidden) return;
-      second.hidden = false;
-
-      if (animate && !reducedMotion.matches) {
-        // Start the card low and faded, then let it settle into place.
-        second.classList.add("reflect-card--entering");
-        void second.offsetHeight;
-        second.classList.remove("reflect-card--entering");
-      }
-
-      if (animate) {
-        // Move focus to the new question so it's announced.
-        second.querySelector(".reflect-card__question").focus({ preventScroll: true });
-        second.scrollIntoView({ behavior: scrollBehavior(), block: "nearest" });
-      }
-
-      // Retire the Continue affordance now that Reflection 2 is on screen.
-      if (continueBlock) continueBlock.hidden = true;
-    }
-
-    if (revealButton && second) {
-      revealButton.addEventListener("click", () => revealSecond({ animate: true }));
-    }
-
     // Reflection fields grow to fit what's typed instead of scrolling inside.
     // Restore any saved answer first, then save and re-echo on every edit.
     reflection.querySelectorAll("[data-reflection-input]").forEach((input) => {
@@ -288,11 +259,6 @@
 
       grow();
     });
-
-    // A returning learner who already answered Reflection 2 should see it
-    // restored without having to click Continue again.
-    const secondInput = second && second.querySelector("[data-reflection-input]");
-    if (secondInput && secondInput.value.trim()) revealSecond({ animate: false });
   });
 
   // ---------- Reflection recap (Activity section echoes saved answers) ----------
@@ -321,7 +287,7 @@
 
   // ---------- Reflection gate ----------
   // Sections past the Reflect section stay locked until the learner has written
-  // something in both prompts. Everything is derived from the DOM: whichever
+  // something in the prompt. Everything is derived from the DOM: whichever
   // section holds the reflection inputs is the gate, so reordering is safe.
   const reflectionInputs = Array.from(document.querySelectorAll("[data-reflection-input]"));
   const gateIndex = sections.findIndex((section) =>
@@ -335,8 +301,6 @@
   // A section is locked when it sits beyond the gate and the gate isn't cleared.
   const sectionLocked = (index) =>
     gateActive && index > gateIndex && !reflectionsComplete();
-
-  const isVisible = (element) => !!(element && element.offsetParent);
 
   // Reflect the current gate state in the controls: disable Next on the Reflect
   // section, lock the outline entries beyond it, and show the standing hint.
@@ -355,12 +319,11 @@
   }
 
   // Called when the learner tries to leave early: announce why, pulse the hint,
-  // and send focus to whatever still needs their attention — the first empty
-  // visible field, or the Continue button if the second prompt isn't shown yet.
+  // and send focus to whatever still needs their attention.
   function nudgeReflection() {
     if (!gateActive) return;
 
-    status.textContent = "Please respond to both reflection prompts before moving on.";
+    status.textContent = "Please respond to the reflection prompt before moving on.";
 
     if (gateHint) {
       gateHint.hidden = false;
@@ -369,11 +332,7 @@
       gateHint.classList.add("reflect-gate-hint--pulse");
     }
 
-    const revealButton = sections[gateIndex].querySelector("[data-reflection-reveal]");
-    const target =
-      reflectionInputs.find((input) => isVisible(input) && !input.value.trim()) ||
-      (isVisible(revealButton) ? revealButton : null) ||
-      reflectionInputs.find((input) => !input.value.trim());
+    const target = reflectionInputs.find((input) => !input.value.trim());
     if (target) target.focus();
   }
 
