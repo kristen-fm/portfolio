@@ -911,7 +911,6 @@ svg {
 }
 
 .reflect-card__question {
-  max-width: 42rem;
   color: var(--color-ink);
   font-family: var(--font-serif);
   font-size: clamp(1.1rem, 1.7vw, 1.4rem);
@@ -939,7 +938,6 @@ svg {
   font-size: var(--text-lead);
   line-height: 1.6;
   resize: none;
-  overflow: hidden;
 }
 
 .reflect-card__input::placeholder {
@@ -1078,6 +1076,37 @@ svg {
   border-left-color: var(--color-rule);
   color: var(--color-ink-muted);
   font-style: italic;
+}
+
+.recap-card__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--color-sage);
+  border-radius: var(--radius-pill, 999px);
+  background: transparent;
+  color: var(--color-forest-dark);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.recap-card__copy:hover {
+  border-color: var(--color-gold-deep);
+  background: var(--color-paper);
+}
+
+.recap-card__copy svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ---------- Bottom controls ---------- */

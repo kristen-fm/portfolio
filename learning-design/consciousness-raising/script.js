@@ -280,10 +280,46 @@
       const answerSlot = card.querySelector("[data-recap-answer]");
       answerSlot.textContent = answer || "You haven't written a response to this one yet.";
       answerSlot.classList.toggle("recap-card__answer--empty", !answer);
+
+      const copyButton = card.querySelector("[data-recap-copy]");
+      if (copyButton) copyButton.hidden = !answer;
     });
   }
 
   updateRecap();
+
+  // Copy-to-clipboard for the recap answer, so learners can paste it straight
+  // into the discussion board without retyping it.
+  recapCards.forEach((card) => {
+    const copyButton = card.querySelector("[data-recap-copy]");
+    const answerSlot = card.querySelector("[data-recap-answer]");
+    if (!copyButton || !answerSlot) return;
+
+    const label = copyButton.querySelector("[data-recap-copy-label]");
+    let resetTimer;
+
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(answerSlot.textContent);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(answerSlot);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand("copy");
+        selection.removeAllRanges();
+      }
+
+      if (label) {
+        clearTimeout(resetTimer);
+        label.textContent = "Copied!";
+        resetTimer = setTimeout(() => {
+          label.textContent = "Copy text";
+        }, 2000);
+      }
+    });
+  });
 
   // ---------- Reflection gate ----------
   // Sections past the Reflect section stay locked until the learner has written
