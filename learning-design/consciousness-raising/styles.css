@@ -766,6 +766,17 @@ svg {
   gap: clamp(1.5rem, 4vw, 3.5rem);
 }
 
+.accordion__body--with-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.accordion__body--with-media .accordion__body-media {
+  margin: 0;
+}
+
 /* ---------- Pull quote ---------- */
 
 .pull-quote {
@@ -1283,7 +1294,8 @@ svg {
 /* ---------- Responsive: laptop ---------- */
 
 @media (max-width: 1200px) {
-  .accordion__body--with-quote {
+  .accordion__body--with-quote,
+  .accordion__body--with-media {
     grid-template-columns: minmax(0, 1fr);
   }
 }
