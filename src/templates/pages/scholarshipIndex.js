@@ -30,7 +30,9 @@ const PLACEHOLDER_ENTRY_COMMENT = `            <!--
             -->`;
 
 function renderScholarshipIndex(entries) {
-  const entriesHtml = entries.map(renderEntryCard).join("\n\n");
+  const entriesHtml = entries
+    .map((entry) => renderEntryCard(entry, { boxed: true }))
+    .join("\n\n");
 
   const bodyHtml = `      <section class="prose-section" id="section-intro">
         <div class="wrap">

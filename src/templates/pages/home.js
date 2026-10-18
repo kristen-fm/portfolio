@@ -84,7 +84,7 @@ ${questionsHtml}
       <section class="prose-section" id="about">
         <div class="wrap">
           <div class="section-heading">
-            <h2>About</h2>
+            <h2>A bit about me</h2>
           </div>
           <p>
 ${aboutHtml}

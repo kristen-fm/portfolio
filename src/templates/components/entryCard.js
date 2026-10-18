@@ -11,7 +11,7 @@ function renderMetaBlock(entry) {
               </p>`;
 }
 
-function renderEntryCard(entry) {
+function renderEntryCard(entry, { boxed = false } = {}) {
   const paragraphs = entry.summaryHtml
     .map((p) => `              <p>\n${p}\n              </p>`)
     .join("\n");
@@ -24,7 +24,9 @@ function renderEntryCard(entry) {
     ? ` target="_blank" rel="noopener noreferrer"`
     : "";
 
-  return `            <article class="entry"${entry.id ? ` id="${entry.id}"` : ""}>
+  const className = boxed ? "entry entry--boxed" : "entry";
+
+  return `            <article class="${className}"${entry.id ? ` id="${entry.id}"` : ""}>
 ${renderMetaBlock(entry)}
               <h3>${entry.title}</h3>
 ${paragraphs}${referencesBlock}

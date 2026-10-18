@@ -50,14 +50,14 @@ function renderLearningDesignIndex(items) {
         <div class="wrap">
           <p class="eyebrow">Learning Design &amp; Practice</p>
           <h1>Learning Design &amp; Practice</h1>
+            <p>
+              My learning design work focuses on software practitioners in workplace learning environments. I draw primarily on the adult education, behavioral psychology, and learning sciences literatures, including work on motivation, engagement, self-regulated and self-directed learning, and sociocultural perspectives on learning.
+            </p>
         </div>
       </section>
 
       <section id="items">
         <div class="wrap">
-          <div class="section-heading">
-            <h2>Portfolio</h2>
-          </div>
 
 ${itemsHtml}
 
