@@ -749,6 +749,24 @@ svg {
   line-height: 1.6;
 }
 
+/* Vertical rhythm between stacked paragraphs in the lesson body. The global
+   reset zeroes <p> margins, so this is what separates consecutive paragraphs
+   (previously done with stray <br> tags). */
+.accordion__body p {
+  margin-bottom: 1.2em;
+}
+
+.accordion__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Nested media blocks (and prose that follows them) flow with the same
+   rhythm as paragraphs. */
+.accordion__body > .accordion__body--with-media:not(:first-child),
+.accordion__body > .accordion__body--with-media + p {
+  margin-top: 1.25rem;
+}
+
 .body-list {
   margin: 0.5rem 0;
   padding-left: 1.5rem;
@@ -801,7 +819,7 @@ svg {
   margin: 0;
   color: var(--color-ink);
   font-family: var(--font-serif);
-  font-size: clamp(1.02rem, 1.1vw, 1.15rem);
+  font-size: clamp(1.1rem, 1.1vw, 1.15rem);
   font-style: italic;
   line-height: 1.75;
 }
@@ -913,6 +931,15 @@ svg {
   font-weight: 500;
   line-height: 1.3;
   text-wrap: pretty;
+}
+
+/* Space the stacked prompts and the closing note (previously <br> tags). */
+.reflect-card__question + .reflect-card__question {
+  margin-top: clamp(0.75rem, 2vw, 1rem);
+}
+
+.reflect-card__field + p {
+  margin-top: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 /* <p> wrapper around the label + textarea; reset its default text styling. */
