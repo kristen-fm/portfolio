@@ -31,9 +31,14 @@ function renderQuestion(question) {
 }
 
 function renderHomePage(home, aboutHtml) {
-  const ctasHtml = home.hero.ctas
-    .map((cta) => `              <a class="cta-link" href="${cta.href}">${cta.label}</a>`)
-    .join("\n");
+  const ctaRowHtml = home.hero.ctas.length
+    ? `
+            <div class="cta-row">
+${home.hero.ctas
+  .map((cta) => `              <a class="cta-link" href="${cta.href}">${cta.label}</a>`)
+  .join("\n")}
+            </div>`
+    : "";
 
   const questionsHtml = home.questions.map(renderQuestion).join("\n");
 
@@ -44,10 +49,7 @@ function renderHomePage(home, aboutHtml) {
             <h1>${home.hero.headlineHtml}</h1>
             <p class="subhead">
               ${home.hero.subheadHtml}
-            </p>
-            <div class="cta-row">
-${ctasHtml}
-            </div>
+            </p>${ctaRowHtml}
           </div>
 
           <div class="hero-visual" aria-hidden="false">
@@ -69,7 +71,7 @@ ${ctasHtml}
       <section class="questions">
         <div class="wrap">
           <div class="section-heading">
-            <h2>Questions I keep returning to</h2>
+            <h2>Research questions I keep returning to</h2>
           </div>
           <div class="questions-grid">
 ${questionsHtml}
