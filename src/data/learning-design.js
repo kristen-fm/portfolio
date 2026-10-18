@@ -5,8 +5,8 @@ module.exports = [
     title: "Code Review Anxiety Workbook",
     summaryHtml: [
       `              The Code Review Anxiety Workbook is a free, self-guided resource that
-              helps software developers recognize and manage the anxiety many people
-              experience giving and receiving code review. Dr. Carol Lee and I adapted
+              helps software developers recognize and manage the anxiety many
+              experience while giving and receiving code reviews. Dr. Carol Lee and I adapted
               a scientifically tested, 90-minute workshop intervention &mdash; developed
               at the Developer Success Lab and evaluated in a randomized controlled trial
               &mdash; into a self-paced workbook that individuals or teams can work
@@ -15,10 +15,10 @@ module.exports = [
               workbook guides readers through strategies for managing physiological
               stress responses and through <em>cognitive restructuring</em>:
               identifying, challenging, and reframing anxious thoughts to be more
-              realistic and self-compassionate. I include it here because it represents
+              realistic and self-compassionate.`,
+      `              I include the workbook here because it represents
               evidence-based learning design in an authentic workplace context &mdash;
-              translating a facilitated, research-backed intervention into a durable,
-              widely accessible self-directed learning experience.`,
+              translating a facilitated, research-backed intervention into an accessible self-directed learning experience.`,
     ],
     link: {
       href: "https://developer-success-lab.gitbook.io/code-review-anxiety-workbook-1",

@@ -241,7 +241,7 @@ main {
 }
 
 section {
-  margin: var(--space-5) 0;
+  margin: var(--space-4) 0;
 }
 
 main > section:first-child {
@@ -438,14 +438,14 @@ main > section:first-child {
   color: var(--color-rust);
   background: color-mix(in srgb, var(--color-rust) 12%, transparent);
   border: 1px solid color-mix(in srgb, var(--color-rust) 30%, transparent);
-  border-radius: 999px;
+  border-radius: 8px;
   padding: 0.3rem 0.9rem;
-  margin-bottom: 0.5rem;
 }
 
-.entry h3 {
-  max-width: 50%;
-  margin-bottom: 0.5rem;
+.entry h3,
+.portfolio-item h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  margin-bottom: var(--space-2);
 }
 
 .entry-link {
@@ -468,15 +468,13 @@ main > section:first-child {
   font-style: italic;
 }
 
-.portfolio-item {
+.portfolio-item,
+.entry--boxed {
   background: var(--color-surface);
   border: 1px solid var(--color-contour);
   padding: var(--space-3);
-}
-
-.portfolio-item h3 {
-  max-width: 50%;
-  margin-bottom: var(--space-2);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(24, 58, 67, 0.12);
 }
 
 .portfolio-item > p {

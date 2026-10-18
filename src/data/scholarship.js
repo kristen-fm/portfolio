@@ -15,7 +15,7 @@ module.exports = [
                 disadvantageous.`,
       `                I include it because it takes up that open question in my own domain: I
                 reflect on how my honest declarations of what I don&rsquo;t know have been
-                used against me, and I ask what intellectual humility costs engineers in
+                misinterpreted, and I ask what intellectual humility costs engineers in
                 high-stakes settings like software incident response.`,
     ],
     referencesHtml: null,
@@ -75,24 +75,17 @@ module.exports = [
   },
   {
     slug: null,
-    dateText: "Preprint &middot; October 2024",
+    dateText: "October 2024 &middot; Research Article",
     title:
       "&ldquo;My code is shit&rdquo;: Negative automatic thoughts and outcomes of a behavioral experiment for code review anxiety",
     summaryHtml: [
-      `                This co-authored preprint reports a study on mitigating <em>code review
-                anxiety</em> &mdash; a common experience that interrupts important processes
-                in software development, including improving code quality, social learning,
-                and creative problem-solving. Because prior research had not yet examined
-                intervention strategies for use during a real-world code review, the study
+      `                This co-authored preprint reports on a mixed-methods, intervention study on mitigating <em>code review
+                anxiety</em>. The study
                 developed and assessed a guided behavioral experiment toolkit. The findings
                 indicated that the toolkit reduced code review anxiety and decreased the
-                believability of negative automatic thoughts (NATs). A qualitative analysis
-                further showed that participants were most likely to engage in the thinking
-                trap of catastrophizing, and that they most frequently challenged their NATs
-                by boosting their self-efficacy.`,
-      `                I include this work because it grounds my interest in learner beliefs and
-                learning in workplace contexts in an empirical, real-world study, and because
-                it connects directly to my applied learning-design practice: the behavioral
+                believability of negative automatic thoughts (NATs).`,
+      `                I include this work here because it demonstrates my experience in conducting empirical research in workplace learning contexts, and because
+                it connects directly to my applied learning-design practice. The behavioral
                 experiment examined here shares its cognitive-behavioral foundation with the
                 <a href="../learning-design/index.html#code-review-anxiety-workbook">Code Review Anxiety Workbook</a> featured on my Learning Design page. Together the
                 two artifacts show a praxis loop &mdash; research informing design, and design
