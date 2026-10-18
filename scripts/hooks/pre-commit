@@ -1,0 +1,8 @@
+#!/bin/sh
+# Block commits whose generated HTML is out of sync with src/.
+# See watch.js / README for the dev workflow.
+node build.js --check || {
+  echo
+  echo "Generated HTML is stale. Run 'node build.js' and stage the result, then commit again."
+  exit 1
+}

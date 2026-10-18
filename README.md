@@ -23,12 +23,37 @@ tested against Node 22).
 ```
 node build.js            # regenerate all pages from src/, commit the result
 node build.js --check    # verify the committed HTML matches src/ (no writes)
+node watch.js            # dev: rebuild automatically whenever a src/ file changes
 ```
+
+### Local development
+
+The quickest start is `./dev.sh`, which runs the file server and the watcher
+together in one terminal (Ctrl+C stops both):
+
+```
+./dev.sh          # serve at http://localhost:8000/ and rebuild on save
+./dev.sh 8080     # use a different port
+```
+
+To run the watcher on its own, use `node watch.js`. It builds immediately, then
+rebuilds on every save under `src/` — so to see a change, edit a file in
+`src/`, save, and refresh the browser. (The browser serves the generated
+`index.html` files, not `src/` directly, so a build always has to happen; the
+watcher just runs it for you.)
 
 Run `node build.js --check` before every commit that touches `src/` — a
 forgotten build silently publishes stale content even though the source is
 correct. `build.js` also removes generated pages whose source entry was
 deleted or renamed, tracked via the committed `.build-manifest.json`.
+
+A pre-commit hook enforces this check automatically. It's tracked at
+`scripts/hooks/pre-commit`; after a fresh clone, install it with:
+
+```
+cp scripts/hooks/pre-commit "$(git rev-parse --git-dir)/hooks/pre-commit"
+chmod +x "$(git rev-parse --git-dir)/hooks/pre-commit"
+```
 
 ## Structure
 
