@@ -1,85 +1,80 @@
 module.exports = [
-  {
-    slug: "intellectual-humility",
-    date: { display: "April 2025", datetime: "2025-04-17" },
-    type: "Commentary",
-    title: "For whom does intellectual humility become disadvantageous?",
-    summaryHtml: [
-      `                A commentary I wrote for the Developer Success Lab&rsquo;s
-                <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer
-                Science Review</a>, responding to
-                <a href="https://doi.org/10.1038/s44159-022-00081-9" target="_blank" rel="noopener noreferrer">Porter et al.&rsquo;s (2022) review</a> of
-                <em>intellectual humility</em> &mdash; a metacognitive ability to recognize
-                the limitations of one&rsquo;s beliefs and knowledge. The authors close by
-                calling for research into when, and for whom, intellectual humility becomes
-                disadvantageous.`,
-      `                I include it because it takes up that open question in my own domain: I
-                reflect on how my honest declarations of what I don&rsquo;t know have been
-                misinterpreted, and I ask what intellectual humility costs engineers in
-                high-stakes settings like software incident response.`,
-    ],
-    referencesHtml: null,
-    link: { href: "/scholarship/intellectual-humility/", external: false, label: "Continue reading" },
-    detail: {
-      documentTitle: "For whom does intellectual humility become disadvantageous? | Kristen Foster-Marks",
-      metaDescription:
-        "For whom does intellectual humility become disadvantageous? — a commentary by Kristen Foster-Marks reviewing Porter et al. (2022)",
-      headingHtml: "For whom does intellectual humility become disadvantageous?",
-      subtitleHtml: null,
-      headerOrder: ["meta", "h1", "provenance"],
-      metaLine: `<time datetime="2025-04-17">April 17, 2025</time> &middot; Commentary`,
-      provenanceHtml: `Originally published in the Developer Success Lab&rsquo;s
-              <a href="https://dsl.pubpub.org/pub/intellectual-humility" target="_blank" rel="noopener noreferrer">Developer Science Review</a>,
-              April 17, 2025. Reproduced here by the author.`,
-      backLabel: "Scholarship",
-      bodyFile: "content/scholarship/intellectual-humility.html",
-    },
-  },
-  {
-    slug: "thought-leadership",
-    date: { display: "November 2024", datetime: "2024-11-18" },
-    type: "Commentary",
-    title: "Think big, then scrutinize: evaluating thought leadership with scientific methods",
-    summaryHtml: [
-      `                A commentary I wrote for the Developer Success Lab&rsquo;s
-                <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer
-                Science Review</a>, celebrating
-                <a href="https://doi.org/10.1109/TSE.2021.3064953" target="_blank" rel="noopener noreferrer">Elazhary et al.&rsquo;s (2021) empirical study</a>
-                of the ten &ldquo;core&rdquo; Continuous Integration practices &mdash;
-                practices that circulated in industry for roughly fifteen years before
-                anyone examined them scientifically.`,
-      `                I include it because it argues for a habit I care deeply about: holding our
-                field&rsquo;s widely accepted ideas and &ldquo;thought leadership&rdquo; up
-                to empirical scrutiny, and treating rigorous studies &mdash; and the
-                replication packages they share &mdash; as blueprints that practitioners
-                can adapt on their own teams.`,
-    ],
-    referencesHtml: null,
-    link: { href: "/scholarship/thought-leadership/", external: false, label: "Continue reading" },
-    detail: {
-      documentTitle: "Think Big, Then Scrutinize | Kristen Foster-Marks",
-      metaDescription:
-        "Think big, then scrutinize: evaluating thought leadership with scientific methods — a commentary by Kristen Foster-Marks reviewing Elazhary et al. (2021)",
-      headingHtml: "Think big, then scrutinize: evaluating thought leadership with scientific methods",
-      subtitleHtml: null,
-      headerOrder: ["meta", "h1", "provenance"],
-      metaLine: `<time datetime="2024-11-18">November 18, 2024</time> &middot; Commentary`,
-      provenanceHtml: `Originally published in the Developer Success Lab&rsquo;s
-              <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer Science Review</a>,
-              November 18, 2024. A commentary on Elazhary et al. (2021),
-              <em>Uncovering the Benefits and Challenges of Continuous Integration
-              Practices</em>. Reproduced here by the author.`,
-      backLabel: "Scholarship",
-      bodyFile: "content/scholarship/thought-leadership.html",
-    },
-  },
+  // {
+  //   slug: "intellectual-humility",
+  //   date: { display: "April 2025", datetime: "2025-04-17" },
+  //   type: "Commentary",
+  //   title: "For whom does intellectual humility become disadvantageous?",
+  //   summaryHtml: [
+  //     `                I wrote this commentary for an issue of the Developer Success Lab&rsquo;s
+  //               <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer
+  //               Science Review</a>. It responds to
+  //               <a href="https://doi.org/10.1038/s44159-022-00081-9" target="_blank" rel="noopener noreferrer">Porter et al.&rsquo;s (2022) review</a> of the construct
+  //               <em>intellectual humility</em> &mdash; a metacognitive ability to recognize
+  //               the limitations of one&rsquo;s beliefs and knowledge. The authors call for more research into when and for whom intellectual humility becomes
+  //               disadvantageous.`,
+  //   ],
+  //   referencesHtml: null,
+  //   link: { href: "/scholarship/intellectual-humility/", external: false, label: "Continue reading" },
+  //   detail: {
+  //     documentTitle: "For whom does intellectual humility become disadvantageous? | Kristen Foster-Marks",
+  //     metaDescription:
+  //       "For whom does intellectual humility become disadvantageous? — a commentary by Kristen Foster-Marks reviewing Porter et al. (2022)",
+  //     headingHtml: "For whom does intellectual humility become disadvantageous?",
+  //     subtitleHtml: null,
+  //     headerOrder: ["meta", "h1", "provenance"],
+  //     metaLine: `<time datetime="2025-04-17">April 17, 2025</time> &middot; Commentary`,
+  //     provenanceHtml: `Originally published in the Developer Success Lab&rsquo;s
+  //             <a href="https://dsl.pubpub.org/pub/intellectual-humility" target="_blank" rel="noopener noreferrer">Developer Science Review</a>,
+  //             April 17, 2025. Reproduced here by the author.`,
+  //     backLabel: "Scholarship",
+  //     bodyFile: "content/scholarship/intellectual-humility.html",
+  //   },
+  // },
+  // {
+  //   slug: "thought-leadership",
+  //   date: { display: "November 2024", datetime: "2024-11-18" },
+  //   type: "Commentary",
+  //   title: "Think big, then scrutinize: evaluating thought leadership with scientific methods",
+  //   summaryHtml: [
+  //     `                A commentary I wrote for the Developer Success Lab&rsquo;s
+  //               <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer
+  //               Science Review</a>, celebrating
+  //               <a href="https://doi.org/10.1109/TSE.2021.3064953" target="_blank" rel="noopener noreferrer">Elazhary et al.&rsquo;s (2021) empirical study</a>
+  //               of the ten &ldquo;core&rdquo; Continuous Integration practices &mdash;
+  //               practices that circulated in industry for roughly fifteen years before
+  //               anyone examined them scientifically.`,
+  //     `                I include it because it argues for a habit I care deeply about: holding our
+  //               field&rsquo;s widely accepted ideas and &ldquo;thought leadership&rdquo; up
+  //               to empirical scrutiny, and treating rigorous studies &mdash; and the
+  //               replication packages they share &mdash; as blueprints that practitioners
+  //               can adapt on their own teams.`,
+  //   ],
+  //   referencesHtml: null,
+  //   link: { href: "/scholarship/thought-leadership/", external: false, label: "Continue reading" },
+  //   detail: {
+  //     documentTitle: "Think Big, Then Scrutinize | Kristen Foster-Marks",
+  //     metaDescription:
+  //       "Think big, then scrutinize: evaluating thought leadership with scientific methods — a commentary by Kristen Foster-Marks reviewing Elazhary et al. (2021)",
+  //     headingHtml: "Think big, then scrutinize: evaluating thought leadership with scientific methods",
+  //     subtitleHtml: null,
+  //     headerOrder: ["meta", "h1", "provenance"],
+  //     metaLine: `<time datetime="2024-11-18">November 18, 2024</time> &middot; Commentary`,
+  //     provenanceHtml: `Originally published in the Developer Success Lab&rsquo;s
+  //             <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer Science Review</a>,
+  //             November 18, 2024. A commentary on Elazhary et al. (2021),
+  //             <em>Uncovering the Benefits and Challenges of Continuous Integration
+  //             Practices</em>. Reproduced here by the author.`,
+  //     backLabel: "Scholarship",
+  //     bodyFile: "content/scholarship/thought-leadership.html",
+  //   },
+  // },
   {
     slug: null,
     dateText: "October 2024 &middot; Research Article",
     title:
       "&ldquo;My code is shit&rdquo;: Negative automatic thoughts and outcomes of a behavioral experiment for code review anxiety",
     summaryHtml: [
-      `                This co-authored preprint reports on a mixed-methods, intervention study on mitigating <em>code review
+      `                This co-authored preprint reports on a mixed-methods intervention study on mitigating <em>code review
                 anxiety</em>. The study
                 developed and assessed a guided behavioral experiment toolkit. The findings
                 indicated that the toolkit reduced code review anxiety and decreased the
@@ -129,13 +124,13 @@ module.exports = [
       documentTitle: "Microinclusions | Kristen Foster-Marks",
       metaDescription:
         "Microinclusions: a small way to increase sense of belonging and fit on tech teams — a commentary by Kristen Foster-Marks reviewing Muragishi et al. (2023)",
-      headingHtml: "Microinclusions: a small way to increase sense of belonging and fit on tech teams",
+      headingHtml: "A Commentary on \"Microinclusions: a small way to increase sense of belonging and fit on tech teams\"",
       subtitleHtml: null,
       headerOrder: ["meta", "h1", "provenance"],
       metaLine: `<time datetime="2024-07-22">July 22, 2024</time> &middot; Commentary`,
       provenanceHtml: `Originally published in the Developer Success Lab&rsquo;s
               <a href="https://dsl.pubpub.org/pub/11y8ukro/release/1" target="_blank" rel="noopener noreferrer">Developer Science Review</a>,
-              July 22, 2024. Reproduced here by the author.`,
+              July 22, 2024.`,
       backLabel: "Scholarship",
       bodyFile: "content/scholarship/microinclusions.html",
     },

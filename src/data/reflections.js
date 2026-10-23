@@ -5,13 +5,9 @@ module.exports = [
     type: "Praxis",
     title: "Your Software Engineers Do Need Communication Skills",
     summaryHtml: [
-      `                An engineering manager argued his developers should just build things and
-                leave the communicating to others. This reflection pushes back: SEs
-                communicate constantly &mdash; code reviews, RFCs, explaining delays &mdash;
-                and communication failures carry real costs. The way forward is to appeal
-                to engineers' analytic mindsets by teaching them to analyze
-                &ldquo;rhetorical situations&rdquo; (author, audience, text, purpose,
-                context).`,
+      `                This essay pushes back on the idea that software engineers (SEs) don't need communication skills by arguing that SEs
+                communicate constantly, and that communication failures carry real costs. I make a case to appeal
+                to engineers' analytic mindsets by teaching them to analyze rhetorical situations as they craft their communication.`,
     ],
     referencesHtml: null,
     link: { href: "/reflections/communication-skills/", external: false, label: "Continue reading" },
@@ -34,10 +30,9 @@ module.exports = [
     type: "Theory",
     title: "Technical Upskilling: Are We Walking in Circles without a Rhetorical Compass?",
     summaryHtml: [
-      `                Software engineers sign up for upskilling enthusiastically &mdash; then
-                don't show up, don't do the work, or don't finish. Drawing on Barbara
+      `                Drawing on Barbara
                 Schneider's work on professional development and Lloyd Bitzer's
-                rhetorical situation, this reflection argues that engagement depends on
+                rhetorical situation, this reflection argues that engagement in technical training depends on
                 making the &ldquo;why&rdquo; of upskilling clear and issuing a genuine
                 invitation into the learning, not an order from above.`,
     ],
@@ -62,10 +57,9 @@ module.exports = [
     type: "Praxis",
     title: "Learn How to Code: Insights from the L2 Motivational Self System",
     summaryHtml: [
-      `                Learning to code is hard, but it's achievable &mdash; and what often
-                separates those who persist from those who give up is motivation. This
-                reflection borrows Zolt&aacute;n D&ouml;rnyei's L2 Motivational Self
-                System from second language acquisition research and asks how the
+      `                This
+                reflection draws on Zolt&aacute;n D&ouml;rnyei's L2 Motivational Self
+                System from second language acquisition research and asks how
                 &ldquo;ideal&rdquo; and &ldquo;ought-to&rdquo; selves might explain who
                 sticks with learning to program.`,
     ],

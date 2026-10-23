@@ -38,9 +38,6 @@ function renderScholarshipIndex(entries) {
         <div class="wrap">
           <p class="eyebrow">Research &amp; Scholarship</p>
           <h1>Research &amp; Scholarship</h1>
-          <p>
-            My research interests center on adult learning, particularly motivation and participation, self-directed learning, learner beliefs, and learning in workplace contexts. I draw primarily on the adult education and learning sciences literatures, including work on educational participation, metacognition, self-regulated and self-directed learning, and sociocultural perspectives on learning. I am especially interested in how these bodies of research can inform the design of learning environments that support sustained engagement, autonomy, and meaningful learning.
-          </p>
         </div>
       </section>
 
