@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Draft: remove noindex when this experience is linked from the Learning Design page. -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Consciousness-Raising &mdash; A Mini-Course for Adult Educators</title>
+  <title>Consciousness-Raising &mdash; A Course for Adult Educators</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -61,16 +61,11 @@
       <rect x="9" y="9" width="13" height="13" rx="2" />
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
     </symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4M12 8h.01" />
+    </symbol>
   </svg>
-
-  <!-- Shared hero collage, copied into every section's header by script.js. -->
-  <template id="hero-template">
-    <figure class="hero-collage" aria-hidden="true">
-      <div class="hero-collage__art"></div>
-      <p class="hero-collage__tag"><span>&ldquo;Sisterhood<br>is powerful.&rdquo;</span><span
-          class="hero-collage__credit">&mdash; Kathie Sarachild</span></p>
-    </figure>
-  </template>
 
   <div class="app-shell">
 
@@ -83,7 +78,7 @@
       </button>
       <div class="site-header__brand">
         <p class="site-header__title">Consciousness-Raising</p>
-        <p class="site-header__tagline">A mini-course for adult educators</p>
+        <p class="site-header__tagline">A course for adult educators</p>
       </div>
       <nav class="site-header__nav" aria-label="Course">
         <ul role="list">
@@ -126,7 +121,7 @@
           </div>
         </section>
 
-        <section class="lesson-section lesson-section--reflect" aria-labelledby="section-2-title" data-no-hero>
+        <section class="lesson-section lesson-section--reflect" aria-labelledby="section-2-title">
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
@@ -135,22 +130,28 @@
             </header>
 
             <div class="reflection" data-reflection>
-              <article class="reflect-card" aria-labelledby="reflection-1-question">
+              <article class="reflect-card" aria-labelledby="reflection-1-question reflection-1-followup">
                 <p class="reflect-card__eyebrow">
                   <span class="reflect-card__icon" aria-hidden="true"><svg>
                       <use href="#icon-users" />
                     </svg></span>
                   Reflection
                 </p>
-                <h2 class="reflect-card__question" id="reflection-1-question">Think of a <strong>negative</strong> experience during your time in the higher education system.</h2>
-                <h2 class="reflect-card__question" id="reflection-1-question">Describe your experience*. What happened? What made the experience negative for you?</h2>
+                <h2 class="reflect-card__question" id="reflection-1-question">Think about something you experienced as an undergraduate student that felt <strong>unfair, frustrating, or discouraging</strong>.</h2>
+                <h2 class="reflect-card__question" id="reflection-1-followup">What happened, and what made the experience difficult or negative for you?<span class="tooltip">
+                    <button type="button" class="tooltip__trigger" aria-label="More guidance"
+                      aria-describedby="reflection-1-hint"><svg aria-hidden="true">
+                        <use href="#icon-info" />
+                      </svg></button>
+                    <span class="tooltip__bubble" role="tooltip" id="reflection-1-hint">If you prefer, describe an
+                      experience you witnessed rather than one you personally experienced.</span>
+                  </span></h2>
                 <p class="reflect-card__field">
                   <label class="visually-hidden" for="reflection-1-input">Your reflection on the question
                     (required to continue)</label>
-                  <textarea class="reflect-card__input" id="reflection-1-input" rows="3"
+                  <textarea class="reflect-card__input" id="reflection-1-input" rows="6"
                     placeholder="Jot down your thoughts." data-reflection-input></textarea>
                 </p>
-                <p><em>*If you'd rather not disclose personal information, feel free todescribe an experience you witnessed rather than personally experienced.</em></p>
               </article>
             </div>
 
@@ -163,7 +164,7 @@
           </div>
         </section>
 
-        <section class="lesson-section" aria-labelledby="section-3-title" data-no-hero>
+        <section class="lesson-section" aria-labelledby="section-3-title">
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
@@ -172,7 +173,7 @@
                     <blockquote>
                       <p>Many of us have been taught from a very early age to distrust other females, to be protective of our families and bosses, to see marriage as the ultimate form of happiness and fulfillment, and to be both emotionally and economically dependent on the various men in our lives. [&hellip;] Consequently, many of us feel that everything limiting and painful in our lives is due to our own failings and that, if something weren&rsquo;t wrong with us in the first place, we would be happy and fulfilled in our female role.</p>
                     </blockquote>
-                    <figcaption>Sharpe et al., 2017, as cited in Engelstad, 2026, p. 3</figcaption>
+                    <figcaption>Sharpe et al., 2017, as cited in <a class="cite" href="#ref-engelstad-2026">Engelstad, 2026</a>, p. 3</figcaption>
                   </figure>
               </div>
             </header>
@@ -190,17 +191,17 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p>Conscisouness-raising came about against the backdrop of the Women's Liberation Movement in 1960s.</p>
+                    <p>Consciousness-raising came about against the backdrop of the Women's Liberation Movement in the 1960s.</p>
                     <p>That decade saw multiple cultural, political, and social changes that galvanized women to move from private domestic discontent, to organized public action and activism. In 1960, the Food and Drug Administration approved the birth control pill, giving women unprecedented control over family planning and fertility. In 1963, Betty Friedan published <em>The Feminine Mystique</em>, which challenged the prevailing notion that women could only find fulfillment through domesticity. That same year, Congress passed the Equal Pay Act, making it illegal to pay men and women different wages for performing the exact same work.</p>
-                    <p>In 1968, the New York Radical Women--one of the original women's liberation groups--organized a famous protest at the Miss America pageant. As they marched the Atlantic City boardwalk ahead of the pageant, they threw bras, curlers, and girdles into what they called a <em>freedom trashcan</em> (Baker, n.d.).</p>
-                    <p>As Engelstad (2026) writes:</p>
+                    <p>In 1968, the New York Radical Women--one of the original women's liberation groups--organized a famous protest at the Miss America pageant. As they marched the Atlantic City boardwalk ahead of the pageant, they threw bras, curlers, and girdles into what they called a <em>freedom trashcan</em> (<a class="cite" href="#ref-baker-nd">Baker, n.d.</a>).</p>
+                    <p>As <a class="cite" href="#ref-engelstad-2026">Engelstad (2026)</a> writes:</p>
                     <figure class="source-quote">
                       <blockquote>
                         <p>At the time, sexism and gendered oppression were not well known or understood phenomena. Instead, women were generally seen as inherently submissive, weak, irrational, emotional, and caring, and therefore best suited for domestic labour and submission to a male head of household. Individual women would often take it as a personal failure if they struggled to conform to these expectations.</p>
                       </blockquote>
-                      <figcaption>Engelstad, 2026, p. 3</figcaption>
+                      <figcaption><a class="cite" href="#ref-engelstad-2026">Engelstad, 2026</a>, p. 3</figcaption>
                     </figure>
-                    <p>The Women’s Liberation movement turned all of this on its head, though. No aspect of women's lives went unexamined, including "all social norms, daily interactions, and the supposedly natural logic of sexual difference hiding in plain sight" (Kinnamon, 2024, p. 150).</p>
+                    <p>The Women’s Liberation movement turned all of this on its head, though. No aspect of women's lives went unexamined, including "all social norms, daily interactions, and the supposedly natural logic of sexual difference hiding in plain sight" (<a class="cite" href="#ref-kinnamon-2024">Kinnamon, 2024</a>, p. 150).</p>
                   </div>
                 </div>
               </div>
@@ -219,11 +220,11 @@
                   <div class="accordion__body accordion__body--with-media">
                     <div class="accordion__body-text">
                       <p>Kathie Sarachild is a writer, radical feminist, and theoretician. Born Kathie Amatniek, she changed her last name to Sarachild to honor her mother. She was a member of both the Redstockings and the New York Radical Women, two feminist groups founded in the 1960s.</p>
-                      <p>In the late 1960s, Sarachild coined the phrase "Sisterhood is powerful" (Redstockings, n.d.), and she became the person most closely associated with consciousness-raising within the Women's Liberation Movement.</p>
+                      <p>In the late 1960s, Sarachild coined the phrase "Sisterhood is powerful" (<a class="cite" href="#ref-redstockings-nd">Redstockings, n.d.</a>), and she became the person most closely associated with consciousness-raising within the Women's Liberation Movement.</p>
                     </div>
                     <figure class="portrait-figure accordion__body-media">
                       <img src="images/kathie-sarachild.webp" alt="Portrait of Kathie Sarachild." width="520" height="384">
-                      <figcaption>Kathie Sarachild. Photograph from Redstockings (n.d.; see References).</figcaption>
+                      <figcaption>Kathie Sarachild. Photograph from <a class="cite" href="#ref-redstockings-nd">Redstockings (n.d.; see References)</a>.</figcaption>
                     </figure>
                   </div>
                 </div>
@@ -232,8 +233,7 @@
           </div>
         </section>
 
-        <section class="lesson-section" aria-labelledby="section-4-title" data-outline-label="Consciousness-Raising"
-          data-no-hero>
+        <section class="lesson-section" aria-labelledby="section-4-title" data-outline-label="Consciousness-Raising">
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
@@ -242,7 +242,7 @@
                     <blockquote>
                       <p>The purpose of women's liberation was to defeat male supremacy and give women equality. We felt this was such a monumental task. How to approach it? Consciousness-raising seemed to be what was needed.</p>
                     </blockquote>
-                    <figcaption>Sarachild, 1975, p. 147</figcaption>
+                    <figcaption><a class="cite" href="#ref-sarachild-1975">Sarachild, 1975</a>, p. 147</figcaption>
                   </figure>
               </div>
             </header>
@@ -262,9 +262,9 @@
                   <div class="accordion__body">
                     <div class="accordion__body--with-media">
                       <div class="accordion__body-text">
-                        <p>The exact origins of consciousness-raising as a practice can’t be attributed to a single person, and in fact, historical accounts trace elements of the practice to labor and Black liberation organizing, in which participants examined their experiences collectively as a means of developing political understanding (Engelstad, 2026).</p>
-                        <p>That said, the <em>term</em> <strong>consciousness-raising</strong> was coined by the New York Radical Women in late 1967 (Nachescu, 2008, p. 31).</p>
-                        <p>According to accounts of the group’s early meeting, Anne Forer suggested that members describe ways they had experienced oppression as women because she wanted to “raise” her own consciousness about women’s oppression (Sarachild, 1975, pp. 144&ndash;150).</p>
+                        <p>The exact origins of consciousness-raising as a practice can’t be attributed to a single person, and in fact, historical accounts trace elements of the practice to labor and Black liberation organizing, in which participants examined their experiences collectively as a means of developing political understanding (<a class="cite" href="#ref-engelstad-2026">Engelstad, 2026</a>).</p>
+                        <p>That said, the <em>term</em> <strong>consciousness-raising</strong> was coined by the New York Radical Women in late 1967 (<a class="cite" href="#ref-nachescu-2008">Nachescu, 2008</a>, p. 31).</p>
+                        <p>According to accounts of the group’s early meeting, Anne Forer suggested that members describe ways they had experienced oppression as women because she wanted to “raise” her own consciousness about women’s oppression (<a class="cite" href="#ref-sarachild-1975">Sarachild, 1975</a>, pp. 144&ndash;150).</p>
                       </div>
                       <figure class="portrait-figure accordion__body-media">
                         <img src="images/anne-forer-nyt.jpeg" alt="Portrait of Anne Forer, who sparked the term consciousness-raising." width="520" height="384">
@@ -274,16 +274,16 @@
                     <div class="accordion__body--with-media">
                       <div class="accordion__body-text">
                         <p>Sarachild subsequently adopted consciousness-raising as the name for the social practice. She and the <strong>New York Radical Women</strong> were instrumental in popularizing the practice. In 1968, she wrote "A Program for Feminist Consciousness-Raising" which was published in <em>Notes from the Second Year: Women's Liberation</em>, and she later provided a more extensive explanation of the practice in the article “Consciousness-Raising: A Radical Weapon.”</p>
-                        <p>Winkler (1997) suggests that part of CR's appeal for Sarachild was that it offered radical feminists a way of generating knowledge outside the existing theoretical frameworks of the male-dominated Left, which tended to sideline questions of gender oppression. As an illustration, Winkler points to a CR exercise of Sarachild's that has since become common in introductory women's studies courses: examining the gendered expectations and assumptions built into norms around women's appearance (Winkler, 1997).</p>
+                        <p><a class="cite" href="#ref-winkler-1997">Winkler (1997)</a> suggests that part of CR's appeal for Sarachild was that it offered radical feminists a way of generating knowledge outside the existing theoretical frameworks of the male-dominated Left, which tended to sideline questions of gender oppression. As an illustration, Winkler points to a CR exercise of Sarachild's that has since become common in introductory women's studies courses: examining the gendered expectations and assumptions built into norms around women's appearance (<a class="cite" href="#ref-winkler-1997">Winkler, 1997</a>).</p>
                       </div>
                       <figure class="portrait-figure accordion__body-media">
                         <img src="images/program-feminist-cr.png"
                           alt="Scanned page of Kathie Sarachild’s “A Program for Feminist Consciousness-Raising.”"
                           width="520" height="410">
-                        <figcaption>&ldquo;A Program for Feminist Consciousness-Raising&rdquo; (Sarachild, 1970; see References).</figcaption>
+                        <figcaption>&ldquo;A Program for Feminist Consciousness-Raising&rdquo; (<a class="cite" href="#ref-sarachild-1970">Sarachild, 1970</a>; see References).</figcaption>
                       </figure>
                     </div>
-                    <p>Nachescu (2008) describes this as a founding moment for women’s liberation: alongside the term itself, the group articulated the idea that small, women-only groups should be the movement’s preferred organizing tactic (p. 31).</p>
+                    <p><a class="cite" href="#ref-nachescu-2008">Nachescu (2008)</a> describes this as a founding moment for women’s liberation: alongside the term itself, the group articulated the idea that small, women-only groups should be the movement’s preferred organizing tactic (p. 31).</p>
                   </div>
                 </div>
               </div>
@@ -304,13 +304,13 @@
                       <blockquote>
                         <p>In the end the group decided to raise its consciousness by studying women&rsquo;s lives by topics like childhood, jobs, motherhood, etc. We&rsquo;d do any outside reading we wanted to and thought was important. But our starting point for discussion, as well as our test of the accuracy of what any of the books said, would be the actual experience we had in these areas.</p>
                       </blockquote>
-                      <figcaption>Kathie Sarachild, &ldquo;Consciousness-Raising: A Radical Weapon&rdquo; (1970, p. 145)</figcaption>
+                      <figcaption>Kathie Sarachild, &ldquo;Consciousness-Raising: A Radical Weapon&rdquo; (<a class="cite" href="#ref-sarachild-1970">1970</a>, p. 145)</figcaption>
                     </figure>
 
                     <p>Consciousness-raising groups began as an extension of the New York Radical Women's regular gathering. The women agreed to spend time together discussing their experiences with marriage, work, sexuality, motherhood, housework, and other aspects of their lives.</p>
                     <p>The women committed to discussing "who and what has an interest in maintaining the oppression in our lives" (p. 145) with the explicit goal of galvanizing each other to "actions brought to the public for the specific purpose of challenging old ideas and raising new ones."</p>
-                    <p>The proliferation of consciousness-raising groups was quick in the movement's early years. Engelstad (2026) estimates that by 1973, over 100,000 women in the U.S. had joined a consciousness-raising group, and that the practice had even spread internationally.</p>
-                    <p>In fact, according to Kinnamon (2024), consciousness-raising became a "central method of the twentieth-century feminist movement" (p. 151).</p>
+                    <p>The proliferation of consciousness-raising groups was quick in the movement's early years. <a class="cite" href="#ref-engelstad-2026">Engelstad (2026)</a> estimates that by 1973, over 100,000 women in the U.S. had joined a consciousness-raising group, and that the practice had even spread internationally.</p>
+                    <p>In fact, according to <a class="cite" href="#ref-kinnamon-2024">Kinnamon (2024)</a>, consciousness-raising became a "central method of the twentieth-century feminist movement" (p. 151).</p>
                   </div>
                 </div>
               </div>
@@ -327,13 +327,13 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p>In practice, consciousness-raising was meant to begin with women’s real, lived experiences rather than existing theory of women’s oppression, which had been critiqued by women as having been produced by men, their oppressors (Sarachild, 1975).</p>
-                    <p>Members of consciousness-raising groups typically considered a particular subject and took turns describing their own experiences with it. Many groups had explicit rules that asked them to wait to debate, evaluate, or theorize on those experiences, instead allowing participants the space to articulate and establish what had actually happened in their lives. The group could then compare accounts and look for recurring patterns across what they previously thought had been individual, idiosyncratic experiences (Engelstad, 2026; Kinnamon, 2024; Sarachild, 1975).</p>
+                    <p>In practice, consciousness-raising was meant to begin with women’s real, lived experiences rather than existing theory of women’s oppression, which had been critiqued by women as having been produced by men, their oppressors (<a class="cite" href="#ref-sarachild-1975">Sarachild, 1975</a>).</p>
+                    <p>Members of consciousness-raising groups typically considered a particular subject and took turns describing their own experiences with it. Many groups had explicit rules that asked them to wait to debate, evaluate, or theorize on those experiences, instead allowing participants the space to articulate and establish what had actually happened in their lives. The group could then compare accounts and look for recurring patterns across what they previously thought had been individual, idiosyncratic experiences (<a class="cite" href="#ref-engelstad-2026">Engelstad, 2026</a>; <a class="cite" href="#ref-kinnamon-2024">Kinnamon, 2024</a>; <a class="cite" href="#ref-sarachild-1975">Sarachild, 1975</a>).</p>
                     <p>Consciousness-raising in practice moved through four related stages:</p>
                     <figure class="process-figure">
                       <img src="images/cr-process.png" alt="The four stages of consciousness-raising: individual experience, recognition of shared patterns, analysis of the social conditions producing those experiences, and political action based on that analysis." width="1565" height="373">
                     </figure>
-                    <p>Consciousness-raising was never meant to end with personal disclosure, but rather provide the empirical material from which an explanation could be constructed and then ultimately acted upon. Fundamentally, it was considered a method for investigating women’s social conditions, developing feminist theory from lived experience, and using the knowledge produced through that inquiry as a basis for political action (Kinnamon, 2024; Sarachild, 1975).</p>
+                    <p>Consciousness-raising was never meant to end with personal disclosure, but rather provide the empirical material from which an explanation could be constructed and then ultimately acted upon. Fundamentally, it was considered a method for investigating women’s social conditions, developing feminist theory from lived experience, and using the knowledge produced through that inquiry as a basis for political action (<a class="cite" href="#ref-kinnamon-2024">Kinnamon, 2024</a>; <a class="cite" href="#ref-sarachild-1975">Sarachild, 1975</a>).</p>
                   </div>
                 </div>
               </div>
@@ -350,7 +350,7 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p>To understand the kinds of insights that that could arise from a consciousness-raising session, it can be helpful to analyze an example. Consider the distribution of household labor:</p>
+                    <p>To understand the kinds of insights that could arise from a consciousness-raising session, it can be helpful to analyze an example. Consider the distribution of household labor:</p>
                     <p>A woman who performs substantially more domestic work than her husband might initially explain the situation through the particular characteristics of her marriage. She might believe that she simply:</p>
                     <ul class="body-list">
                       <li>married an inconsiderate man,</li>
@@ -366,8 +366,7 @@
           </div>
         </section>
 
-        <section class="lesson-section" aria-labelledby="section-8-title" data-outline-label="Significance of Consciousness-Raising"
-          data-no-hero>
+        <section class="lesson-section" aria-labelledby="section-8-title" data-outline-label="Significance of Consciousness-Raising">
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
@@ -376,7 +375,7 @@
                     <blockquote>
                       <p>We assume that our feelings are telling us something from which we can learn&hellip; that our feelings mean something worth analyzing.</p>
                     </blockquote>
-                    <figcaption>Sarachild (1970, p. ???)</figcaption>
+                    <figcaption><a class="cite" href="#ref-sarachild-1970">Sarachild (1970, p. ???)</a></figcaption>
                   </figure>
               </div>
             </header>
@@ -395,7 +394,7 @@
                 <div class="accordion__panel">
                   <div class="accordion__body">
                     <!-- TODO: confirm the source/page for the "epistemically forceful" quote; attributed to Engelstad, 2026, p. 3 as a best guess. -->
-                    <p>From the beginning, consciousness-raising was meant to challenge traditional methods of knowledge production, as well as ideas about who in society had the authority to determine what counted as valid knowledge. As Sarachild (1975) wrote, the "starting point for discussion, as well as our test of the accuracy of what any of the books said, would be the actual experience we had in these areas" (p. 145).</p>
+                    <p>From the beginning, consciousness-raising was meant to challenge traditional methods of knowledge production, as well as ideas about who in society had the authority to determine what counted as valid knowledge. As <a class="cite" href="#ref-sarachild-1975">Sarachild (1975)</a> wrote, the "starting point for discussion, as well as our test of the accuracy of what any of the books said, would be the actual experience we had in these areas" (p. 145).</p>
                     <p>In consciousness-raising, lived experience is a valid and vital form of evidence. Personal stories are not seen as merely anecdotal, but as data that can reveal broader social patterns when shared and analyzed collectively.</p>
                   </div>
                 </div>
@@ -415,7 +414,7 @@
                   <div class="accordion__body">
                     <p>Consciousness-raising challenged the assumption that only credentialed experts&mdash;historically men&mdash;could produce legitimate knowledge about women&rsquo;s lives. By treating ordinary women as capable analysts of their own conditions, consciousness-raising redistributed epistemic authority: the people living an experience were positioned as those best placed to investigate and explain it.</p>
                     <p>Sarachild explicitly objected to the assumption that established authorities already possessed the conceptual and theoretical tools necessary to explain women&rsquo;s experiences. She argued that instead, women could investigate their own conditions collectively and develop theory from what they discovered.</p>
-                    <p>This critique extended into history as well. Aware that women&rsquo;s history had been distorted by a patriarchal politics of knowledge production, many consciousness-raising groups helped spark a resurgence of interest in women&rsquo;s history, generating study groups that worked to recover what that politics had erased (Nachescu, 2008, p. 31).</p>
+                    <p>This critique extended into history as well. Aware that women&rsquo;s history had been distorted by a patriarchal politics of knowledge production, many consciousness-raising groups helped spark a resurgence of interest in women&rsquo;s history, generating study groups that worked to recover what that politics had erased (<a class="cite" href="#ref-nachescu-2008">Nachescu, 2008</a>, p. 31).</p>
                     <p>This raises a question that feminist epistemologists continue to pursue&mdash;who is recognized as a credible knower, and whose testimony is dismissed before it can be heard?</p>
                   </div>
                 </div>
@@ -434,17 +433,17 @@
                 <div class="accordion__panel">
                   <div class="accordion__body">
                     <p>In practice, consciousness-raising is simultaneously experiential and analytical. Personal experiences constituted a starting point for inquiry, but individual interpretation was not necessarily its endpoint. Experiences became especially politically revealing when compared, questioned, and situated alongside the experiences of other women.</p>
-                    <p>Scholars have examined consciousness-raising as an epistemological practice&mdash;in other words, a method concerned with how knowledge is produced and justified. When participants discover that seemingly personal experiences recur systematically, they acquire evidence that explanations located solely within individuals may be insufficient. In this way, &ldquo;consciousness-raising is recognised as epistemically forceful in a range of philosophical literature&rdquo; (Engelstad, 2026, p. 3).</p>
+                    <p>Scholars have examined consciousness-raising as an epistemological practice&mdash;in other words, a method concerned with how knowledge is produced and justified. When participants discover that seemingly personal experiences recur systematically, they acquire evidence that explanations located solely within individuals may be insufficient. In this way, &ldquo;consciousness-raising is recognised as epistemically forceful in a range of philosophical literature&rdquo; (<a class="cite" href="#ref-engelstad-2026">Engelstad, 2026</a>, p. 3).</p>
                     <p>Knowledge, in this view, is not exclusively produced by outside observers, but can also be built collectively by people reflecting on and theorizing from their own lives.</p>
                     <figure class="source-quote">
                       <blockquote>
                         <p>The decision to emphasize our own feelings and experiences as women and to test all generalizations and reading we did by our own experience was actually the scientific method of research. We were in effect repeating the 17th century challenge of science to scholasticism: &lsquo;study nature, not books,&rsquo; and put all theories to the test of living practice and action.</p>
                       </blockquote>
-                      <figcaption>Kathie Sarachild, as cited in Nachescu, 2008, p. 29</figcaption>
+                      <figcaption>Kathie Sarachild, as cited in <a class="cite" href="#ref-nachescu-2008">Nachescu, 2008</a>, p. 29</figcaption>
                     </figure>
-                    <p>Sometimes people undergo an experience but lack the concepts needed to name or make sense of it. In <cite>Epistemic Injustice</cite>, philosopher Miranda Fricker (2007) shows how marginalized groups often lack the shared interpretive resources&mdash;the &ldquo;hermeneutic tools&rdquo;&mdash;to understand and express the ways in which they are being wronged, and she argues that this gap is itself an injustice, which she terms <em>hermeneutical injustice</em>.</p>
+                    <p>Sometimes people undergo an experience but lack the concepts needed to name or make sense of it. In <cite>Epistemic Injustice</cite>, philosopher Miranda <a class="cite" href="#ref-fricker-2007">Fricker (2007)</a> shows how marginalized groups often lack the shared interpretive resources&mdash;the &ldquo;hermeneutic tools&rdquo;&mdash;to understand and express the ways in which they are being wronged, and she argues that this gap is itself an injustice, which she terms <em>hermeneutical injustice</em>.</p>
                     <p>Consciousness-raising can be understood as a direct response. By naming shared experiences collectively, participants generated the very concepts&mdash;for example, recognizing unequal domestic labor as a political arrangement rather than a personal failing&mdash;that allowed them to understand and describe their own situations.</p>
-                    <p>Consciousness-raising surfaced &ldquo;how gender norms and social practices do not map on to an inherently natural or necessary set of gender norms and relations, but instead function as harmful and oppressive tools for patriarchal control&rdquo; (Engelstad, 2026, p. 3).</p>
+                    <p>Consciousness-raising surfaced &ldquo;how gender norms and social practices do not map on to an inherently natural or necessary set of gender norms and relations, but instead function as harmful and oppressive tools for patriarchal control&rdquo; (<a class="cite" href="#ref-engelstad-2026">Engelstad, 2026</a>, p. 3).</p>
                   </div>
                 </div>
               </div>
@@ -462,17 +461,17 @@
                 <div class="accordion__panel">
                   <div class="accordion__body">
                     <p>Consciousness-raising’s way of knowing shares important features with established methodologies in qualitative social research.</p>
-                    <p><strong>Grounded Theory Methodology (GTM)</strong> was introduced in the 1960s by the sociologists Anselm Strauss and Barney Glaser (Niasse, 2023). GTM builds explanation inductively from both quantitative and qualitative data and&mdash;much like consciousness-raising&mdash;allowing patterns and theory to emerge from the data, rather than imposing an existing framework.</p>
+                    <p><strong>Grounded Theory Methodology (GTM)</strong> was introduced in the 1960s by the sociologists Anselm Strauss and Barney Glaser (<a class="cite" href="#ref-niasse-2023">Niasse, 2023</a>). GTM builds explanation inductively from both quantitative and qualitative data and, much like consciousness-raising, allows patterns and theory to emerge from the data, rather than imposing an existing framework.</p>
                     <figure class="source-quote">
                       <blockquote>
                         <p>As a general methodology, GTM requires a simultaneous data collection and analysis process in which the researcher sets aside all theoretical frameworks that could biaise (sic) his study and tries to generate a theory from the data.</p>
                       </blockquote>
-                      <figcaption>Niasse, 2023, p. 3</figcaption>
+                      <figcaption><a class="cite" href="#ref-niasse-2023">Niasse, 2023</a>, p. 3</figcaption>
                     </figure>
-                    <p>Another research methodology that treats personal, lived experience as a legitimate source of data and analysis is <strong>autoethnography</strong>. "As a method/orientation, the term “autoethnography” appeared formally in the 1970s but did not receive much academic attention until the 1990s" (Adams & Herrmann, 2020, p. 2).</p>
-                    <p>Adams and Herman (2020), in their introduction to the first issue of the <em>Journal of Autoethnography</em>, write that, "The effects of several philosophical movements contributed to the increased use and development of autoethnography as well. These include the recognition of the ways personal/cultural identities shape perception and experience (e.g., “the personal is political”)" (p. 2).</p>
-                    <p>The shape of autoethnographic research can be deduced from its constituent morphemes: "auto", "ethno", and "graphy". As Adams and Herman (2020) note, "autoethnographic projects use selfhood, subjectivity, and personal experience (“auto”) to describe, interpret, and represent (“graphy”) beliefs, practices, and identities of a group or culture (“ethno”)" (p. 2).</p>
-                    <p>Echoing Sarachild's exhortations that women could and should take their experiences seriously as a source of knowledge (Sarachild, 1975), Adams and Herman (2020) tell autoethnographers hoping to submit their work to the journal that "manuscripts should not apologize for autoethnography or discuss why autoethnography isn’t a useful method or approach" (p. 3)</p>
+                    <p>Another research methodology that treats personal, lived experience as a legitimate source of data and analysis is <strong>autoethnography</strong>. "As a method/orientation, the term “autoethnography” appeared formally in the 1970s but did not receive much academic attention until the 1990s" (<a class="cite" href="#ref-herrmann-2020">Adams & Herrmann, 2020</a>, p. 2).</p>
+                    <p><a class="cite" href="#ref-herrmann-2020">Adams and Herrmann (2020)</a>, in their introduction to the first issue of the <em>Journal of Autoethnography</em>, write that, "The effects of several philosophical movements contributed to the increased use and development of autoethnography as well. These include the recognition of the ways personal/cultural identities shape perception and experience (e.g., “the personal is political”)" (p. 2).</p>
+                    <p>The shape of autoethnographic research can be deduced from its constituent morphemes: "auto", "ethno", and "graphy". As <a class="cite" href="#ref-herrmann-2020">Adams and Herrmann (2020)</a> note, "autoethnographic projects use selfhood, subjectivity, and personal experience (“auto”) to describe, interpret, and represent (“graphy”) beliefs, practices, and identities of a group or culture (“ethno”)" (p. 2).</p>
+                    <p>Echoing Sarachild's exhortations that women could and should take their experiences seriously as a source of knowledge (<a class="cite" href="#ref-sarachild-1975">Sarachild, 1975</a>), <a class="cite" href="#ref-herrmann-2020">Adams and Herrmann (2020)</a> tell autoethnographers hoping to submit their work to the journal that "manuscripts should not apologize for autoethnography or discuss why autoethnography isn’t a useful method or approach" (p. 3)</p>
                     <figure class="source-quote">
                       <blockquote>
                         <p>As we call for social justice, environmental responsibility, and the wholesale transformation of kinship, political and economic systems, autoethnography is needed now more than ever. In our rejection of an objective “view from nowhere,” autoethnographers recognize and embrace the reality that the person and the personal are always present in social life as well as in the processes of research and representation.</p>
@@ -486,7 +485,7 @@
           </div>
         </section>
 
-        <section class="lesson-section" aria-labelledby="section-9-title" data-no-hero>
+        <section class="lesson-section" aria-labelledby="section-9-title">
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
@@ -495,7 +494,7 @@
                     <blockquote>
                       <p>Everybody from Republicans to Communists said that they agreed that equal pay for equal work was a valid issue and deserved support. But when women wanted to try to figure out why we weren’t getting equal pay for equal work anywhere, and wanted to take a look in these areas, then what we were doing wasn’t politics, economics or even study at all, but “therapy,” something that women had to work out for themselves individually.</p>
                     </blockquote>
-                    <figcaption>Sarachild (1975, p. 145)</figcaption>
+                    <figcaption><a class="cite" href="#ref-sarachild-1975">Sarachild (1975, p. 145)</a></figcaption>
                   </figure>
               </div>
             </header>
@@ -515,7 +514,7 @@
                   <div class="accordion__body">
                     <div class="accordion__body--with-media">
                       <div class="accordion__body-text">
-                        <p>Some refused to accept consciousness-raising as a legitimate epistemological practice, dismissing it rather as merely a form of psychotherapy. According to Sarachild (1975), these groups were referred to disparagingly as coffee clatches, hen parties, and bitch sessions by men and women from all walks of life, even fellow radicals who were also advocating for societal change.</p>
+                        <p>Some refused to accept consciousness-raising as a legitimate epistemological practice, dismissing it rather as merely a form of psychotherapy. According to <a class="cite" href="#ref-sarachild-1975">Sarachild (1975)</a>, these groups were referred to disparagingly as coffee clatches, hen parties, and bitch sessions by men and women from all walks of life, even fellow radicals who were also advocating for societal change.</p>
                         <p>But Sarachild was insistent that consciousness-raising groups should not be reduced to these terms. She acknowledged that consciousness-raising and psychotherapy might superficially resemble one another, given that both involved small groups, intimate disclosures, and discussions of emotions and personal challenges.</p>
                         <p>The difference, however, lay in the questions each asked. Whereas therapy might ask an individual woman how she could change her perceptions, beliefs, and behaviors, consciousness-raising asked whether recurring, shared personal difficulties revealed something about the larger social organization of women&rsquo;s lives.</p>
                       </div>
@@ -523,7 +522,7 @@
                         <img src="images/resistance-sarachild-145.png"
                           alt="Scanned book passage titled &ldquo;The Resistance,&rdquo; describing the opposition women faced for simply studying their own situation without men present."
                           width="571" height="466">
-                        <figcaption>Kathie Sarachild, &ldquo;Consciousness-Raising: A Radical Weapon&rdquo; (1975, p. 145)</figcaption>
+                        <figcaption>Kathie Sarachild, &ldquo;Consciousness-Raising: A Radical Weapon&rdquo; (<a class="cite" href="#ref-sarachild-1975">1975</a>, p. 145)</figcaption>
                       </figure>
                     </div>
                   </div>
@@ -542,8 +541,8 @@
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p>Second-wave feminist organizing in general has been criticized for universalizing experiences particularly associated with white, middle-class women, and consciousness-raising groups were subject to this same critique (Boryczka, 2016;Engelstad, 2026; Quaid, 2026; Winkler, 1997). The underlying argument behind these critiques is that the category <em>women</em> does not describe a homogeneous group: women&rsquo;s experiences are shaped simultaneously by race, class, sexuality, disability, nationality, and other dimensions of social life.</p>
-                    <p>While these critiques of consciousness-raising as it was developed and practiced in the 1960s and 70s are valid, Engelstad (2026) argues that today, <em>intersectional consciousness-raising</em> can investigate differences between experiences, along with similarities. Rather than asking &ldquo;What experience do all women share?&rdquo; intersectional consciousness-raising asks &ldquo;What patterns and differences emerge when these experiences are compared, and what social conditions might explain them?&rdquo;</p>
+                    <p>Second-wave feminist organizing in general has been criticized for universalizing experiences particularly associated with white, middle-class women, and consciousness-raising groups were subject to this same critique (<a class="cite" href="#ref-boryczka-2016">Boryczka, 2016</a>; <a class="cite" href="#ref-engelstad-2026">Engelstad, 2026</a>; <a class="cite" href="#ref-quaid-2026">Quaid, 2026</a>; <a class="cite" href="#ref-winkler-1997">Winkler, 1997</a>). The underlying argument behind these critiques is that the category <em>women</em> does not describe a homogeneous group: women&rsquo;s experiences are shaped simultaneously by race, class, sexuality, disability, nationality, and other dimensions of social life.</p>
+                    <p>While these critiques of consciousness-raising as it was developed and practiced in the 1960s and 70s are valid, <a class="cite" href="#ref-engelstad-2026">Engelstad (2026)</a> argues that today, <em>intersectional consciousness-raising</em> can investigate differences between experiences, along with similarities. Rather than asking &ldquo;What experience do all women share?&rdquo; intersectional consciousness-raising asks &ldquo;What patterns and differences emerge when these experiences are compared, and what social conditions might explain them?&rdquo;</p>
                   </div>
                 </div>
               </div>
@@ -551,11 +550,17 @@
           </div>
         </section>
 
-        <section class="lesson-section" aria-labelledby="section-10-title" data-no-hero>
+        <section class="lesson-section" aria-labelledby="section-10-title">
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
                 <h1 class="lesson-title" id="section-10-title" tabindex="-1">Consciousness-Raising as Pedagogy</h1>
+                  <figure class="source-quote">
+                    <blockquote>
+                      <p>CR, I argue, provides a process through which class members can erect the intellectual, emotional, and relational scaffolding needed to support each other in the challenging work of taking direct action for social change within and beyond a campus context...Relationship and community building enables students to develop a skill necessary for democratic citizenship: the ability to engage in difficult dialogues about contentious issues that empowers them to voice their dissent even when directly confronted by opposition and authority.</p>
+                    </blockquote>
+                    <figcaption><a class="cite" href="#ref-boryczka-2016">Boryczka (2016, p. 45)</a></figcaption>
+                  </figure>
               </div>
             </header>
 
@@ -566,85 +571,116 @@
                     <span class="accordion__icon" aria-hidden="true"><svg>
                         <use href="#icon-gear" />
                       </svg></span>
-                    <span class="accordion__label">The epistemological dimension</span>
+                    <span class="accordion__label">Three papers worth reading</span>
                     <span class="accordion__toggle" aria-hidden="true"></span>
                   </button>
                 </h2>
                 <div class="accordion__panel">
                   <div class="accordion__body">
-                    <p></p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion__item">
-                <h2 class="accordion__heading">
-                  <button type="button" class="accordion__trigger" aria-expanded="false">
-                    <span class="accordion__icon" aria-hidden="true"><svg>
-                        <use href="#icon-users" />
-                      </svg></span>
-                    <span class="accordion__label">The pedagogical dimension</span>
-                    <span class="accordion__toggle" aria-hidden="true"></span>
-                  </button>
-                </h2>
-                <div class="accordion__panel">
-                  <div class="accordion__body">
-                    <p></p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion__item">
-                <h2 class="accordion__heading">
-                  <button type="button" class="accordion__trigger" aria-expanded="false">
-                    <span class="accordion__icon" aria-hidden="true"><svg>
-                        <use href="#icon-gear" />
-                      </svg></span>
-                    <span class="accordion__label">The political dimension</span>
-                    <span class="accordion__toggle" aria-hidden="true"></span>
-                  </button>
-                </h2>
-                <div class="accordion__panel">
-                  <div class="accordion__body">
-                    <p></p>
+                    <p>Perhaps unsurprisingly, consciousness-raising was adopted in early Women's Studies programs as a pedagogical method for helping students recognize the political nature of their personal experiences. And while the term "consciousness-raising" fell out of use in the 1980s and is now sometimes applied by educators and sometimes not (Winkler, 1997), it is still utilized by Women's Studies educators today to achieve a variety of pedagogical goals directly tied to its origins (Boryczka, 2016; Quaid, 2026).</p>
+                    <p>The principles underlying consciousness-raising also echo several important traditions in adult education, including those that emphasize learners' experiences as sources of knowledge, critical reflection on social conditions, and education as a means of facilitating individual and collective change.</p>
+                    <p>Although the following three papers examine consciousness-raising in the university context, they demonstrate how educators have adapted the feminist method into learning experiences that encourage adult learners to examine their experiences in relation to social structures, learn from one another's experiences, and organize for social action.</p>
+                    <details class="paper">
+                      <summary>
+                        <span class="paper__icon" aria-hidden="true"><svg>
+                            <use href="#icon-arrow-down" />
+                          </svg></span>
+                        <span class="paper__title">Winkler's "Raising C-R: Another Look at Consciousness-Raising in the Women's Studies Classroom" (1997)</span>
+                      </summary>
+                      <p>In this paper, Winkler summarizes the ways in which consciousness-raising influenced feminist pedagogy during the women's movement. She describes how early Women's Studies scholars faced challenges in translating the movement's society-transforming ideals into their college classrooms, citing faculty authority and institutional power structures as impediments to establishing solidarity between educators and students.</p>
+                      <p>In response to these challenges and criticisms, particularly those concerning the tendency to overlook differences in women's experiences and social positions, Winkler proposes "positional C-R", an intersectional approach to consciousness-raising that encourages students to examine how intersecting systems of power and inequality shape their experiences. She imagines "a space where <em>student</em> knowledge and expertise, experiential and otherwise, is taken seriously as contributing to our collective investigations" (p. 73), and she describes instructional activities that involve literary analysis, autobiographical reflection, and peer discussion that encourage students to examine how social identities influence their experiences and relationships with others.</p>
+                    </details>
+                    <details class="paper">
+                      <summary>
+                        <span class="paper__icon" aria-hidden="true"><svg>
+                            <use href="#icon-arrow-down" />
+                          </svg></span>
+                        <span class="paper__title">Boryczka's "Gender fun house: Teaching direct action as collective consciousness raising." (2016)</span>
+                      </summary>
+                      <p>In this paper, Boryczka argues that consciousness-raising can be an effective feminist teaching strategy for developing students' capacity for collective political action. She describes how she implemented a four-stage adaptation of the consciousness-raising process in her classroom at a Catholic college. The first stage enabled students to establish trust and develop relationships with each other; the second stage asked them to share personal experiences related to feminist issues they self-selected; the third stage asked them to analyze similarities in their experiences and connect this analysis to existing theory; the fourth and culminating stage had students applying their learning by organizing <strong>the Gender Fun House</strong>, an interactive campus event designed to encourage community discussion and critical reflection about feminist issues among the university community.</p>
+                    </details>
+                    <details class="paper">
+                      <summary>
+                        <span class="paper__icon" aria-hidden="true"><svg>
+                            <use href="#icon-arrow-down" />
+                          </svg></span>
+                        <span class="paper__title">Quaid's "Pedagogical Applications of Consciousness-Raising in Higher Education" (2026)</span>
+                      </summary>
+                      <p>This paper provides a practical model for adapting feminist consciousness-raising to a higher education setting. Quaid describes feminist consciousness-raising (FCR) as a student-directed approach to learning that can facilitate students in examining differences and similarities in their experiences, questioning systems of power, and developing knowledge collectively. She argues that by giving all students an opportunity to contribute their experiences and perspectives, and by encouraging them to carefully consider the perspectives of their peers, FCR encourages thoughtful inquiry and more inclusive learning.</p>
+                      <p>Included in this paper is Quaid's description of an FCR instructional activity she utilizes in her undergraduate feminist theory courses. She explains in detail how she structures this activity, and I believe it could be adapted for use in educational settings outside higher education. </p>
+                    </details>
                   </div>
                 </div>
               </div>
         </section>
 
-        <section class="lesson-section" aria-labelledby="section-11-title" data-no-hero>
+        <section class="lesson-section" aria-labelledby="section-11-title">
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
                 <h1 class="lesson-title" id="section-11-title" tabindex="-1">Activity</h1>
+                <p>At the beginning of this course, you reflected on something you experienced as an undergraduate student that felt <strong>unfair, frustrating, or discouraging</strong>.</p>
+                <p>Now, you&rsquo;ll use that experience to engage in consciousness-raising with your peers. Remember that consciousness-raising unfolds in four stages:</p>
               </div>
             </header>
 
-            <div class="reflection-recap" data-reflection-recap>
-              <p class="reflection-recap__intro">At the start of this mini-course, you reflected on a negative educational experience. You've completed the first step in the consciousness-raising process.</p>
+            <figure class="process-figure">
+              <img src="images/cr-process.png" alt="Diagram of the consciousness-raising process: individual experience, recognition of shared patterns, analysis of the social conditions producing those experiences, and political action based on that analysis." width="1565" height="373">
+            </figure>
 
-              <figure class="process-figure">
-                <img src="images/cr-process.png" alt="Diagram of the consciousness-raising process." width="520" height="384">
-              </figure>
+            <ol class="activity-steps">
+              <li class="activity-step">
+                <div class="activity-step__header">
+                  <span class="activity-step__number" aria-hidden="true">1</span>
+                  <h2 class="activity-step__title">Share your individual experience</h2>
+                </div>
+                <p class="activity-step__body activity-step__body--icon"><img src="images/speech-bubble.png" alt="" class="activity-intro__icon">Copy your reflection and paste it into the Canvas discussion thread titled <strong>Our Individual Experiences</strong>.</p>
 
-              <article class="recap-card" data-recap-for="reflection-1-input">
-                <p class="recap-card__eyebrow">
-                  <span class="recap-card__icon" aria-hidden="true"><svg>
-                      <use href="#icon-users" />
-                    </svg></span>
-                  Your reflection
-                </p>
-                <blockquote class="recap-card__answer" data-recap-answer></blockquote>
-                <button type="button" class="recap-card__copy" data-recap-copy>
-                  <svg aria-hidden="true">
-                    <use href="#icon-copy" />
-                  </svg>
-                  <span data-recap-copy-label>Copy text</span>
-                </button>
-              </article>
-            </div>
+                <div class="reflection-recap" data-reflection-recap>
+                  <article class="recap-card" data-recap-for="reflection-1-input">
+                    <button type="button" class="recap-card__copy" data-recap-copy>
+                      <svg aria-hidden="true">
+                        <use href="#icon-copy" />
+                      </svg>
+                      <span data-recap-copy-label>Copy text</span>
+                    </button>
+                    <blockquote class="recap-card__answer" data-recap-answer></blockquote>
+                  </article>
+                </div>
+              </li>
+
+              <li class="activity-step">
+                <div class="activity-step__header">
+                  <span class="activity-step__number" aria-hidden="true">2</span>
+                  <h2 class="activity-step__title">Identify patterns</h2>
+                </div>
+                <p class="activity-step__body">Read your peers' reflections carefully.</p>
+                <p class="activity-step__body">Resist the urge to immediately analyze or apply theory to their experiences. Simply compare your experiences. What similarities and differences emerge? Are there experiences you initially thought were unique to you that others share?</p>
+                <p class="activity-step__body activity-step__body--icon"><img src="images/speech-bubble.png" alt="" class="activity-intro__icon">Make note of these comparisons directly in the <strong>Our Individual Experiences</strong> discussion thread throughout the week.</p>
+              </li>
+
+              <li class="activity-step">
+                <div class="activity-step__header">
+                  <span class="activity-step__number" aria-hidden="true">3</span>
+                  <h2 class="activity-step__title">Analyze social conditions</h2>
+                </div>
+                <p class="activity-step__body">Near the end of the week, once most of your peers have had a chance to share their experiences, consider what broader institutional practices, social expectations, or power relationships might help explain the patterns you&rsquo;ve identified.</p>
+                <p class="activity-step__body activity-step__body--icon"><img src="images/speech-bubble.png" alt="" class="activity-intro__icon">Add your analysis in the <strong>Analysis of Social Conditions</strong> discussion thread.</p>
+              </li>
+
+              <li class="activity-step">
+                <div class="activity-step__header">
+                  <span class="activity-step__number" aria-hidden="true">4</span>
+                  <h2 class="activity-step__title">Consider collective action</h2>
+                </div>
+                <p class="activity-step__body">Building on your peers' analyses, discuss what actions we might take as individuals or a group to address the conditions identified. Develop one or more possibilities together.</p>
+                <p class="activity-step__body activity-step__body--icon"><img src="images/speech-bubble.png" alt="" class="activity-intro__icon">Share your ideas in the <strong>Collective Action</strong> discussion thread.</p>
+              </li>
+            </ol>
           </div>
         </section>
 
-        <section class="lesson-section" aria-labelledby="section-12-title" data-no-hero>
+        <section class="lesson-section" aria-labelledby="section-12-title">
           <div class="lesson-section__inner">
             <header class="lesson-header">
               <div class="lesson-header__text">
@@ -653,22 +689,22 @@
             </header>
 
             <ul class="references-list">
-              <li class="reference">Adams, T. E., &amp; Herrmann, A. F. (2020). Expanding our autoethnographic future. <cite>Journal of Autoethnography, 1</cite>(1), 1&ndash;8. https://doi.org/10.1525/joae.2020.1.1.1</li>
-              <li class="reference">Adams, Holman Jones, & Ellis, C. (2022). Introduction: Making Sense and Taking Action: Creating a Caring Community of Autoethnographers. In T. E. Adams, S. H. Jones, & C. Ellis (Eds.), Handbook of Autoethnography (2nd ed., pp. 1–19). Routledge. https://doi.org/10.4324/9780429431760-1</li>
-              <li class="reference">Baker, C. N. (n.d.). American feminism, 1960s&ndash;1980s. <cite>The American Historian</cite>. Organization of American Historians. https://www.oah.org/tah/politics-at-the-closing-of-the-cold-war/american-feminism-1960s1980s-baker/</li>
-              <li class="reference">Boryczka, J. M. (2016). Gender fun house: Teaching direct action as collective consciousness raising. <cite>Transformations: The Journal of Inclusive Scholarship and Pedagogy, 26</cite>(1), 44&ndash;63. https://doi.org/10.1353/tnf.2016.0012</li>
+              <li class="reference" id="ref-herrmann-2020">Adams, T. E., &amp; Herrmann, A. F. (2020). Expanding our autoethnographic future. <cite>Journal of Autoethnography, 1</cite>(1), 1&ndash;8. <a href="https://doi.org/10.1525/joae.2020.1.1.1">https://doi.org/10.1525/joae.2020.1.1.1</a></li>
+              <li class="reference" id="ref-adams-2022">Adams, Holman Jones, & Ellis, C. (2022). Introduction: Making Sense and Taking Action: Creating a Caring Community of Autoethnographers. In T. E. Adams, S. H. Jones, & C. Ellis (Eds.), Handbook of Autoethnography (2nd ed., pp. 1–19). Routledge. <a href="https://doi.org/10.4324/9780429431760-1">https://doi.org/10.4324/9780429431760-1</a></li>
+              <li class="reference" id="ref-baker-nd">Baker, C. N. (n.d.). American feminism, 1960s&ndash;1980s. <cite>The American Historian</cite>. Organization of American Historians. https://www.oah.org/tah/politics-at-the-closing-of-the-cold-war/american-feminism-1960s1980s-baker/</li>
+              <li class="reference" id="ref-boryczka-2016">Boryczka, J. M. (2016). Gender fun house: Teaching direct action as collective consciousness raising. <cite>Transformations: The Journal of Inclusive Scholarship and Pedagogy, 26</cite>(1), 44&ndash;63. <a href="https://doi.org/10.1353/tnf.2016.0012">https://doi.org/10.1353/tnf.2016.0012</a></li>
               <!-- TODO: add full publication details (journal/volume/issue/pages or DOI) for the Engelstad article. -->
-              <li class="reference">Engelstad, [A.]. (2026). The personal is epistemological: The epistemic force of consciousness-raising. [Publication details to be added.]</li>
-              <li class="reference">Fricker, M. (2007). <cite>Epistemic injustice: Power and the ethics of knowing</cite>. Oxford University Press.</li>
-              <li class="reference">Jovanovski, N. (2023). Feminist pedagogy, the women&rsquo;s health movement, and the rise of the anti-diet health professional. In <cite>Handbook of social sciences and global public health</cite> (pp. 375&ndash;393). Springer International Publishing.</li>
-              <li class="reference">Kinnamon, L. (2024). &ldquo;We stayed up all night rapping&rdquo;: Toward a history of feminist consciousness-raising, 1964&ndash;1986. <cite>Signs: Journal of Women in Culture and Society, 50</cite>(1), 145&ndash;188. https://doi.org/10.1086/732025</li>
-              <li class="reference">Nachescu, V. (2008). Radical feminism and the nation: History and space in the political imagination of second-wave feminism. <cite>Journal for the Study of Radicalism, 3</cite>(1), 29&ndash;59.</li>
-              <li class="reference">Niasse, N. (2023). Limiting misleading ideas about the history of grounded theory methodology. <cite>International Journal of Qualitative Methods, 22</cite>. https://doi.org/10.1177/16094069221149486</li>
-              <li class="reference">Quaid, A. (2026). Feminist consciousness-raising groups in the classroom. <cite>Feminist Pedagogy, 7</cite>(1), Article 12. https://digitalcommons.calpoly.edu/feministpedagogy/vol7/iss1/12</li>
-              <li class="reference">Redstockings. (n.d.). <cite>Speakers</cite>. Retrieved October 15, 2026, from https://www.redstockings.org/speakers</li>
-              <li class="reference">Sarachild, K. (1970). A program for feminist &ldquo;consciousness-raising.&rdquo; In S. Firestone &amp; A. Koedt (Eds.), <cite>Notes from the second year: Women&rsquo;s liberation</cite> (pp. 78&ndash;80). Radical Feminism. (Original work presented 1968)</li>
-              <li class="reference">Sarachild, K. (1975). Consciousness-raising: A radical weapon. In <cite>Feminist revolution</cite> (pp. 144&ndash;150). Redstockings.</li>
-              <li class="reference">Winkler, B. S. (1997). Raising C-R: Another look at consciousness-raising in the women&rsquo;s studies classroom. <cite>Transformations: The Journal of Inclusive Scholarship and Pedagogy, 8</cite>(2), 66&ndash;85.</li>
+              <li class="reference" id="ref-engelstad-2026">Engelstad, [A.]. (2026). The personal is epistemological: The epistemic force of consciousness-raising. [Publication details to be added.]</li>
+              <li class="reference" id="ref-fricker-2007">Fricker, M. (2007). <cite>Epistemic injustice: Power and the ethics of knowing</cite>. Oxford University Press.</li>
+              <li class="reference" id="ref-jovanovski-2023">Jovanovski, N. (2023). Feminist pedagogy, the women&rsquo;s health movement, and the rise of the anti-diet health professional. In <cite>Handbook of social sciences and global public health</cite> (pp. 375&ndash;393). Springer International Publishing.</li>
+              <li class="reference" id="ref-kinnamon-2024">Kinnamon, L. (2024). &ldquo;We stayed up all night rapping&rdquo;: Toward a history of feminist consciousness-raising, 1964&ndash;1986. <cite>Signs: Journal of Women in Culture and Society, 50</cite>(1), 145&ndash;188. <a href="https://doi.org/10.1086/732025">https://doi.org/10.1086/732025</a></li>
+              <li class="reference" id="ref-nachescu-2008">Nachescu, V. (2008). Radical feminism and the nation: History and space in the political imagination of second-wave feminism. <cite>Journal for the Study of Radicalism, 3</cite>(1), 29&ndash;59.</li>
+              <li class="reference" id="ref-niasse-2023">Niasse, N. (2023). Limiting misleading ideas about the history of grounded theory methodology. <cite>International Journal of Qualitative Methods, 22</cite>. <a href="https://doi.org/10.1177/16094069221149486">https://doi.org/10.1177/16094069221149486</a></li>
+              <li class="reference" id="ref-quaid-2026">Quaid, A. (2026). Feminist consciousness-raising groups in the classroom. <cite>Feminist Pedagogy, 7</cite>(1), Article 12. https://digitalcommons.calpoly.edu/feministpedagogy/vol7/iss1/12</li>
+              <li class="reference" id="ref-redstockings-nd">Redstockings. (n.d.). <cite>Speakers</cite>. Retrieved October 15, 2026, from https://www.redstockings.org/speakers</li>
+              <li class="reference" id="ref-sarachild-1970">Sarachild, K. (1970). A program for feminist &ldquo;consciousness-raising.&rdquo; In S. Firestone &amp; A. Koedt (Eds.), <cite>Notes from the second year: Women&rsquo;s liberation</cite> (pp. 78&ndash;80). Radical Feminism. (Original work presented 1968)</li>
+              <li class="reference" id="ref-sarachild-1975">Sarachild, K. (1975). Consciousness-raising: A radical weapon. In <cite>Feminist revolution</cite> (pp. 144&ndash;150). Redstockings.</li>
+              <li class="reference" id="ref-winkler-1997">Winkler, B. S. (1997). Raising C-R: Another look at consciousness-raising in the women&rsquo;s studies classroom. <cite>Transformations: The Journal of Inclusive Scholarship and Pedagogy, 8</cite>(2), 66&ndash;85.</li>
               <!-- TODO: replace AUTHOR / YEAR / DATE / TITLE / URL with the actual NYT article details. -->
               <li class="reference">[Author, A. A.] ([Year], [Month Day]). <cite>[Title of article]</cite>. The New York Times. [https://www.nytimes.com/&hellip;]</li>
             </ul>
@@ -713,7 +749,9 @@
           </svg></button>
       </form>
     </div>
-    <p>This course was created by Kristen Foster-Marks in satisfaction of the course &ldquo;Adult Education&rdquo; at Colorado State University.</p>
+    <p>This course was created by Kristen Foster-Marks for an assignment in the course <em>Adult Education</em> in the Learning Design and Education program at Colorado State University.</p>
+    <p>The assignments asked students to introduce their classmates to a historical topic within adult education in order to help them to understand the topic and its significance to the current field of adult education.</p>
+    <p>It is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International License</a>.</p>
   </dialog>
 
   <script src="script.js"></script>

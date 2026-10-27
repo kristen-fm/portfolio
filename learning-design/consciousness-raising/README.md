@@ -14,7 +14,7 @@ portfolio's `/assets/css/styles.css`; it has its own design system.
 ## Files
 
 - `index.html` — header, sections (one `<section class="lesson-section">`
-  each), icon sprite, hero template, and the About/Glossary dialogs
+  each), icon sprite, and the About/Glossary dialogs
 - `styles.css` — design tokens (`:root`), layout, components, responsive rules
 - `script.js` — navigation, outline, accordions, scroll cue, dialogs, keyboard
 - `images/` — artwork (see below)
@@ -30,9 +30,6 @@ reordering a `<section>` needs no JavaScript changes. Each section needs:
 - optionally, `data-outline-label` — the short title shown in the outline and
   in the previous/next buttons (defaults to the heading text)
 
-The shared hero collage is copied from `<template id="hero-template">` into every
-section's `.lesson-header`, so edit it in one place.
-
 ### Accordions
 
 Copy an `.accordion__item` from section 8. Set `aria-expanded="true"` on the
@@ -46,11 +43,6 @@ Add `accordion__body--with-quote` to a body to lay out a paragraph next to a
 
 All in `images/`, exported as WebP from the ChatGPT originals:
 
-- `hero-collage.webp` — collage frame (circles, torn paper, pines). Its open
-  oval holds the quote tag. To add an archival photo later, layer it *behind*
-  `.hero-collage__art` so the frame's torn edges sit on top, credit it in APA
-  style in Further resources, and move the tag toward the lower left.
-- `paper-tag.webp` — torn-paper background for the quote tag.
 - `topo-light.webp` / `topo-dark.webp` — seamless contour tiles for the page
   and sidebar, set via `--texture-paper` and `--texture-forest`. Both come from
   the same tile, recoloured (muted green for the page, cream for the sidebar).

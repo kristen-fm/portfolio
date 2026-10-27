@@ -399,15 +399,24 @@ svg {
 
 .lesson-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: clamp(1.5rem, 3vw, 3rem);
 }
 
 .lesson-header__text {
   display: grid;
   gap: clamp(1rem, 2.5dvh, 1.5rem);
   padding-bottom: 0.5rem;
+}
+
+.activity-step__body--icon {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.activity-intro__icon {
+  flex: none;
+  width: 4.75rem;
+  height: auto;
 }
 
 .lesson-title {
@@ -420,7 +429,6 @@ svg {
 }
 
 .lesson-lead {
-  max-width: 44rem;
   color: var(--color-ink-muted);
   font-size: var(--text-lead);
   line-height: 1.5;
@@ -477,77 +485,95 @@ svg {
   font-style: italic;
 }
 
-/* ---------- Hero collage ---------- */
-
-.hero-collage {
-  position: relative;
-  width: clamp(22rem, 37vw, 40rem);
-  aspect-ratio: 10 / 7;
-  margin-bottom: -1.5rem;
+/* In-text citation links that jump to the matching References entry. Styled to
+   read as prose (inherits color, no underline) with a dotted underline as the
+   only affordance, so a page dense with citations stays legible. */
+.cite {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-ink-muted);
 }
 
-.hero-collage__art {
-  position: absolute;
-  inset: 0;
-  background: url("images/hero-collage.webp") center / contain no-repeat;
+.cite:hover,
+.cite:focus-visible {
+  color: var(--color-gold-deep);
+  border-bottom-color: currentColor;
 }
 
-/* Torn-paper quote tag, centred in the frame's open oval. */
-.hero-collage__tag {
-  position: absolute;
-  left: 60%;
-  top: 45%;
-  display: grid;
-  justify-items: center;
-  gap: 0.35rem;
-  width: 48%;
-  padding: 1rem 0.75rem 0.9rem;
-  background: url("images/paper-tag.webp") center / 100% 100% no-repeat;
-  filter: drop-shadow(0 4px 8px rgba(30, 30, 20, 0.12));
-  font-family: var(--font-hand);
-  font-size: clamp(1.45rem, 2vw, 2rem);
-  font-weight: 500;
-  line-height: 1.05;
-  text-align: center;
-  transform: translate(-50%, -50%) rotate(-6deg);
+/* Briefly tint the reference a citation link lands on so the reader can find it.
+   The JS toggles .reference--targeted; the tint fades out on its own. */
+.reference {
+  border-radius: 2px;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.hero-collage__credit {
+.reference--targeted {
+  background: var(--color-sage-tint);
+  box-shadow: 0 0 0 0.35rem var(--color-sage-tint);
+}
+
+/* "Back to your place" control: JS appends it to the entry a citation lands on,
+   wired to return the learner to the exact citation they clicked. */
+.reference__return {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.6rem;
   font-family: var(--font-sans);
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-gold-deep);
+  background: var(--color-card);
+  border: 1px solid var(--color-field-border);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-indent: 0; /* reset the entry's hanging indent */
+  transition: color var(--dur-hover) ease, background-color var(--dur-hover) ease,
+    border-color var(--dur-hover) ease;
 }
 
-/* ---------- Title section (hero) ---------- */
+.reference__return:hover,
+.reference__return:focus-visible {
+  color: var(--color-paper-raised);
+  background: var(--color-gold-deep);
+  border-color: var(--color-gold-deep);
+}
 
-/* Center the two-column hero vertically within the section so it isn't anchored
-   to the top with a pool of empty space beneath it. */
+.reference__return-arrow {
+  font-size: 0.9em;
+}
+
+/* Brief tint on the citation the learner is sent back to, mirroring the cue the
+   References entry gets on the outbound trip. */
+.cite--returned {
+  border-radius: 2px;
+  background: var(--color-sage-tint);
+  box-shadow: 0 0 0 2px var(--color-sage-tint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reference {
+    transition: none;
+  }
+
+  .reference__return {
+    transition: none;
+  }
+}
+
+/* ---------- Title section ---------- */
+
+/* Center the title vertically within the section so it isn't anchored to the
+   top with a pool of empty space beneath it. */
 .lesson-section--title {
   display: grid;
   align-content: center;
-}
-
-/* A deliberate two-column hero: the title and quote form one column on the
-   left, the collage sits close beside it on the right, and the pair is pulled
-   together so it reads as a single composition rather than two drifting halves. */
-.lesson-section--title .lesson-header {
-  align-items: center;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(1rem, 2.4vw, 2.25rem);
 }
 
 /* Keep the title, divider, and quote tightly grouped as a single column so the
    quote sits directly beneath the headline. */
 .lesson-section--title .lesson-header__text {
   gap: clamp(0.85rem, 1.8dvh, 1.35rem);
-}
-
-/* Let the collage carry more weight and settle slightly lower, aligned to the
-   height of the title rather than floating toward the upper-right. */
-.lesson-section--title .hero-collage {
-  margin-top: clamp(1rem, 3dvh, 2.5rem);
 }
 
 /* Controlled line breaks to match the designed title; <br>s set the shape.
@@ -641,7 +667,7 @@ svg {
 /* ---------- Accordion ---------- */
 
 .accordion {
-  position: relative; /* sits above the hero collage's overhang */
+  position: relative;
   display: grid;
   gap: 0.75rem;
 }
@@ -767,6 +793,77 @@ svg {
   margin-top: 1.25rem;
 }
 
+/* ---------- Collapsible paper summaries (native <details>) ---------- */
+.paper {
+  margin-top: 0.4rem;
+}
+
+.paper:first-of-type {
+  margin-top: 0.75rem;
+}
+
+.paper > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-ink);
+  list-style: none;
+}
+
+/* Remove the default disclosure triangle (incl. Safari/WebKit). */
+.paper > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Reuse the "scroll to explore" circled arrow; it points right when the paper
+   is collapsed and rotates down when the paper is open. */
+.paper__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--color-gold-dark);
+  color: #FFFFFF;
+  transform: rotate(-90deg);
+  transition: transform var(--dur-hover) ease;
+}
+
+.paper__icon svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.paper[open] .paper__icon {
+  transform: rotate(0deg);
+}
+
+.paper > summary:hover .paper__icon {
+  transform: rotate(-90deg) translateY(2px);
+}
+
+.paper[open] > summary:hover .paper__icon {
+  transform: rotate(0deg) translateY(2px);
+}
+
+.paper > summary:hover .paper__title {
+  color: var(--color-gold-deep);
+}
+
+.paper > summary:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 2px;
+  border-radius: 0.4rem;
+}
+
+.paper > :not(summary) {
+  padding: 0.25rem 0 0.75rem calc(1.9rem + 0.75rem);
+}
+
 .body-list {
   margin: 0.5rem 0;
   padding-left: 1.5rem;
@@ -872,6 +969,19 @@ svg {
   margin: 0.25rem 0;
 }
 
+/* Icon and heading share a row inside the recap card. */
+.reflect-card__headline {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+/* When the diagram sits inside the recap card, separate it from the heading. */
+.reflect-card__headline + .process-figure {
+  margin-top: clamp(0.5rem, 1.5vw, 0.85rem);
+  margin-bottom: 0;
+}
+
 .process-figure img {
   width: 100%;
   height: auto;
@@ -937,6 +1047,95 @@ svg {
 /* Space the stacked prompts and the closing note (previously <br> tags). */
 .reflect-card__question + .reflect-card__question {
   margin-top: clamp(0.75rem, 2vw, 1rem);
+}
+
+/* Inline info tooltip (replaces the standalone helper note). */
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 0.4em;
+}
+
+.tooltip__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-gold);
+  cursor: pointer;
+}
+
+.tooltip__trigger svg {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tooltip__trigger:hover,
+.tooltip__trigger:focus-visible {
+  color: var(--color-gold-dark);
+}
+
+.tooltip__bubble {
+  position: absolute;
+  bottom: calc(100% + 0.6rem);
+  left: 50%;
+  z-index: 5;
+  width: max-content;
+  max-width: min(18rem, 70vw);
+  transform: translateX(-50%) translateY(0.25rem);
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  background: var(--color-forest);
+  color: var(--color-on-forest);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45;
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.tooltip__bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 6px solid transparent;
+  border-top-color: var(--color-forest);
+  transform: translateX(-50%);
+}
+
+.tooltip:hover .tooltip__bubble,
+.tooltip__trigger:focus-visible + .tooltip__bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip__bubble {
+    transition: opacity 0.15s ease, visibility 0.15s;
+    transform: translateX(-50%);
+  }
+
+  .tooltip:hover .tooltip__bubble,
+  .tooltip__trigger:focus-visible + .tooltip__bubble {
+    transform: translateX(-50%);
+  }
 }
 
 .reflect-card__field + p {
@@ -1133,6 +1332,86 @@ svg {
   stroke-linejoin: round;
 }
 
+/* Note below the copy button pointing learners to Canvas. */
+.recap-card__hint {
+  margin-top: 0.75rem;
+  color: var(--color-ink-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* ---------- Activity steps ---------- */
+
+.activity-steps {
+  display: grid;
+  gap: clamp(1.25rem, 3dvh, 2rem);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: activity-step;
+}
+
+.activity-step {
+  padding-top: clamp(1.25rem, 3dvh, 2rem);
+  border-top: 1px solid var(--color-rule);
+}
+
+.activity-step:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.activity-step__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.activity-step__number {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-forest-dark);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.activity-step__title {
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-weight: 500;
+}
+
+.activity-step__body {
+  padding-left: calc(1.9rem + 0.85rem);
+  color: var(--color-ink);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+}
+
+.activity-step__body + .activity-step__body {
+  margin-top: 0.85rem;
+}
+
+.activity-step__note {
+  margin-top: 0.5rem;
+  color: var(--color-ink-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.activity-step .reflection-recap {
+  margin-top: clamp(1rem, 2.5dvh, 1.5rem);
+}
+
 /* ---------- Bottom controls ---------- */
 
 .lesson-controls {
@@ -1322,10 +1601,6 @@ svg {
   .course-outline__item {
     min-height: 38px;
   }
-
-  .hero-collage {
-    width: clamp(19rem, 31vw, 33rem);
-  }
 }
 
 /* ---------- Responsive: tablet + mobile ---------- */
@@ -1372,29 +1647,6 @@ svg {
     background: rgba(24, 44, 34, 0.45);
   }
 
-  .lesson-header {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  /* Undo the desktop two-column hero so the collage stacks under the title. */
-  .lesson-section--title .lesson-header {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-collage {
-    justify-self: center;
-    width: min(100%, 26rem);
-    margin-bottom: 0;
-  }
-
-  .lesson-section--title .hero-collage {
-    margin-top: 0;
-  }
-
-  .hero-collage__tag {
-    font-size: 1.9rem;
-  }
-
   .accordion__body {
     padding-left: clamp(1.25rem, 3vw, 2.5rem);
   }
@@ -1427,12 +1679,6 @@ svg {
   .header-link {
     min-height: 36px;
     font-size: 0.9rem;
-  }
-
-  /* The same image repeats on every section; skip it on phones so content
-     starts above the fold. */
-  .hero-collage {
-    display: none;
   }
 
   .accordion__icon {

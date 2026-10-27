@@ -10,7 +10,6 @@
   const outlineList = outline.querySelector(".course-outline__list");
   const outlineToggle = document.querySelector(".outline-toggle");
   const outlineBackdrop = document.querySelector(".outline-backdrop");
-  const heroTemplate = document.getElementById("hero-template");
   const status = document.querySelector("[data-section-status]");
   const prevButton = document.querySelector('[data-nav="prev"]');
   const nextButton = document.querySelector('[data-nav="next"]');
@@ -46,14 +45,9 @@
   const labels = sections.map((section) => section.dataset.outlineLabel || titleText(section));
   const scrollBehavior = () => (reducedMotion.matches ? "auto" : "smooth");
 
-  // ---------- Build outline and heroes from the DOM ----------
+  // ---------- Build outline from the DOM ----------
 
   const outlineButtons = sections.map((section, i) => {
-    const header = section.querySelector(".lesson-header");
-    if (header && heroTemplate && section.dataset.noHero === undefined) {
-      header.appendChild(heroTemplate.content.cloneNode(true));
-    }
-
     section.id = section.id || `section-${i + 1}`;
     section.inert = true;
 
@@ -91,6 +85,13 @@
     }
 
     if (index === currentSection) return;
+
+    // A real section change retires a pending "Back to your place" control and
+    // cancels any still-pending citation frame, so neither outlives the visit
+    // that created it. This sits below the same-section guard on purpose:
+    // re-selecting the current section must not drop the learner's return
+    // destination (or the button's focus) without moving them anywhere.
+    clearCitationReturn();
 
     const direction = index > currentSection ? 1 : -1;
     const outgoing = sections[currentSection];
@@ -493,6 +494,102 @@
         return;
     }
     event.preventDefault();
+  });
+
+  // ---------- In-text citations jump to the References entry ----------
+  // Each .cite link points at a #ref-* entry that lives in another section.
+  // Sections are shown one at a time (and are inert while hidden), and the hash
+  // is reserved for section deep links (#3), so we can't rely on the browser's
+  // default anchor jump. Instead: switch to the section holding the entry, bring
+  // it into view, and briefly highlight it. The hash is left untouched.
+  //
+  // The reverse trip matters too: once the learner has read the entry, a "Back
+  // to your place" control appended to it returns them to the exact citation
+  // they clicked (references are cited more than once, so we hold the clicked
+  // element, not just its id) so they can carry on reading.
+  const sectionIndexOf = (el) => sections.findIndex((section) => section.contains(el));
+  const HIGHLIGHT_MS = 2400;
+  let citationTimer;
+  let returnTimer;
+  // Handles for the pending scroll-and-highlight frames, so navigation can
+  // cancel a frame that hasn't run yet (0 is never a live handle).
+  let citationFrame = 0;
+  let returnFrame = 0;
+  let returnButton = null;
+
+  // Cancel any in-flight citation step and retire a pending "Back to your place"
+  // control. Called on every navigation (see goToSection) so neither a queued
+  // frame nor a stale button can outlive the visit that scheduled it.
+  function clearCitationReturn() {
+    cancelAnimationFrame(citationFrame);
+    cancelAnimationFrame(returnFrame);
+    if (returnButton) {
+      returnButton.remove();
+      returnButton = null;
+    }
+  }
+
+  // Add the control to the landed-on entry, wired to return to `origin`.
+  function addCitationReturn(reference, origin) {
+    if (returnButton) returnButton.remove(); // never leave a prior one attached
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "reference__return";
+    button.innerHTML =
+      '<span class="reference__return-arrow" aria-hidden="true">↩</span> Back to your place';
+
+    button.addEventListener("click", () => {
+      const originIndex = sectionIndexOf(origin);
+      if (originIndex === -1) return;
+
+      goToSection(originIndex); // clears this control and cancels pending frames
+      returnFrame = requestAnimationFrame(() => {
+        clearTimeout(returnTimer);
+        // Drop any earlier citation's highlight so two quick returns can't strand it.
+        document.querySelectorAll(".cite--returned")
+          .forEach((el) => el.classList.remove("cite--returned"));
+
+        origin.classList.add("cite--returned");
+        origin.focus({ preventScroll: true });
+        origin.scrollIntoView({ behavior: scrollBehavior(), block: "center" });
+        returnTimer = setTimeout(
+          () => origin.classList.remove("cite--returned"), HIGHLIGHT_MS);
+      });
+    });
+
+    reference.appendChild(button);
+    returnButton = button;
+  }
+
+  document.querySelectorAll("a.cite").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.getElementById(link.getAttribute("href").slice(1));
+      if (!target) return; // missing entry: fall back to default behavior
+      const targetIndex = sectionIndexOf(target);
+      if (targetIndex === -1) return;
+
+      event.preventDefault();
+      goToSection(targetIndex); // cancels any frame still pending from a prior click
+
+      // Wait for the incoming section to become active (it resets scrollTop to 0
+      // and is laid out) before scrolling to and focusing the entry.
+      citationFrame = requestAnimationFrame(() => {
+        clearTimeout(citationTimer);
+        sections[targetIndex]
+          .querySelectorAll(".reference--targeted")
+          .forEach((el) => el.classList.remove("reference--targeted"));
+
+        target.classList.add("reference--targeted");
+        target.tabIndex = -1;
+        target.focus({ preventScroll: true });
+        target.scrollIntoView({ behavior: scrollBehavior(), block: "center" });
+        addCitationReturn(target, link);
+
+        citationTimer = setTimeout(
+          () => target.classList.remove("reference--targeted"), HIGHLIGHT_MS);
+      });
+    });
   });
 
   // ---------- Deep links (#3 opens section 3) ----------
