@@ -83,12 +83,11 @@ ${questionsHtml}
       <!-- ============ ABOUT ============ -->
       <section class="prose-section" id="about">
         <div class="wrap">
-          <div class="section-heading">
-            <h2>A bit about me</h2>
-          </div>
-          <p>
-${aboutHtml}
-          </p>
+          <img
+            class="about-image"
+            src="/assets/images/learning-journey.png"
+            alt="An illustration of my learning journey"
+          >
         </div>
       </section>
 
