@@ -586,6 +586,17 @@ svg {
   letter-spacing: -0.02em;
 }
 
+/* Pre-composed title artwork (title-image.png) carries the headline, quote, and
+   citation; sized to fill the content column without overflowing. */
+.title-image {
+  display: block;
+  width: 100%;
+  max-width: var(--content-max-width);
+  height: auto;
+  margin-inline: auto;
+  border-radius: var(--radius);
+}
+
 /* "Consciousness-Raising": terracotta word on a painted tan highlight, with a
    loose sage brush-stroke beneath it. */
 .title-mark {

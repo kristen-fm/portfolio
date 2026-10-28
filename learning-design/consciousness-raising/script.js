@@ -172,8 +172,11 @@
   function updateScrollCue() {
     const section = sections[currentSection];
     if (!section) return;
+    // The title section is a full-bleed banner; never cue scrolling there, even
+    // when the artwork overflows slightly at some viewport sizes.
     const remaining = section.scrollHeight - section.clientHeight - section.scrollTop;
-    scrollCue.classList.toggle("scroll-cue--hidden", remaining <= 4);
+    const hidden = remaining <= 4 || section.classList.contains("lesson-section--title");
+    scrollCue.classList.toggle("scroll-cue--hidden", hidden);
   }
 
   scrollCue.addEventListener("click", () => {
