@@ -9,7 +9,7 @@ module.exports = {
               <br><span class="highlight highlight-3">Scholar-practitioner.</span>`,
     subheadHtml: `Thank you for visiting my professional portfolio!
 
-              <br><br>I've designed this space to share my work as a learning designer, researcher, and educator with those who are interested in the same concepts, practices and themes that tickle my own curiosity.
+              <br><br>I've designed this space to share my work with those who are interested in the same concepts, practices and themes that kindle my own curiosity.
 
               <br><br>I currently work as a Technical Curriculum Developer at Datadog, where I design hands-on learning experiences that help technical practitioners build knowledge & skills through authentic practice.`,
     ctas: [],

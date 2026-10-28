@@ -53,6 +53,10 @@ ${bodyHtml}
     <footer class="site-footer">
       <div class="wrap">
         <p>&copy; ${site.copyrightYear} Kristen Foster-Marks</p>
+        <a class="footer-linkedin" href="${site.linkedinUrl}" target="_blank" rel="noopener">
+          <img src="/assets/images/linkedin.svg" alt="" width="16" height="16">
+          <span>LinkedIn</span>
+        </a>
       </div>
     </footer>
 
