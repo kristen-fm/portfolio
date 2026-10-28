@@ -407,18 +407,6 @@ svg {
   padding-bottom: 0.5rem;
 }
 
-.activity-step__body--icon {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.activity-intro__icon {
-  flex: none;
-  width: 4.75rem;
-  height: auto;
-}
-
 .lesson-title {
   font-family: var(--font-serif);
   font-size: var(--text-title);
@@ -1423,6 +1411,47 @@ svg {
   margin-top: clamp(1rem, 2.5dvh, 1.5rem);
 }
 
+/* Canvas action strip: a restrained annotation marking instructions to post in
+   Canvas, set apart from the surrounding reflection prompts. Aligns with the
+   step body text (past the number circle). */
+.canvas-action {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: clamp(1.25rem, 3dvh, 1.75rem);
+  margin-bottom: 0.5rem;
+  margin-left: calc(1.9rem + 0.85rem);
+  padding: 0.3rem 0 0.3rem 1rem;
+  border-left: 2px solid var(--color-sage);
+}
+
+.canvas-action__icon {
+  flex: none;
+  width: 2.75rem;
+  height: auto;
+}
+
+.canvas-action__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.canvas-action__label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-forest);
+}
+
+.canvas-action__text {
+  color: var(--color-ink);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+}
+
 /* ---------- Bottom controls ---------- */
 
 .lesson-controls {
@@ -1703,6 +1732,16 @@ svg {
 
   .reflect-card {
     padding: 1.25rem;
+  }
+
+  .canvas-action {
+    gap: 0.75rem;
+    margin-left: 0;
+    padding-left: 0.75rem;
+  }
+
+  .canvas-action__icon {
+    width: 2.25rem;
   }
 
   .scroll-cue__label {
