@@ -423,8 +423,6 @@ svg {
 }
 
 .lesson-lead strong {
-  display: block;
-  margin-bottom: 0.15rem;
   color: var(--color-ink);
   font-weight: 600;
 }
@@ -880,15 +878,23 @@ svg {
   gap: clamp(1.5rem, 4vw, 3.5rem);
 }
 
+/* The figure floats into the corner so body text wraps alongside it and then
+   reflows into the full width below, rather than staying trapped in a column. */
 .accordion__body--with-media {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
-  align-items: start;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  display: block;
+}
+
+.accordion__body--with-media::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .accordion__body--with-media .accordion__body-media {
-  margin: 0;
+  float: right;
+  width: clamp(20rem, 40%, 30rem);
+  max-width: 30rem;
+  margin: 0 0 1.25rem clamp(1.5rem, 4vw, 3.5rem);
 }
 
 /* ---------- Source quote (editorial pull-quote) ---------- */
@@ -965,20 +971,7 @@ svg {
 }
 
 .process-figure {
-  margin: 0.25rem 0;
-}
-
-/* Icon and heading share a row inside the recap card. */
-.reflect-card__headline {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-}
-
-/* When the diagram sits inside the recap card, separate it from the heading. */
-.reflect-card__headline + .process-figure {
-  margin-top: clamp(0.5rem, 1.5vw, 0.85rem);
-  margin-bottom: 0;
+  margin: 1.5rem 0;
 }
 
 .process-figure img {
@@ -1006,32 +999,12 @@ svg {
   background: var(--color-paper-raised);
 }
 
-.reflect-card__eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin-bottom: clamp(0.9rem, 2vw, 1.25rem);
-  color: var(--color-gold-deep);
-  font-size: var(--text-eyebrow);
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-.reflect-card__icon {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background: var(--color-gold);
-  color: var(--color-forest-dark);
-}
-
-.reflect-card__icon svg {
-  width: 1.1rem;
-  height: 1.1rem;
+/* Inside the collapsible reflection accordion the item already draws the card
+   frame, so the inner card sheds its own box and inherits the body padding. */
+.accordion__body .reflect-card {
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .reflect-card__question {
@@ -1048,93 +1021,13 @@ svg {
   margin-top: clamp(0.75rem, 2vw, 1rem);
 }
 
-/* Inline info tooltip (replaces the standalone helper note). */
-.tooltip {
-  position: relative;
-  display: inline-flex;
-  vertical-align: middle;
-  margin-left: 0.4em;
-}
-
-.tooltip__trigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.4em;
-  height: 1.4em;
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--color-gold);
-  cursor: pointer;
-}
-
-.tooltip__trigger svg {
-  width: 1em;
-  height: 1em;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.tooltip__trigger:hover,
-.tooltip__trigger:focus-visible {
-  color: var(--color-gold-dark);
-}
-
-.tooltip__bubble {
-  position: absolute;
-  bottom: calc(100% + 0.6rem);
-  left: 50%;
-  z-index: 5;
-  width: max-content;
-  max-width: min(18rem, 70vw);
-  transform: translateX(-50%) translateY(0.25rem);
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
-  background: var(--color-forest);
-  color: var(--color-on-forest);
+/* Reassurance + heads-up note shown before the input (you'll revisit & share this). */
+.reflect-card__note {
+  margin-top: clamp(0.75rem, 2vw, 1rem);
+  color: var(--color-ink-muted);
   font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.45;
-  box-shadow: var(--shadow-soft);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
-}
-
-.tooltip__bubble::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  border: 6px solid transparent;
-  border-top-color: var(--color-forest);
-  transform: translateX(-50%);
-}
-
-.tooltip:hover .tooltip__bubble,
-.tooltip__trigger:focus-visible + .tooltip__bubble {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tooltip__bubble {
-    transition: opacity 0.15s ease, visibility 0.15s;
-    transform: translateX(-50%);
-  }
-
-  .tooltip:hover .tooltip__bubble,
-  .tooltip__trigger:focus-visible + .tooltip__bubble {
-    transform: translateX(-50%);
-  }
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .reflect-card__field + p {
@@ -1229,12 +1122,6 @@ svg {
   display: grid;
   gap: clamp(1rem, 2.5dvh, 1.75rem);
   width: 100%;
-}
-
-.reflection-recap__intro {
-  color: var(--color-ink-muted);
-  font-size: var(--text-lead);
-  line-height: 1.6;
 }
 
 .recap-card {
@@ -1340,6 +1227,62 @@ svg {
 }
 
 /* ---------- Activity steps ---------- */
+
+/* Safety note: a gentle framing before the activity steps, reminding learners
+   that consciousness-raising depends on psychological safety. Set apart with a
+   soft sage tint so it reads as context, not instruction. */
+.safety-note {
+  margin: clamp(1.5rem, 4dvh, 2.25rem) 0 clamp(1.75rem, 4dvh, 2.5rem);
+  padding: clamp(1.1rem, 3vw, 1.6rem) clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--color-sage-tint);
+  border-left: 3px solid var(--color-sage);
+  border-radius: var(--radius);
+}
+
+.safety-note__header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.75rem;
+}
+
+.safety-note__icon {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: var(--color-forest);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.safety-note__title {
+  color: var(--color-forest);
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-weight: 500;
+}
+
+.safety-note__body {
+  color: var(--color-ink);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+}
+
+.safety-note__list {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--color-ink);
+  font-size: var(--text-lead);
+  line-height: 1.55;
+}
+
+.safety-note__list + .safety-note__body {
+  margin-top: 0.75rem;
+}
 
 .activity-steps {
   display: grid;
@@ -1623,12 +1566,69 @@ svg {
   font-weight: 500;
 }
 
+/* ---------- AI disclaimer dropdown (native <details>) ---------- */
+.ai-disclaimer {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, rgba(24, 44, 34, 0.15));
+}
+
+.ai-disclaimer > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-ink);
+  list-style: none;
+}
+
+.ai-disclaimer > summary::-webkit-details-marker {
+  display: none;
+}
+
+.ai-disclaimer > summary::before {
+  content: "\25B8"; /* right-pointing triangle */
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: var(--color-gold-dark);
+  transition: transform var(--dur-hover) ease;
+}
+
+.ai-disclaimer[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.ai-disclaimer > summary:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 2px;
+  border-radius: 0.4rem;
+}
+
+.ai-disclaimer > p {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.ai-disclaimer ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.ai-disclaimer li {
+  margin-top: 0.3rem;
+}
+
 /* ---------- Responsive: laptop ---------- */
 
 @media (max-width: 1200px) {
-  .accordion__body--with-quote,
-  .accordion__body--with-media {
+  .accordion__body--with-quote {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .accordion__body--with-media .accordion__body-media {
+    float: none;
+    width: 100%;
+    max-width: 30rem;
+    margin: 1.5rem 0;
   }
 }
 

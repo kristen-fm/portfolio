@@ -261,6 +261,14 @@
         refreshGate();
       });
 
+      // When the field lives in a collapsed accordion panel its height can't be
+      // measured yet; recompute once the panel opens so a restored answer isn't
+      // clipped. The panel's own trigger handler un-hides it first (both are
+      // click listeners, and that one was added earlier).
+      const panel = input.closest(".accordion__panel");
+      const trigger = panel && document.getElementById(panel.getAttribute("aria-labelledby"));
+      if (trigger) trigger.addEventListener("click", grow);
+
       grow();
     });
   });
