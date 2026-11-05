@@ -13,6 +13,8 @@ const scholarship = require("./src/data/scholarship");
 const reflections = require("./src/data/reflections");
 const learningDesign = require("./src/data/learning-design");
 const cv = require("./src/data/cv");
+const pdpSettings = require("./src/data/pdp");
+const { loadPdp } = require("./src/lib/pdp");
 
 const { renderHomePage } = require("./src/templates/pages/home");
 const { renderScholarshipIndex } = require("./src/templates/pages/scholarshipIndex");
@@ -20,6 +22,7 @@ const { renderReflectionsIndex } = require("./src/templates/pages/reflectionsInd
 const { renderLearningDesignIndex } = require("./src/templates/pages/learningDesignIndex");
 const { renderCvPage } = require("./src/templates/pages/cvPage");
 const { renderPostPage } = require("./src/templates/components/post");
+const { renderPdpPage } = require("./src/templates/pages/pdpPage");
 
 const SECTIONS = [
   { name: "scholarship", entries: scholarship },
@@ -36,6 +39,7 @@ const FIXED_TOP_LEVEL_PATHS = new Set([
   "reflections/index.html",
   "learning-design/index.html",
   "cv/index.html",
+  "pdp/index.html",
 ]);
 
 // Slugs become both a URL path segment and a directory name, so they must
@@ -134,6 +138,8 @@ function buildOutputMap() {
   addOutput("reflections/index.html", renderReflectionsIndex(derivedByName.reflections));
   addOutput("learning-design/index.html", renderLearningDesignIndex(learningDesign));
   addOutput("cv/index.html", renderCvPage(cv));
+  // Unlisted: not in nav, not linked anywhere, noindex.
+  addOutput("pdp/index.html", renderPdpPage(pdpSettings, loadPdp(path.join(ROOT, "src"), pdpSettings)));
 
   for (const { name } of SECTIONS) {
     for (const entry of derivedByName[name]) {

@@ -1,0 +1,16 @@
+{
+  "name": "kristen-fm-portfolio",
+  "private": true,
+  "description": "Build tooling for kristen-fm.com. Only build-time dependencies; nothing here is shipped to the browser.",
+  "scripts": {
+    "build": "node build.js",
+    "check": "node build.js --check",
+    "watch": "node watch.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "markdown-it": "14.3.3"
+  }
+}

@@ -2,13 +2,15 @@ const site = require("../data/site");
 const { renderHeader } = require("./nav");
 const { escapeAttr } = require("./util");
 
-function renderPage({ documentTitle, description, activeNavHref, bodyHtml }) {
+function renderPage({ documentTitle, description, activeNavHref, bodyHtml, noindex = false, scripts = [] }) {
+  const extraScripts = scripts.map((src) => `\n    <script src="${escapeAttr(src)}"></script>`).join("");
+  const robotsMeta = noindex ? `\n    <meta name="robots" content="noindex, nofollow">` : "";
   return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="${escapeAttr(description)}">
+    <meta name="description" content="${escapeAttr(description)}">${robotsMeta}
     <title>${documentTitle}</title>
     <link rel="icon" type="image/png" href="/assets/images/emoticon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +62,7 @@ ${bodyHtml}
       </div>
     </footer>
 
-    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/script.js"></script>${extraScripts}
   </body>
 </html>
 `;

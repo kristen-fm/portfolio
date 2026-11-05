@@ -27,6 +27,7 @@ src/
     scholarship/<slug>.html           freeform post-body fragment for a scholarship detail page
     reflections/<slug>.html           freeform post-body fragment for a reflection detail page
     home/about.html                   About prose (and, in Phase II, Philosophy/Values/Goals)
+    pdp/*.md                          Professional Development Plan (see "Professional Development Plan" below)
   templates/                          render functions — rarely need editing for a content change
 ```
 
@@ -200,3 +201,77 @@ these fields, write it as `&amp;` yourself.
 Put all images in `assets/images/`. Reference them from any page as
 `/assets/images/filename` (root-relative, so the same path works everywhere).
 This is unrelated to the build — image files aren't generated.
+
+## Professional Development Plan (`/pdp/`)
+
+An unlisted page: it's not in `nav.js`, nothing links to it, and it carries a
+`noindex` tag. It is **not private**: anyone with the URL can read it, and
+the Markdown sits in this public repo.
+
+All of the plan's content is Markdown under `src/content/pdp/`:
+
+```
+introduction.md          "# Contextual Statement" + paragraphs
+goal-1-community.md      one file per goal
+goal-2-research.md
+goal-3-practice.md
+goal-4-degree.md
+goal-5-doctorate.md
+```
+
+`src/data/pdp.js` holds only the page header (eyebrow, subtitle, program
+line), the commitment legend wording, the goal file order, and each goal's
+short label for the sticky goal nav.
+
+### Goal file format
+
+Each goal file has exactly three parts: a heading, a one-sentence purpose
+paragraph, and one table.
+
+```markdown
+# Goal 1 — Become an active member of the adult and continuing education community
+
+*Develop meaningful relationships with scholars and practitioners and begin contributing to the field.*
+
+| ID and Specific Objective | Commitment | Actionable Steps | Resources | Timeline | Measure of Success | Also Supports |
+|---|---|---|---|---|---|---|
+| **G1.1** Develop and sustain ... | Core | Participate actively in courses; ... | CSU faculty ...; ... | Each semester; ongoing | Establish and maintain ... | G5 |
+```
+
+Rules the build enforces:
+
+- **Heading:** `# Goal N — Title`, with an em dash (—). N must match the
+  file's position in `src/data/pdp.js`.
+- **Columns:** exactly the seven headers above, in that order.
+- **Objective cell:** starts with the bold ID (`**G2.3**`), then the
+  objective text. IDs must start with the goal's own number and be unique.
+  The ID also sets the objective's link anchor (`G2.3` → `/pdp/#g2-3`), so
+  renumbering changes its link.
+- **Commitment cell:** either a bare label (`Core`) or bold-labelled parts
+  with a description after each:
+  `**Core:** Annual proposal submission. **Stretch:** Journal publication`.
+  Allowed labels: `Core`, `Stretch`, `Desired outcome`.
+- **Also Supports cell:** comma-separated goal references (`G2, G5`), each
+  pointing to an existing goal. They become links to that goal.
+- **Bulleted lists:** in the Actionable Steps, Resources, Timeline, and
+  Measure of Success columns, semicolons separate list items. Each `;`
+  starts a new bullet, and the first letter of each bullet is capitalized
+  on the page (the Markdown stays as written). A cell with no semicolons
+  shows as plain text. To keep a literal semicolon, write `\;`. Semicolons
+  inside a link or `*italics*` never split.
+- **No empty cells.** Links (`[text](https://...)`) and `*italics*` /
+  `**bold**` work in any cell. To use a literal `|` inside a cell, write `\|`.
+
+If something doesn't match, `node build.js` stops with the file, line number,
+and what's wrong, and doesn't write any half-built pages.
+
+### Common edits
+
+- **Change a step, resource, timeline, or measure:** edit the text in that
+  cell and save.
+- **Add an objective:** add a table row with the next ID (e.g. `G3.3`). The
+  overview, objective counts, and goal nav update automatically.
+- **Add a goal:** create `goal-6-<name>.md` and add it to `goals` in
+  `src/data/pdp.js`.
+- **Contextual statement:** edit `introduction.md` (ordinary Markdown
+  paragraphs).

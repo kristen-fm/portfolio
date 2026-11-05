@@ -6,8 +6,11 @@ Personal portfolio site, served by GitHub Pages at
 ## Build
 
 Page content is generated from `src/` (data + content fragments + templates)
-by `build.js`, a small script using only Node's built-in `fs`/`path` modules
-— no npm dependencies, no `package.json`. The generated HTML files
+by `build.js`, a small Node script. Its one dependency is
+[markdown-it](https://github.com/markdown-it/markdown-it), used at build time
+to render the Markdown content for the `/pdp/` page; run `npm install` once
+after cloning (the pre-commit hook needs it too). Nothing from `node_modules/`
+is shipped to the browser. The generated HTML files
 (`index.html`, `scholarship/index.html`, `cv/index.html`, etc.) are committed
 to the repo, so GitHub Pages keeps serving plain static HTML with no build
 step at deploy time.
@@ -66,15 +69,19 @@ build.js                       generates all pages below from src/
 src/
   data/                        page content as plain JS data (single source of truth)
   content/                     freeform narrative fragments (.html), referenced from data/
+    pdp/                       Professional Development Plan Markdown (.md)
+  lib/                         build-time helpers (pdp.js: PDP Markdown loader/validator)
   templates/                   render functions — head/nav/footer shell + per-content-type templates
 /                               index.html — home / About (generated)
 scholarship/                   /scholarship/ (generated)
 learning-design/                /learning-design/ (generated)
 reflections/                   /reflections/  (+ one folder per post) (generated)
 cv/                             /cv/ (generated)
+pdp/                            /pdp/ — unlisted, noindex, not private (generated)
 assets/
   css/styles.css               all styling + design tokens (:root)
   js/script.js                 (empty placeholder for future JS)
+  js/pdp.js                    /pdp/ enhancements (expand/collapse all, goal nav)
   images/                      all images
   cv.pdf                       downloadable CV
 design/                        design references (not served/linked)
