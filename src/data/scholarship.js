@@ -74,17 +74,25 @@ module.exports = [
     title:
       "&ldquo;My code is shit&rdquo;: Negative automatic thoughts and outcomes of a behavioral experiment for code review anxiety",
     summaryHtml: [
-      `                This co-authored preprint reports on a mixed-methods intervention study on mitigating <em>code review
-                anxiety</em>. The study
-                developed and assessed a guided behavioral experiment toolkit. The findings
-                indicated that the toolkit reduced code review anxiety and decreased the
-                believability of negative automatic thoughts (NATs).`,
-      `                I include this work here because it demonstrates my experience in conducting empirical research in workplace learning contexts, and because
-                it connects directly to my applied learning-design practice. The behavioral
-                experiment examined here shares its cognitive-behavioral foundation with the
-                <a href="../learning-design/index.html#code-review-anxiety-workbook">Code Review Anxiety Workbook</a> featured on my Learning Design page. Together the
-                two artifacts show a praxis loop &mdash; research informing design, and design
-                extending research into practice.`,
+      `                This research article reports on a mixed-methods intervention study on
+                mitigating <em>code review anxiety</em>. At the time, research had not yet
+                examined intervention strategies for mitigating software practitioners&rsquo;
+                code review anxiety during real-world code review. To fill this lacuna, my
+                co-authors and I developed and assessed the effectiveness of a guided,
+                behavioral toolkit to be used during code reviews. The toolkit teaches software practitioners to identify and challenge negative automatic thoughts
+                that arise during code review, and to replace them with thoughts
+                that support learning and growth.`,
+      `                I include this work here both to highlight my experience in conducting
+                empirical research in workplace contexts, and because it connects directly to
+                my applied practice. Because the study findings indicated that
+                the toolkit reduced code review anxiety and decreased the believability of
+                negative automatic thoughts, Dr. Carol S. Lee and I developed and shared with
+                the software practitioner community the
+                <a href="https://developer-success-lab.gitbook.io/code-review-anxiety-workbook-1">Code Review Anxiety Workbook</a>
+                as a free Internet resource.`,
+      `                Together, I hope the two artifacts demonstrate my burgeoning abilities as
+                a scholar-practitioner, my commitment to evaluating the efficacy of
+                educational interventions, and my penchant for disseminating research findings in ways that benefit relevant learning communities.`,
     ],
     referencesHtml: `                <p>
                   Lee, C. S., Hicks, C. M., &amp; Foster-Marks, K. L. (2024).
