@@ -813,18 +813,58 @@ footer.site-footer .footer-linkedin img {
 /* -------------------- Responsive -------------------- */
 
 @media (max-width: 900px) {
+  /* Single-column hero. Order: the three descriptors (h1), the photo, then
+     the intro paragraph. .hero-text is flattened (display: contents) so its
+     children can be ordered individually around the photo. */
   .hero-grid {
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero-text {
+    display: contents;
+  }
+
+  .hero-text h1 {
+    order: 1;
+    margin-bottom: 1rem;
+    text-align: center;
   }
 
   .hero-visual {
-    min-height: 320px;
-    order: -1;
-    justify-content: center;
+    order: 2;
+    width: 100%;
+    max-width: 640px;
+    min-height: 0;
+    margin: 0 auto 1.75rem;
   }
 
+  .hero-text .subhead {
+    order: 3;
+  }
+
+  .cta-row {
+    order: 4;
+  }
+
+  /* Landscape crop (3:2) that keeps the summit, ridgeline and a band of lake. */
   .collage-photo {
-    width: 72%;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-position: center 28%;
+  }
+
+  /* The handwritten strip becomes a small accent tucked over the photo's
+     bottom-right corner rather than a second focal point. */
+  .collage-strip {
+    position: absolute;
+    right: -0.5rem;
+    bottom: -1rem;
+    width: clamp(52px, 10vw, 84px);
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+    transform: rotate(-3deg);
   }
 
   .questions-grid {
@@ -985,14 +1025,25 @@ footer.site-footer .footer-linkedin img {
     gap: var(--space-2);
   }
 
-  .hero-visual {
-    gap: 0.75rem;
+  /* Tighter hero so the start of the intro is on the first screen. */
+  main > .hero:first-child {
+    margin-top: 0;
+    margin-bottom: var(--space-3);
   }
 
+  /* No paper strip on phones; it's too small to read and looks cluttered. */
   .collage-strip {
-    min-width: 60px;
-    max-width: 90px;
-    margin-left: -1.25rem;
+    display: none;
+  }
+
+  /* The strip no longer overhangs the photo, so it needs less room below. */
+  .hero-visual {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero .wrap {
+    padding-top: 1.5rem;
+    padding-bottom: 0;
   }
 
   footer.site-footer .wrap {
@@ -1006,6 +1057,11 @@ footer.site-footer .footer-linkedin img {
   .site-title {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
+  }
+
+  /* Keep "Scholar-practitioner." on one line. */
+  .hero-text h1 {
+    font-size: 1.5rem;
   }
 }
 
