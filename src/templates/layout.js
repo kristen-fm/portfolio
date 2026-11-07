@@ -17,6 +17,7 @@ function renderPage({ documentTitle, description, activeNavHref, bodyHtml, noind
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="${site.fontsLink}" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <script>document.documentElement.classList.add('js')</script>
     <script>
       (function(h,o,u,n,d) {
         h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}

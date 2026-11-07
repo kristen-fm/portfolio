@@ -254,6 +254,15 @@ nav.primary-nav a.nav-linkedin:focus-visible img {
   opacity: 0.7;
 }
 
+/* Mobile-only pieces of the header. Hidden by default (desktop); the
+   "Mobile menu" block in the 640px media query below turns them on. */
+.nav-toggle,
+.header-linkedin,
+nav.primary-nav .nav-icon,
+nav.primary-nav .nav-arrow {
+  display: none;
+}
+
 main {
   display: block;
 }
@@ -823,15 +832,134 @@ footer.site-footer .footer-linkedin img {
     margin: var(--space-4) 0;
   }
 
-  nav.primary-nav {
-    width: 100%;
-    flex-direction: column;
-    gap: 0.5rem;
+  /* ---- Mobile menu ----
+     Header bar: title | LinkedIn | menu button. The nav drops in as a full-width
+     row of cards underneath. It is only collapsed when JS is available (the
+     `js` class on <html>); without JS the cards simply stay visible. */
+  .site-header .wrap {
+    flex-wrap: wrap;
+    gap: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
-  .site-header .wrap {
+  .site-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+  }
+
+  .header-linkedin,
+  .js .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: none;
+  }
+
+  .header-linkedin img {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+
+  .nav-toggle {
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: var(--color-teal);
+    cursor: pointer;
+  }
+
+  .nav-toggle-icon path {
+    transform-box: view-box;
+    transform-origin: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nav-toggle[aria-expanded="true"] .bar-top {
+    transform: translateY(5px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] .bar-mid {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"] .bar-bot {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+
+  nav.primary-nav {
+    flex: 0 0 100%;
     flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+    padding: 0.5rem 0 1.25rem;
+  }
+
+  .js nav.primary-nav {
+    display: none;
+  }
+
+  .js .site-header.nav-open nav.primary-nav {
+    display: flex;
+  }
+
+  /* LinkedIn lives in the header bar on mobile. */
+  nav.primary-nav a.nav-linkedin {
+    display: none;
+  }
+
+  nav.primary-nav a:not(.nav-linkedin) {
+    gap: 1rem;
+    min-height: 3.1rem;
+    padding: 0.3rem 1rem;
+    border: 0;
+    border-radius: 0.9rem;
+    background-color: color-mix(in srgb, var(--color-contour) 45%, var(--color-bg));
+    color: var(--color-teal);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  nav.primary-nav a:not(.nav-linkedin):hover,
+  nav.primary-nav a:not(.nav-linkedin):focus-visible {
+    background-color: color-mix(in srgb, var(--color-sage) 55%, var(--color-bg));
+  }
+
+  nav.primary-nav a[aria-current="page"] {
+    background-color: var(--color-sage);
+    font-weight: 500;
+  }
+
+  /* Set by script.js: the link to the exact page you're on isn't offered. */
+  nav.primary-nav a.nav-here {
+    display: none;
+  }
+
+  nav.primary-nav .nav-icon,
+  nav.primary-nav .nav-arrow {
+    display: block;
+    flex: none;
+  }
+
+  nav.primary-nav .nav-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  nav.primary-nav .nav-arrow {
+    width: 22px;
+    height: 22px;
+  }
+
+  nav.primary-nav .nav-label {
+    flex: 1;
   }
 
   .questions-grid {
@@ -856,6 +984,15 @@ footer.site-footer .footer-linkedin img {
 
   footer.site-footer .wrap {
     flex-direction: column;
+  }
+}
+
+/* Very narrow phones (e.g. 320px): shrink the site title so it still shares a
+   row with the LinkedIn and menu buttons instead of pushing the button down. */
+@media (max-width: 360px) {
+  .site-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
   }
 }
 

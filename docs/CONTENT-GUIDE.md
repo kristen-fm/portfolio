@@ -158,7 +158,9 @@ layout, not another item in an existing list. It's the one case that still
 touches the build script directly:
 
 1. Add the nav entry to `src/data/nav.js` — this alone updates the nav on
-   every page.
+   every page. Give it an `icon` key (used in the mobile menu); the available
+   icons are in `src/templates/navIcons.js`, and the build fails with a clear
+   message if the key doesn't exist.
 2. Create `src/data/<page>.js` for its data and
    `src/templates/pages/<page>.js` for its render function (look at
    `src/templates/pages/home.js` for the simplest example).
