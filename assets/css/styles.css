@@ -60,6 +60,9 @@ html {
 
 body {
   position: relative;
+  /* The decorative contour corners bleed past the viewport edge on purpose;
+     clip them so they never cause sideways scrolling. */
+  overflow-x: clip;
   margin: 0;
   background-color: var(--color-bg);
   color: var(--color-charcoal);
@@ -98,6 +101,16 @@ body {
   .contour-corner {
     width: 60vw;
     opacity: 0.3;
+  }
+
+  /* Negative offsets pushed the image past the viewport edge and caused
+     sideways scrolling on phones. */
+  .contour-corner--top {
+    right: 0;
+  }
+
+  .contour-corner--bottom {
+    left: 0;
   }
 }
 
