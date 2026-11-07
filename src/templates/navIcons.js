@@ -8,8 +8,8 @@ const open = (cls) =>
 const icons = {
   // Mountain range
   mountain: `${open("nav-icon")}<path d="M3 24 11 11l4 6 3-4 11 11"/><path d="m9 15 2-4 2.5 3.5"/><path d="M3 24h26"/></svg>`,
-  // Stacked books
-  books: `${open("nav-icon")}<rect x="4" y="5" width="24" height="7" rx="3"/><rect x="4" y="12.5" width="24" height="7" rx="3"/><rect x="4" y="20" width="24" height="7" rx="3"/></svg>`,
+  // Open book
+  book: `${open("nav-icon")}<path d="M16 8c-3-2-7-3-12-3v18c5 0 9 1 12 3 3-2 7-3 12-3V5c-5 0-9 1-12 3z"/><path d="M16 8v18"/></svg>`,
   // Laptop
   laptop: `${open("nav-icon")}<rect x="6" y="6" width="20" height="14" rx="1.5"/><path d="M3 25h26"/><path d="M3 25l2-5h22l2 5"/></svg>`,
   // Sprout
