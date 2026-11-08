@@ -82,11 +82,11 @@ module.exports = [
     slug: "l2-motivational-self-system",
     date: { display: "June 2022", datetime: "2022-06-12" },
     type: "Praxis",
-    title: "Learn How to Code: Insights from the L2 Motivational Self System",
+    title: "Learn How to Code: Insights From the L2 Motivational Self System",
     summaryHtml: [
       `                In this essay, I explore how research on motivation in second language
                 acquisition might help explain why some adults persist through the challenges
-                of learning to code while others give up. Drawing on Zolt&aacute;n
+                of learning to code, whereas others give up. Drawing on Zolt&aacute;n
                 D&ouml;rnyei&rsquo;s (2005) L2 Motivational Self System, I introduce the
                 concepts of the Ideal L2 Self and Ought-to L2 Self and consider how these
                 motivational constructs might apply to aspiring software developers.`,
@@ -116,9 +116,9 @@ module.exports = [
     detail: {
       documentTitle: "Learn How to Code | Kristen Foster-Marks",
       metaDescription:
-        "Learn How to Code: Insights from the L2 Motivational Self System — a reflection by Kristen Foster-Marks",
+        "Learn How to Code: Insights From the L2 Motivational Self System — a reflection by Kristen Foster-Marks",
       headingHtml: "Learn How to Code",
-      subtitleHtml: "Insights from the L2 Motivational Self System",
+      subtitleHtml: "Insights From the L2 Motivational Self System",
       headerOrder: ["h1", "subtitle", "meta"],
       metaLine: `<time datetime="2022-06-12">June 12, 2022</time> &middot; Praxis`,
       provenanceHtml: null,
