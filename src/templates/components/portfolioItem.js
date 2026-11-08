@@ -16,12 +16,16 @@ function renderPortfolioItem(item) {
         .join("\n")}\n            </div>`
     : "";
 
+  const referencesBlock = item.referencesHtml
+    ? `\n            <div class="references">\n${item.referencesHtml}\n            </div>`
+    : "";
+
   const linkAttrs = item.link.external ? ` target="_blank" rel="noopener noreferrer"` : "";
 
   return `          <article class="portfolio-item" id="${item.id}">
             <p class="entry-meta">${item.metaLine}</p>
             <h3>${item.title}</h3>
-${paragraphs}${gridBlock}
+${paragraphs}${gridBlock}${referencesBlock}
             <a class="entry-link" href="${item.link.href}"${linkAttrs}>${item.link.label} &rarr;</a>
           </article>`;
 }

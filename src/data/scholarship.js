@@ -113,26 +113,40 @@ module.exports = [
     type: "Commentary",
     title: "Microinclusions: a small way to increase sense of belonging and fit on tech teams",
     summaryHtml: [
-      `                A commentary I wrote for the Developer Success Lab&rsquo;s
+      `                In this commentary I wrote for the Developer Success Lab&rsquo;s
                 <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer
-                Science Review</a>, responding to
+                Science Review</a>, I respond to
                 <a href="https://doi.org/10.1037/pspi0000430" target="_blank" rel="noopener noreferrer">Muragishi et al.&rsquo;s (2023) research</a> on
-                <em>microinclusions</em> &mdash; the small acts of interpersonal treatment
-                that signal whether others are receptive to and supportive of our
-                contributions to shared work. Across four experiments, the authors found
-                these acts especially bolster a sense of fit for women in technology, whose
-                contributions are too often marginalized.`,
-      `                I include it because it connects the empirical research to my own lived
-                experience on tech teams and issues a practical challenge: to notice, and
-                to practice, microinclusions in our everyday work.`,
+                <em>microinclusions</em> on technology teams. Microinclusions are acts that
+                &ldquo;convey a receptivity and supportiveness to one&rsquo;s contributions&rdquo;
+                (p. 431). Across four experiments, the authors found these acts can serve to
+                bolster a sense of fit for women in technology, whose value and team
+                contributions have been historically minimized.`,
+      `                Drawing on my own experiences working as a software engineer on tech
+                teams, I reflect on the significance of these seemingly small interpersonal
+                behaviors and encourage readers to consider how their own actions might
+                influence their colleagues&rsquo; sense of belonging and fit. I also consider
+                the potential for well-intentioned acts of inclusion to inadvertently exclude
+                others, highlighting the importance of attending to individual differences and
+                the social contexts in which these interactions occur.`,
+      `                This commentary reflects my interest in connecting empirical research to
+                professional practice, particularly by encouraging practitioners to critically
+                reflect on their own experiences, beliefs, and behaviors.`,
     ],
-    referencesHtml: null,
-    link: { href: "/scholarship/microinclusions/", external: false, label: "Continue reading" },
+    referencesHtml: `                <p>
+                  Muragishi, G. A., Aguilar, L., Carr, P. B., &amp; Walton, G. M. (2023).
+                  Microinclusions: Treating women as respected work partners increases a
+                  sense of fit in technology companies. <em>Journal of Personality and
+                  Social Psychology, 126</em>(3), 431&ndash;460.
+                  <a href="https://doi.org/10.1037/pspi0000430" target="_blank" rel="noopener noreferrer">https://doi.org/10.1037/pspi0000430</a>
+                </p>`,
+    link: { href: "/scholarship/microinclusions/", external: false, label: "Read the commentary" },
     detail: {
       documentTitle: "Microinclusions | Kristen Foster-Marks",
       metaDescription:
         "Microinclusions: a small way to increase sense of belonging and fit on tech teams — a commentary by Kristen Foster-Marks reviewing Muragishi et al. (2023)",
-      headingHtml: "A Commentary on \"Microinclusions: a small way to increase sense of belonging and fit on tech teams\"",
+      headingHtml:
+        "A Commentary on &ldquo;Microinclusions: a small way to increase sense of belonging and fit on tech teams&rdquo;",
       subtitleHtml: null,
       headerOrder: ["meta", "h1", "provenance"],
       metaLine: `<time datetime="2024-07-22">July 22, 2024</time> &middot; Commentary`,
