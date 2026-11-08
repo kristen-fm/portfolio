@@ -1,5 +1,6 @@
 const { renderPage } = require("../layout");
 const { renderEntryCard } = require("../components/entryCard");
+const { renderToc } = require("../components/toc");
 
 const PLACEHOLDER_ENTRY_COMMENT = `            <!--
               One .entry per paper / project / presentation. Each item should read
@@ -30,9 +31,17 @@ const PLACEHOLDER_ENTRY_COMMENT = `            <!--
             -->`;
 
 function renderScholarshipIndex(entries) {
+  const tocHtml = renderToc(
+    entries
+      .filter((entry) => entry.id)
+      .map((entry) => ({ id: entry.id, title: entry.title, dateIso: entry.date ? entry.date.datetime : null }))
+  );
+  const showBackToToc = tocHtml !== "";
+
   const entriesHtml = entries
-    .map((entry) => renderEntryCard(entry, { boxed: true }))
+    .map((entry) => renderEntryCard(entry, { boxed: true, showBackToToc }))
     .join("\n\n");
+  const tocBlock = tocHtml ? `\n${tocHtml}\n` : "";
 
   const bodyHtml = `      <section class="prose-section" id="section-intro">
         <div class="wrap">
@@ -40,7 +49,7 @@ function renderScholarshipIndex(entries) {
           <h1>Research &amp; Scholarship</h1>
         </div>
       </section>
-
+${tocBlock}
       <section id="items">
         <div class="wrap">
           <div class="entry-list">

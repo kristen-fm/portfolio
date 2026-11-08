@@ -508,6 +508,107 @@ main > section:first-child {
   color: var(--color-gold);
 }
 
+/* -------------------- Table of contents (Scholarship, Reflections, Learning Design) -------------------- */
+
+.toc {
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.toc-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: var(--space-2);
+}
+
+.toc-heading-label {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
+.toc-heading-rule {
+  flex: 1;
+  border-top: 1px solid var(--color-contour);
+}
+
+.toc-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--space-4);
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-item {
+  border-bottom: 1px solid var(--color-contour);
+}
+
+.toc-item:last-child {
+  border-bottom: none;
+}
+
+.toc-link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-height: max(44px, 2.75rem);
+  padding: 0.4rem 0;
+  text-decoration: none;
+}
+
+.toc-date {
+  flex: none;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* Darker gold than --color-gold (~2.8:1 on --color-bg, below WCAG AA)
+     for this small text; matches the --pdp-gold-text shade used elsewhere. */
+  color: #87672f;
+  border-right: 1px solid var(--color-contour);
+  padding-right: 0.75rem;
+  min-width: 3.5rem;
+}
+
+.toc-title {
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  color: var(--color-teal);
+}
+
+.toc-link:hover .toc-title,
+.toc-link:focus-visible .toc-title {
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+}
+
+.toc-link:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+.entry-actions {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
+}
+
+@media (max-width: 640px) {
+  .toc-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* -------------------- Portfolio item (Learning Design & Practice) -------------------- */
 
 .coming-soon {

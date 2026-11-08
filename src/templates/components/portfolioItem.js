@@ -1,3 +1,5 @@
+const { renderBackToToc } = require("./toc");
+
 function renderGridPart(part) {
   return `              <div class="portfolio-item-part">
                 <h4>${part.heading}</h4>
@@ -5,7 +7,7 @@ function renderGridPart(part) {
               </div>`;
 }
 
-function renderPortfolioItem(item) {
+function renderPortfolioItem(item, { showBackToToc = false } = {}) {
   const paragraphs = item.summaryHtml
     .map((p) => `            <p>\n${p}\n            </p>`)
     .join("\n");
@@ -21,12 +23,16 @@ function renderPortfolioItem(item) {
     : "";
 
   const linkAttrs = item.link.external ? ` target="_blank" rel="noopener noreferrer"` : "";
+  const entryLink = `<a class="entry-link" href="${item.link.href}"${linkAttrs}>${item.link.label} &rarr;</a>`;
+  const actionsHtml = showBackToToc
+    ? `            <div class="entry-actions">\n              ${entryLink}\n              ${renderBackToToc()}\n            </div>`
+    : `            ${entryLink}`;
 
   return `          <article class="portfolio-item" id="${item.id}">
             <p class="entry-meta">${item.metaLine}</p>
             <h3>${item.title}</h3>
 ${paragraphs}${gridBlock}${referencesBlock}
-            <a class="entry-link" href="${item.link.href}"${linkAttrs}>${item.link.label} &rarr;</a>
+${actionsHtml}
           </article>`;
 }
 

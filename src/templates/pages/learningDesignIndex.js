@@ -1,5 +1,6 @@
 const { renderPage } = require("../layout");
 const { renderPortfolioItem } = require("../components/portfolioItem");
+const { renderToc } = require("../components/toc");
 
 const PLACEHOLDER_ITEM_COMMENT = `          <!--
             PORTFOLIO ITEM TEMPLATE
@@ -44,7 +45,13 @@ const PLACEHOLDER_ITEM_COMMENT = `          <!--
           -->`;
 
 function renderLearningDesignIndex(items) {
-  const itemsHtml = items.map(renderPortfolioItem).join("\n\n");
+  const tocHtml = renderToc(
+    items.filter((item) => item.id).map((item) => ({ id: item.id, title: item.title, dateIso: item.dateIso || null }))
+  );
+  const showBackToToc = tocHtml !== "";
+
+  const itemsHtml = items.map((item) => renderPortfolioItem(item, { showBackToToc })).join("\n\n");
+  const tocBlock = tocHtml ? `\n${tocHtml}\n` : "";
 
   const bodyHtml = `      <section class="prose-section" id="section-intro">
         <div class="wrap">
@@ -52,7 +59,7 @@ function renderLearningDesignIndex(items) {
           <h1>Learning Design &amp; Practice</h1>
         </div>
       </section>
-
+${tocBlock}
       <section id="items">
         <div class="wrap">
 

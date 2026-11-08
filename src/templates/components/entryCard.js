@@ -1,3 +1,5 @@
+const { renderBackToToc } = require("./toc");
+
 function renderMetaBlock(entry) {
   // A plain `dateText` (e.g. "Preprint &middot; October 2024") renders as a
   // single line; a structured `date`+`type` pair renders wrapped across
@@ -11,7 +13,7 @@ function renderMetaBlock(entry) {
               </p>`;
 }
 
-function renderEntryCard(entry, { boxed = false } = {}) {
+function renderEntryCard(entry, { boxed = false, showBackToToc = false } = {}) {
   const paragraphs = entry.summaryHtml
     .map((p) => `              <p>\n${p}\n              </p>`)
     .join("\n");
@@ -25,12 +27,16 @@ function renderEntryCard(entry, { boxed = false } = {}) {
     : "";
 
   const className = boxed ? "entry entry--boxed" : "entry";
+  const entryLink = `<a class="entry-link" href="${entry.link.href}"${linkAttrs}>${entry.link.label} &rarr;</a>`;
+  const actionsHtml = showBackToToc
+    ? `              <div class="entry-actions">\n                ${entryLink}\n                ${renderBackToToc()}\n              </div>`
+    : `              ${entryLink}`;
 
   return `            <article class="${className}"${entry.id ? ` id="${entry.id}"` : ""}>
 ${renderMetaBlock(entry)}
               <h3>${entry.title}</h3>
 ${paragraphs}${referencesBlock}
-              <a class="entry-link" href="${entry.link.href}"${linkAttrs}>${entry.link.label} &rarr;</a>
+${actionsHtml}
             </article>`;
 }
 

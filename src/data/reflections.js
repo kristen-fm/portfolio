@@ -32,6 +32,7 @@ module.exports = [
   //   },
   // },
   {
+    id: "technical-upskilling",
     slug: "technical-upskilling",
     date: { display: "October 2023", datetime: "2023-10-01" },
     type: "Praxis",
@@ -79,6 +80,7 @@ module.exports = [
     },
   },
   {
+    id: "l2-motivational-self-system",
     slug: "l2-motivational-self-system",
     date: { display: "June 2022", datetime: "2022-06-12" },
     type: "Praxis",

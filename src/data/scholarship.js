@@ -69,6 +69,7 @@ module.exports = [
   //   },
   // },
   {
+    id: "code-review-anxiety-study",
     slug: null,
     dateText: "October 2024 &middot; Research Article",
     title:
@@ -108,6 +109,7 @@ module.exports = [
     detail: null,
   },
   {
+    id: "microinclusions",
     slug: "microinclusions",
     date: { display: "July 2024", datetime: "2024-07-22" },
     type: "Commentary",
