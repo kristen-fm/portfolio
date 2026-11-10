@@ -93,13 +93,24 @@ module.exports = [
                 as a free Internet resource.`,
       `                Together, I hope the two artifacts demonstrate my burgeoning abilities as
                 a scholar-practitioner, my commitment to evaluating the efficacy of
-                educational interventions, and my penchant for disseminating research findings in ways that benefit relevant learning communities.`,
+                educational interventions, and my penchant for disseminating research findings in ways that benefit relevant learning communities.
+                More broadly, they reflect my interest in conducting research within the
+                professional communities to which I belong, using the knowledge generated
+                through empirical inquiry to inform educational practice and contribute to
+                those communities (Stevens-Wood &amp; Attfield, 2024).`,
     ],
     referencesHtml: `                <p>
                   Lee, C. S., Hicks, C. M., &amp; Foster-Marks, K. L. (2024).
                   <em>&ldquo;My code is shit&rdquo;: Negative automatic thoughts and outcomes
                   of a behavioral experiment for code review anxiety</em>. PsyArXiv.
                   <a href="https://doi.org/10.31234/osf.io/hz3et" target="_blank" rel="noopener noreferrer">https://doi.org/10.31234/osf.io/hz3et</a>
+                </p>
+                <p>
+                  Stevens-Wood, K., &amp; Attfield, K. (2024). Notes from the field of the
+                  scholar&ndash;practitioner: Inhabiting the liminal space between research
+                  and practice&mdash;A reflective account of holding dual identities.
+                  <em>Societies, 14</em>(2), Article 13.
+                  <a href="https://doi.org/10.3390/soc14020013" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/soc14020013</a>
                 </p>`,
     link: {
       href: "https://osf.io/preprints/psyarxiv/hz3et_v1",
