@@ -71,7 +71,8 @@ module.exports = [
   {
     id: "code-review-anxiety-study",
     slug: null,
-    dateText: "October 2024 &middot; Research Article",
+    date: { display: "October 2024", datetime: "2024-10" },
+    type: "Research Article",
     title:
       "&ldquo;My code is shit&rdquo;: Negative automatic thoughts and outcomes of a behavioral experiment for code review anxiety",
     summaryHtml: [
@@ -144,7 +145,10 @@ module.exports = [
                 the social contexts in which these interactions occur.`,
       `                This commentary reflects my interest in connecting empirical research to
                 professional practice, particularly by encouraging practitioners to critically
-                reflect on their own experiences, beliefs, and behaviors.`,
+                reflect on their own experiences, beliefs, and behaviors. It also reflects my
+                developing identity as a scholar-practitioner, drawing on my experience within
+                the software engineering community to help bridge the gap between academic
+                research and professional practice (Stevens-Wood &amp; Attfield, 2024).`,
     ],
     referencesHtml: `                <p>
                   Muragishi, G. A., Aguilar, L., Carr, P. B., &amp; Walton, G. M. (2024).
@@ -152,6 +156,13 @@ module.exports = [
                   sense of fit in technology companies. <em>Journal of Personality and
                   Social Psychology, 126</em>(3), 431&ndash;460.
                   <a href="https://doi.org/10.1037/pspi0000430" target="_blank" rel="noopener noreferrer">https://doi.org/10.1037/pspi0000430</a>
+                </p>
+                <p>
+                  Stevens-Wood, K., &amp; Attfield, K. (2024). Notes from the field of the
+                  scholar&ndash;practitioner: Inhabiting the liminal space between research
+                  and practice&mdash;A reflective account of holding dual identities.
+                  <em>Societies, 14</em>(2), Article 13.
+                  <a href="https://doi.org/10.3390/soc14020013" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/soc14020013</a>
                 </p>`,
     link: { href: "/scholarship/microinclusions/", external: false, label: "Read the commentary" },
     detail: {

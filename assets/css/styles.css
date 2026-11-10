@@ -523,7 +523,7 @@ main > section:first-child {
 
 .toc-heading-label {
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 1.56rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-gold);
