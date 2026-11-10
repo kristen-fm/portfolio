@@ -1,4 +1,5 @@
 const { renderBackToToc } = require("./toc");
+const { referencesLabel } = require("./references");
 
 function renderMetaBlock(entry) {
   // A plain `dateText` (e.g. "Preprint &middot; October 2024") renders as a
@@ -19,7 +20,7 @@ function renderEntryCard(entry, { boxed = false, showBackToToc = false } = {}) {
     .join("\n");
 
   const referencesBlock = entry.referencesHtml
-    ? `\n              <div class="references">\n${entry.referencesHtml}\n              </div>`
+    ? `\n              <div class="references">\n                <h4 class="references-heading">${referencesLabel(entry.referencesHtml)}</h4>\n${entry.referencesHtml}\n              </div>`
     : "";
 
   const linkAttrs = entry.link.external

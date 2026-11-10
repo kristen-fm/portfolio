@@ -14,7 +14,7 @@ module.exports = [
   //               disadvantageous.`,
   //   ],
   //   referencesHtml: null,
-  //   link: { href: "/scholarship/intellectual-humility/", external: false, label: "Continue reading" },
+  //   link: { href: "/scholarship/intellectual-humility/", external: false, label: "Read the response" },
   //   detail: {
   //     documentTitle: "For whom does intellectual humility become disadvantageous? | Kristen Foster-Marks",
   //     metaDescription:
@@ -50,7 +50,7 @@ module.exports = [
   //               can adapt on their own teams.`,
   //   ],
   //   referencesHtml: null,
-  //   link: { href: "/scholarship/thought-leadership/", external: false, label: "Continue reading" },
+  //   link: { href: "/scholarship/thought-leadership/", external: false, label: "Read the commentary" },
   //   detail: {
   //     documentTitle: "Think Big, Then Scrutinize | Kristen Foster-Marks",
   //     metaDescription:
@@ -75,7 +75,7 @@ module.exports = [
     title:
       "&ldquo;My code is shit&rdquo;: Negative automatic thoughts and outcomes of a behavioral experiment for code review anxiety",
     summaryHtml: [
-      `                This research article reports on a mixed-methods intervention study on
+      `                This research article (Lee et al., 2024) reports on a mixed-methods intervention study on
                 mitigating <em>code review anxiety</em>. At the time, research had not yet
                 examined intervention strategies for mitigating software practitioners&rsquo;
                 code review anxiety during real-world code review. To fill this lacuna, my
@@ -118,7 +118,7 @@ module.exports = [
       `                In this commentary I wrote for the Developer Success Lab&rsquo;s
                 <a href="https://dsl.pubpub.org/issues" target="_blank" rel="noopener noreferrer">Developer
                 Science Review</a>, I respond to
-                <a href="https://doi.org/10.1037/pspi0000430" target="_blank" rel="noopener noreferrer">Muragishi et al.&rsquo;s (2023) research</a> on
+                <a href="https://doi.org/10.1037/pspi0000430" target="_blank" rel="noopener noreferrer">Muragishi et al.&rsquo;s (2024) research</a> on
                 <em>microinclusions</em> on technology teams. Microinclusions are acts that
                 &ldquo;convey a receptivity and supportiveness to one&rsquo;s contributions&rdquo;
                 (p. 431). Across four experiments, the authors found these acts can serve to
@@ -136,7 +136,7 @@ module.exports = [
                 reflect on their own experiences, beliefs, and behaviors.`,
     ],
     referencesHtml: `                <p>
-                  Muragishi, G. A., Aguilar, L., Carr, P. B., &amp; Walton, G. M. (2023).
+                  Muragishi, G. A., Aguilar, L., Carr, P. B., &amp; Walton, G. M. (2024).
                   Microinclusions: Treating women as respected work partners increases a
                   sense of fit in technology companies. <em>Journal of Personality and
                   Social Psychology, 126</em>(3), 431&ndash;460.
@@ -146,7 +146,7 @@ module.exports = [
     detail: {
       documentTitle: "Microinclusions | Kristen Foster-Marks",
       metaDescription:
-        "Microinclusions: a small way to increase sense of belonging and fit on tech teams — a commentary by Kristen Foster-Marks reviewing Muragishi et al. (2023)",
+        "Microinclusions: a small way to increase sense of belonging and fit on tech teams — a commentary by Kristen Foster-Marks reviewing Muragishi et al. (2024)",
       headingHtml:
         "A Commentary on &ldquo;Microinclusions: a small way to increase sense of belonging and fit on tech teams&rdquo;",
       subtitleHtml: null,

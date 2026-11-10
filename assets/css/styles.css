@@ -760,6 +760,8 @@ main > section:first-child {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-charcoal);
+  /* Same gap below the site header as the first section on index pages. */
+  margin-top: var(--space-3);
   margin-bottom: var(--space-3);
 }
 
@@ -860,6 +862,15 @@ main > section:first-child {
 /* APA reference list with hanging indents. */
 .references {
   margin-top: var(--space-2);
+}
+
+.references-heading {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
 }
 
 .references p {

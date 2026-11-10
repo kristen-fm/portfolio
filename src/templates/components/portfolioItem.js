@@ -1,4 +1,5 @@
 const { renderBackToToc } = require("./toc");
+const { referencesLabel } = require("./references");
 
 function renderGridPart(part) {
   return `              <div class="portfolio-item-part">
@@ -19,7 +20,7 @@ function renderPortfolioItem(item, { showBackToToc = false } = {}) {
     : "";
 
   const referencesBlock = item.referencesHtml
-    ? `\n            <div class="references">\n${item.referencesHtml}\n            </div>`
+    ? `\n            <div class="references">\n              <h4 class="references-heading">${referencesLabel(item.referencesHtml)}</h4>\n${item.referencesHtml}\n            </div>`
     : "";
 
   const linkAttrs = item.link.external ? ` target="_blank" rel="noopener noreferrer"` : "";

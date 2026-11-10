@@ -17,7 +17,7 @@ module.exports = [
   //               practice.`,
   //   ],
   //   referencesHtml: null,
-  //   link: { href: "/reflections/communication-skills/", external: false, label: "Continue reading" },
+  //   link: { href: "/reflections/communication-skills/", external: false, label: "Read the essay" },
   //   detail: {
   //     documentTitle: "Communication Skills | Kristen Foster-Marks",
   //     metaDescription:
@@ -36,7 +36,7 @@ module.exports = [
     slug: "technical-upskilling",
     date: { display: "October 2023", datetime: "2023-10-01" },
     type: "Praxis",
-    title: "Technical Upskilling: Are We Walking in Circles without a Rhetorical Compass?",
+    title: "Technical Upskilling: Are We Walking in Circles Without a Rhetorical Compass?",
     summaryHtml: [
       `                In this reflective essay, I examine a persistent challenge I encountered
                 while designing and facilitating technical upskilling programs for software
@@ -63,17 +63,18 @@ module.exports = [
                 </p>
                 <p>
                   Schneider, B. (2008). The rhetorical situation: Examining the framing of
-                  professional development. <em>Pedagogy, 8</em>(3), 509&ndash;528.
+                  professional development. <em>Pedagogy, 8</em>(3), 509&ndash;522.
+                  <a href="https://doi.org/10.1215/15314200-2008-009" target="_blank" rel="noopener noreferrer">https://doi.org/10.1215/15314200-2008-009</a>
                 </p>`,
-    link: { href: "/reflections/technical-upskilling/", external: false, label: "Continue reading" },
+    link: { href: "/reflections/technical-upskilling/", external: false, label: "Read the essay" },
     detail: {
       documentTitle: "Technical Upskilling | Kristen Foster-Marks",
       metaDescription:
-        "Technical Upskilling: Are We Walking in Circles without a Rhetorical Compass? — a reflection by Kristen Foster-Marks",
+        "Technical Upskilling: Are We Walking in Circles Without a Rhetorical Compass? — a reflection by Kristen Foster-Marks",
       headingHtml: "Technical Upskilling",
-      subtitleHtml: "Are We Walking in Circles without a Rhetorical Compass?",
-      headerOrder: ["meta", "h1", "subtitle"],
-      metaLine: `<time datetime="2023-10-01">October 1, 2023</time> &middot; Theory`,
+      subtitleHtml: "Are We Walking in Circles Without a Rhetorical Compass?",
+      headerOrder: ["h1", "subtitle", "meta"],
+      metaLine: `<time datetime="2023-10-01">October 1, 2023</time> &middot; Praxis`,
       provenanceHtml: null,
       backLabel: "Reflections",
       bodyFile: "content/reflections/technical-upskilling.html",
@@ -113,7 +114,7 @@ module.exports = [
     link: {
       href: "/reflections/l2-motivational-self-system/",
       external: false,
-      label: "Continue reading",
+      label: "Read the essay",
     },
     detail: {
       documentTitle: "Learn How to Code | Kristen Foster-Marks",
