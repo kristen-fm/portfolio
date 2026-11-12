@@ -26,3 +26,118 @@ window.DD_RUM.onReady(function() {
     defaultPrivacyLevel: 'mask-user-input',
   })
 })
+
+// Portfolio site engagement: custom actions share the SDK initialized above.
+;(function () {
+  function addAction(name, context) {
+    window.DD_RUM.onReady(function () {
+      window.DD_RUM.addAction(name, context);
+    });
+  }
+
+  function destination(link) {
+    try {
+      return new URL(link.getAttribute("href"), document.baseURI);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function isExternal(url) {
+    return url && (url.protocol === "http:" || url.protocol === "https:") &&
+      url.host !== window.location.host;
+  }
+
+  // Delegation also covers clicks on nested labels/icons and future entries.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("a[href]");
+    if (!link) return;
+
+    if (link.classList.contains("cv-download")) {
+      addAction("cv_downloaded");
+      return;
+    }
+
+    var placement = ["header", "nav", "footer"].find(function (value) {
+      return link.classList.contains(value + "-linkedin");
+    });
+    if (placement) {
+      addAction("linkedin_profile_clicked", { placement: placement });
+      return;
+    }
+
+    if (link.matches("nav#toc a.toc-link")) {
+      addAction("toc_link_clicked", {
+        entry_id: link.getAttribute("href").slice(1),
+      });
+      return;
+    }
+
+    var url = destination(link);
+    var context = {
+      link_url: link.getAttribute("href"),
+      link_text: link.innerText.trim(),
+    };
+    if (link.classList.contains("entry-link")) {
+      if (link.classList.contains("back-to-toc")) return;
+      var article = link.closest("article");
+      if (article && article.id) context.entry_id = article.id;
+      context.is_external = !!isExternal(url) || link.target === "_blank";
+      addAction("entry_link_clicked", context);
+      return;
+    }
+
+    // All LinkedIn destinations are excluded from the generic outbound action.
+    var isLinkedIn = url && /(^|\.)linkedin\.com$/i.test(url.hostname);
+    if (isExternal(url) && !isLinkedIn) {
+      addAction("outbound_link_clicked", context);
+    }
+  });
+
+  function trackArticleScroll() {
+    var path = window.location.pathname.replace(/index\.html$/, "");
+    var isDetail = /^\/(reflections|scholarship|learning-design)\/[^/]+\/?$/.test(path);
+    if (!isDetail && !/^\/pdp\/?$/.test(path)) return;
+
+    // The separate interactive lesson has its own section navigation, rather
+    // than a long-form article. Only track the portfolio's main content.
+    var main = document.querySelector("main#main");
+    if (!main) return;
+
+    var reached = new Set();
+    var pending = false;
+    function checkDepth() {
+      pending = false;
+      var bounds = main.getBoundingClientRect();
+      if (bounds.height <= 0) return;
+      var depth = (window.innerHeight - bounds.top) / bounds.height * 100;
+      [25, 50, 75, 100].forEach(function (milestone) {
+        if (depth >= milestone && !reached.has(milestone)) {
+          reached.add(milestone);
+          addAction("article_scroll_depth_reached", { depth_percent: milestone });
+        }
+      });
+    }
+    function scheduleCheck() {
+      if (pending) return;
+      pending = true;
+      window.setTimeout(checkDepth, 100);
+    }
+
+    window.addEventListener("scroll", scheduleCheck, { passive: true });
+    window.addEventListener("resize", scheduleCheck);
+    window.addEventListener("load", scheduleCheck);
+    // A restored document starts a new RUM view without running this script again.
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) reached.clear();
+      scheduleCheck();
+    });
+    checkDepth();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", trackArticleScroll, { once: true });
+  } else {
+    trackArticleScroll();
+  }
+})();

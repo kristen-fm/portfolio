@@ -3,6 +3,7 @@
   "private": true,
   "description": "Build tooling for kristen-fm.com. Only build-time dependencies; nothing here is shipped to the browser.",
   "scripts": {
+    "test": "node --test",
     "build": "node build.js",
     "check": "node build.js --check",
     "watch": "node watch.js"
