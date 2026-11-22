@@ -219,11 +219,11 @@ goal-2-research.md
 goal-3-practice.md
 goal-4-degree.md
 goal-5-doctorate.md
+references.md            "# References" + APA entries, one per paragraph
 ```
 
-`src/data/pdp.js` holds only the page header (eyebrow, subtitle, program
-line), the commitment legend wording, the goal file order, and each goal's
-short label for the sticky goal nav.
+`src/data/pdp.js` holds only the page header (title, program
+line), the goal file order, and the references file.
 
 ### Goal file format
 
@@ -272,8 +272,12 @@ and what's wrong, and doesn't write any half-built pages.
 - **Change a step, resource, timeline, or measure:** edit the text in that
   cell and save.
 - **Add an objective:** add a table row with the next ID (e.g. `G3.3`). The
-  overview, objective counts, and goal nav update automatically.
+  objective count in the goal's summary line updates automatically.
 - **Add a goal:** create `goal-6-<name>.md` and add it to `goals` in
   `src/data/pdp.js`.
 - **Contextual statement:** edit `introduction.md` (ordinary Markdown
   paragraphs).
+- **Cite a source:** add an APA entry to `references.md` as its own
+  paragraph — the page gives it a hanging indent — and put the matching
+  in-text citation (`(Sawyer, 2022)`) in the cell that uses it. Deleting
+  `referencesFile` from `src/data/pdp.js` drops the section entirely.

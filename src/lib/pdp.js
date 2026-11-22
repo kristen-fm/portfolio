@@ -380,10 +380,11 @@ function loadPdp(srcRoot, settings) {
   }
 
   const introduction = loadIntroduction(srcRoot, settings.introductionFile);
-  const goals = settings.goals.map((entry, idx) => ({
-    ...loadGoal(srcRoot, entry.file, idx + 1),
-    navLabel: entry.navLabel,
-  }));
+  // The reference list is optional: a plan that cites nothing omits the file.
+  const references = settings.referencesFile
+    ? loadIntroduction(srcRoot, settings.referencesFile)
+    : null;
+  const goals = settings.goals.map((entry, idx) => loadGoal(srcRoot, entry.file, idx + 1));
 
   // Cross-file checks: unique objective IDs, valid "Also Supports" targets.
   const seen = new Map();
@@ -401,18 +402,7 @@ function loadPdp(srcRoot, settings) {
     }
   }
 
-  const legendKinds = new Set((settings.legend || []).map((l) => l.kind));
-  for (const kind of Object.values(COMMITMENT_KINDS)) {
-    if (!legendKinds.has(kind.kind)) {
-      throw new PdpContentError(`src/data/pdp.js: legend is missing an entry for kind "${kind.kind}"`);
-    }
-  }
-
-  return {
-    introduction,
-    goals,
-    objectiveCount: goals.reduce((n, g) => n + g.objectives.length, 0),
-  };
+  return { introduction, references, goals };
 }
 
 module.exports = { loadPdp, COLUMNS, PdpContentError };

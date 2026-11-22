@@ -3,7 +3,6 @@
 // plain anchor links. This adds:
 //   - "Expand all" / "Collapse all" controls
 //   - auto-opening a collapsed goal when you follow a link into it
-//   - highlighting the goal currently in view in the sticky goal nav
 //   - making the table scroll region focusable only when it actually scrolls
 (function () {
   "use strict";
@@ -39,36 +38,6 @@
   }
   window.addEventListener("hashchange", revealHashTarget);
   revealHashTarget();
-
-  // ---- Highlight the goal in view in the sticky nav
-  var navLinks = Array.prototype.slice.call(root.querySelectorAll(".pdp-goalnav a"));
-  var sections = navLinks
-    .map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); })
-    .filter(Boolean);
-
-  if ("IntersectionObserver" in window && sections.length) {
-    var visible = new Set();
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) visible.add(entry.target.id);
-          else visible.delete(entry.target.id);
-        });
-        // The first section (in document order) that's in the band wins.
-        var current = sections.find(function (s) { return visible.has(s.id); });
-        navLinks.forEach(function (a) {
-          if (current && a.getAttribute("href") === "#" + current.id) {
-            a.setAttribute("aria-current", "location");
-          } else {
-            a.removeAttribute("aria-current");
-          }
-        });
-      },
-      // A band across the upper-middle of the viewport, below the sticky nav.
-      { rootMargin: "-20% 0px -60% 0px" }
-    );
-    sections.forEach(function (s) { observer.observe(s); });
-  }
 
   // ---- Only make table regions keyboard-focusable when they scroll
   var regions = Array.prototype.slice.call(root.querySelectorAll(".pdp-table-wrap"));

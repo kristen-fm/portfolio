@@ -23,14 +23,14 @@ function goalTitleById(goals) {
 
 // ---------------------------------------------------------------- pieces
 
-function renderCommitments(commitments, { compact = false } = {}) {
+function renderCommitments(commitments) {
   const items = commitments
     .map((c) => {
-      const detail = !compact && c.detailHtml ? ` <span class="pdp-commitment-detail">${c.detailHtml}</span>` : "";
+      const detail = c.detailHtml ? ` <span class="pdp-commitment-detail">${c.detailHtml}</span>` : "";
       return `<li class="pdp-commitment pdp-commitment--${c.kind}"><span class="pdp-commitment-label">${c.label}</span>${detail}</li>`;
     })
     .join("");
-  return `<ul class="pdp-commitments${compact ? " pdp-commitments--compact" : ""}" role="list">${items}</ul>`;
+  return `<ul class="pdp-commitments" role="list">${items}</ul>`;
 }
 
 function renderSupports(supports, titles) {
@@ -78,7 +78,6 @@ function renderGoalSection(goal, titles) {
             <header class="pdp-goal-header">
               <p class="pdp-goal-number" aria-hidden="true">Goal ${pad2(goal.number)}</p>
               <h2 id="${headingId}"><span class="visually-hidden">Goal ${goal.number}: </span>${goal.titleHtml}</h2>
-              <p class="pdp-goal-purpose">${goal.purposeHtml}</p>
             </header>
 
             <details class="pdp-goal-details" open>
@@ -104,101 +103,42 @@ ${rows}
         </section>`;
 }
 
-function renderOverview(settings, pdp) {
-  const goalsHtml = pdp.goals
-    .map((goal) => {
-      const objectives = goal.objectives
-        .map(
-          (o) => `                  <li>
-                    <a class="pdp-overview-obj" href="#${o.anchor}"><span class="pdp-overview-obj-id">${o.id}</span> <span class="pdp-overview-obj-title">${o.titleHtml}</span></a>
-                    ${renderCommitments(o.commitments, { compact: true })}
-                  </li>`
-        )
-        .join("\n");
-      return `            <li class="pdp-overview-goal">
-              <span class="pdp-overview-num" aria-hidden="true">${pad2(goal.number)}</span>
-              <div class="pdp-overview-body">
-                <h3><a href="#${goal.anchor}"><span class="visually-hidden">Goal ${goal.number}: </span>${goal.titleHtml}</a></h3>
-                <ol class="pdp-overview-objectives" role="list">
-${objectives}
-                </ol>
-              </div>
-            </li>`;
-    })
-    .join("\n");
+// ---------------------------------------------------------------- page
 
-  const legendHtml = settings.legend
-    .map(
-      (l) => `              <div class="pdp-legend-item">
-                <dt><span class="pdp-commitment pdp-commitment--${l.kind}"><span class="pdp-commitment-label">${l.label}</span></span></dt>
-                <dd>${l.descriptionHtml}</dd>
-              </div>`
-    )
-    .join("\n");
-
-  return `      <section class="pdp-overview" aria-labelledby="pdp-overview-heading">
+// APA reference list for the plan. Omitted entirely when src/data/pdp.js
+// doesn't name a references file.
+function renderReferences(references) {
+  if (!references) return "";
+  return `
+      <section class="pdp-references" aria-labelledby="pdp-references-heading">
         <div class="wrap">
-          <div class="section-heading">
-            <h2 id="pdp-overview-heading">The plan at a glance</h2>
-            <p class="pdp-tally">${plural(pdp.goals.length, "goal")} &middot; ${plural(pdp.objectiveCount, "objective")}</p>
+          <h2 id="pdp-references-heading">${references.headingHtml}</h2>
+          <div class="references">
+${references.bodyHtml}
           </div>
-
-          <dl class="pdp-legend" aria-label="Commitment types">
-${legendHtml}
-          </dl>
-
-          <ol class="pdp-overview-list" role="list">
-${goalsHtml}
-          </ol>
         </div>
       </section>`;
 }
 
-function renderGoalNav(goals) {
-  const links = goals
-    .map(
-      (g) =>
-        `              <li><a href="#${g.anchor}"><span class="pdp-goalnav-num" aria-hidden="true">${g.number}</span><span class="visually-hidden">Goal ${g.number}: </span>${g.navLabel}</a></li>`
-    )
-    .join("\n");
-  return `        <nav class="pdp-goalnav" aria-label="Plan goals">
-          <div class="wrap">
-            <ol role="list">
-${links}
-            </ol>
-          </div>
-        </nav>`;
-}
-
-// ---------------------------------------------------------------- page
 
 function renderPdpPage(settings, pdp) {
   const titles = goalTitleById(pdp.goals);
-  const metaLine = settings.metaLineHtml ? `\n          <p class="pdp-meta">${settings.metaLineHtml}</p>` : "";
 
   const bodyHtml = `    <div class="pdp">
       <section class="pdp-header">
         <div class="wrap">
-          <p class="eyebrow">${settings.eyebrow}</p>
           <h1>${settings.title}</h1>
-          <p class="pdp-subtitle">${settings.subtitleHtml}</p>${metaLine}
         </div>
       </section>
 
       <section class="pdp-intro" aria-labelledby="pdp-intro-heading">
         <div class="wrap">
-          <div class="pdp-measure">
-            <h2 id="pdp-intro-heading">${pdp.introduction.headingHtml}</h2>
+          <h2 id="pdp-intro-heading">${pdp.introduction.headingHtml}</h2>
 ${pdp.introduction.bodyHtml}
-          </div>
         </div>
       </section>
 
-${renderOverview(settings, pdp)}
-
       <div class="pdp-plan">
-${renderGoalNav(pdp.goals)}
-
         <div class="wrap pdp-toolbar" data-pdp-toolbar hidden>
           <button type="button" class="pdp-toggle-all" data-pdp-expand>Expand all</button>
           <button type="button" class="pdp-toggle-all" data-pdp-collapse>Collapse all</button>
@@ -206,6 +146,7 @@ ${renderGoalNav(pdp.goals)}
 
 ${pdp.goals.map((g) => renderGoalSection(g, titles)).join("\n\n")}
       </div>
+${renderReferences(pdp.references)}
     </div>`;
 
   return renderPage({
