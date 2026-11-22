@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f1e8">
+  <!-- Unlisted: not in the nav, not linked from any page. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Learning in the Workplace: an adult education agency/program investigation of Learning &amp; Development at a large technology company.">
+  <title>Learning in the Workplace | Field Report</title>
+  <link rel="icon" type="image/png" href="/assets/images/emoticon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="/assets/js/rum.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to report</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+  <header class="site-header">
+    <div class="header-inner">
+        <button class="menu-toggle" type="button" id="menu-toggle" aria-controls="mobile-contents" aria-expanded="false">Sections <span aria-hidden="true">⌄</span></button>
+      </div>
+    </div>
+    <nav class="mobile-contents" id="mobile-contents" aria-label="Report sections" hidden>
+      <a href="#executive-summary">Executive summary</a><a href="#agency">Agency overview</a><a href="#manager-development">Manager Development</a><a href="#scholarship">Scholarly connections</a><a href="#critical-reflections">Critical reflections</a><a href="#methods">Data collection process</a><a href="#references">References</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="report-title">
+      <h1 id="report-title" class="visually-hidden">Learning in the Workplace: An Agency and Program Investigation</h1>
+      <img class="hero-art" src="assets/report-banner-1240.png" srcset="assets/report-banner-880.png 880w, assets/report-banner-1240.png 1240w, assets/report-banner-1760.png 1760w" sizes="(max-width: 1240px) 100vw, 1240px" alt="Learning in the Workplace — An agency/program investigation. Cream paper texture, layered sage shapes, and fine rose-gold arcs." width="2172" height="724" fetchpriority="high">
+    </section>
+
+    <div class="report-meta wrap">
+      <div><span class="meta-label">PREPARED BY</span><span class="meta-value">Kristen Foster-Marks</span></div>
+      <div><span class="meta-label">COURSE</span><span class="meta-value">EDAE 520 · Adult Education</span></div>
+      <div><span class="meta-label">DATE</span><span class="meta-value">November 2026</span></div>
+      <div><span class="meta-label">TRANSPARENCY</span><button class="meta-value disclaimer-trigger" type="button" id="disclaimer-trigger">AI Use Disclaimer</button></div>
+    </div>
+
+    <div class="report-grid wrap" id="article">
+      <aside class="side-nav" aria-label="On this page">
+        <div class="nav-sticky">
+          <p class="eyebrow">IN THIS REPORT</p>
+          <nav class="section-links">
+            <a href="#executive-summary" data-section-link>Executive summary</a>
+            <a href="#agency" data-section-link>Agency overview</a>
+            <a href="#manager-development" data-section-link>Manager Development</a>
+            <a href="#scholarship" data-section-link>Scholarly connections</a>
+            <a href="#critical-reflections" data-section-link>Critical reflections</a>
+            <a href="#methods" data-section-link>Data collection process</a>
+            <a href="#references" data-section-link>References</a>
+          </nav>
+      </aside>
+
+      <article class="article-content">
+        <section id="executive-summary" class="article-section intro-section" aria-labelledby="intro-title">
+          <p class="eyebrow" id="intro-title">EXECUTIVE SUMMARY</p>
+          <p>This report examines the Learning &amp; Development (L&amp;D) organization at a large technology company. It describes its mission, programs, funding, and approach to identifying learning needs and evaluating outcomes. It also reports on a mandatory one-week manager development program. Sources of information informing the report include interviews with the L&amp;D team's leader, a manager training facilitator, and two manager development program participants; a virtual session observation and document review; and adult education scholarship.</p>
+
+          <h3>Key findings</h3>
+          <ul class="course-list">
+            <li><strong>The manager training program includes within-training practice opportunities, but no systematic way to assess how skills are transferred beyond the training.</strong> In the coaching session I observed, managers practiced with peers, received feedback, and reflected on how they might apply what they learned. Current evaluation focuses on attendance, completion, and post-session feedback.</li>
+            <li><strong>The manager traing program was required for all managers at the company, regardless of their prior management experience.</strong> The two participants I interviewed differed in how valuable they found the training. One concern was the time the week-long program required of managers who were new to the company but already had experience managing people.</li>
+            <li><strong>Manager feedback helps the L&amp;D team identify company-wide learning needs.</strong> The training facilitator described how conversations during manager training helped the team recognize a need for AI literacy training beyond the engineering organization.</li>
+            <li><strong>When asked about their educational philosophies, the L&amp;D team director and the manager training facilitator described their approaches in different terms.</strong> The director encourages the team to think of each learning experience as a “product” and the learner as a “customer.” The facilitator expressed a belief that adult learning should be voluntary and self-directed, which she saw as being in tension with the company’s mandatory attendance policy. After the interview, she completed the <em>Philosophy of Adult Education Inventory</em> <a class="citation" href="#ref-paei">(n.d.)</a> out of personal interest.</li>
+          </ul>
+        </section>
+
+        <section id="agency" class="article-section" aria-labelledby="agency-title">
+          <div class="section-heading"><span class="section-number">01</span><div><p class="eyebrow">THE ORGANIZATION</p><h2 id="agency-title">Agency overview</h2></div></div>
+          <h3>Mission and organizational context</h3>
+          <p>The L&amp;D team at the technology company visited for this report sits within the Talent Development team, which is a part of the People Organization, with all employees ultimately reporting up to the Chief People Officer.</p>
+
+          <p>The team's stated purpose is to provide global learning opportunities that help employees realize their potential and take ownership of their own professional development. A sub-team within the L&amp;D team focuses on enabling managers to support the growth of their teams. I design technical training for customers in a different department, and because I'm in the Engineering Organization that has its own enablement and training team, before the visit I knew little about how our L&amp;D team designed training for internal employees.</p>
+
+          <p>I found no documents describing the team's origins or long-term development, and the people I interviewed knew little about the team before they joined the company, so I could trace only the team’s recent history. This included a reorganization that combined the L&amp;D team with the Talent Development team. The director I spoke with originated with the Talent Development team, with the reorganization bringing the L&amp;D team under her supervision.</p>
+
+          <h3>Programs and services</h3>
+          <p>The L&amp;D team offers several types of professional learning and development opportunities:</p>
+          <div class="program-grid" aria-label="Examples of learning programs">
+            <div><span class="program-num">01</span><h4>Employee growth</h4><p>Career planning, giving and receiving feedback, designing effective presentations, and project and time management.</p></div>
+            <div><span class="program-num">02</span><h4>Leadership</h4><p>Foundational manager training and senior leadership development.</p></div>
+            <div><span class="program-num">03</span><h4>Community and inclusion</h4><p>Peer mentorship, diversity and inclusion workshops, and language learning opportunities.</p></div>
+          </div>
+          <p>In addition to these offerings, employees can access self-paced courses through Docebo, the organization’s learning management system. Some of the self-paced courses are designed to support specific job functions or career paths, while others focus on general professional development. The offerings on AI Fluency are quite robust, which reflects the organization's goal to be a leader in AI literacy. Examples of self-paced courses included in the catalog include:</p>
+
+          <ul class="course-list">
+            <li>AI for Everyone: Fundamentals</li>
+            <li>AI for Everyone: MCPs in Practice: Connecting AI to Your Tools</li>
+            <li>Automate the Boring, Elevate the Rest: AI in Action</li>
+            <li>Mastering ChatGPT: Best Practices for Creating Custom GPTs</li>
+          </ul>
+
+          <h3>How learning needs are identified</h3>
+          <p>Interviews with team members and company-wide documentation highlight several primary sources of information that inform the team's learning needs assessment process:</p>
+          <ul class="course-list">
+            <li>Employee professional and skill development goals, elicited through conversations and surveys</li>
+            <li>Managers' requests for team workshops</li>
+            <li>Skill and knowledge needs to achieve business objectives</li>
+            <li>Consultation requests from organizational leaders</li>
+            <li>Industry trends and best practices, including technology advancements</li>
+          </ul>
+          <p>One interviewee shared that manager training sessions often provide the richest data around the challenges and patterns across the organization that provide the exigence for new learning initiatives. For example, training sessions earlier in the year highlighted the need for more robust AI literacy programs across all departments, rather than focusing just on the engineering organization.</p>
+
+          <h3>Resources and funding</h3>
+          <p>As a corporate L&amp;D function, the team operates within the company's broader organizational resources. Funding for L&amp;D initiatives comes from the People Organization's annual budget, which is allocated based on strategic priorities and business needs.</p>
+
+          <h3>Learning analytics and program evaluation</h3>
+          <p>In conversations with team members, financial return-on-investment reporting was not described as a requirement for individual programs. There are several tools available to the team for tracking learning analytics data like enrollments, engagement, progress, completion, and satisfaction across learning experiences and trainings. However, one interviewee noted that these tools can't currently demonstrate workplace behavior change, learning transfer, or organizational impact, which is desired by most L&D team members and is a source of frustration.</p>
+          <p>Connections between the team's offerings and adult education theory and scholarship are discussed in the <a href="#scholarship">Scholarly connections</a> section.</p>
+        </section>
+
+        <section id="manager-development" class="article-section" aria-labelledby="manager-development-title">
+          <div class="section-heading"><span class="section-number">02</span><div><p class="eyebrow">PROGRAM FOCUS</p><h2 id="manager-development-title">Manager development program</h2></div></div>
+
+          <h3>Program description</h3>
+          <p>The L&amp;D team plans and facilitates a one-week manager training program focused on developing managers’ day-to-day people-management skills and knowledge. The emphasis of the training is on helping managers support individual growth and performance, create accountability, develop careers, and foster inclusive teams.</p>
+
+          <p>The program consists of five sessions:</p>
+          <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Session</th>
+                <th>Focus</th>
+                <th>Learning objectives</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Coaching Others</td>
+                <td>Guiding direct reports toward their own insights and next steps.</td>
+                <td>Use core coaching skills in real conversations and adapt coaching behaviors to team-member needs and outcomes.</td>
+              </tr>
+              <tr>
+                <td>Driving a Feedback Culture</td>
+                <td>Giving and requesting feedback and establishing team feedback habits.</td>
+                <td>Give timely, specific, actionable feedback and build habits for giving and requesting feedback.</td>
+              </tr>
+              <tr>
+                <td>Holding Others Accountable</td>
+                <td>Setting expectations, checking progress, and addressing unmet expectations.</td>
+                <td>Initiate accountability conversations, foster team psychological safety, and use appropriate accountability practices.</td>
+              </tr>
+              <tr>
+                <td>Having Career Development Conversations</td>
+                <td>Understanding career motivations and connecting direct reports to development opportunities.</td>
+                <td>Conduct career conversations, help direct reports articulate development plans, and connect them to opportunities for performance and impact.</td>
+              </tr>
+              <tr>
+                <td>Fostering Inclusive Teams</td>
+                <td>Examining team practices and identifying opportunities to improve inclusion and belonging.</td>
+                <td>Evaluate team inclusivity, address identified gaps, and use opportunities to strengthen belonging.</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+
+          <h3>The learners</h3>
+          <p>The program runs on a quarterly basis, and learners are specifically managers who supervise individual contributors (there is a separate training for managers of managers). Their participation is mandatory, and participants are able to attend both virtually and in person, although the virtual option has some limitations and participants are encouraged to attend in person at the company headquarters if possible.</p>
+
+          <h3>The instructors</h3>
+          <p>The program is facilitated by members of a sub-team within the larger L&amp;D team who specialize in leadership development. They have a range of professional backgrounds, including learning and development, human resources more generally, and public health communication. One interviewee indicated that there are no stringent credential requirements for instructors.</p>
+
+          <h3>Instructional methods</h3>
+          <p>The manager development program fits <a class="citation" href="#ref-lundgren-2021">Lundgren and Poell’s (2021)</a> description of formal learning, whereby the structured, planned program or curriculum revolves around learners following directions from a live trainer.</p>
+
+          <p>The training materials and my own session observation show that the following instructional methods are employed frequently throughout the training:</p>
+          <ul class="course-list">
+            <li><strong>Reflection on prior experience.</strong></li>
+            <li><strong>The use of frameworks and job aids.</strong></li>
+            <li><strong>Opportunities for peer practice and feedback.</strong></li>
+            <li><strong>Analysis and discussion of real-world scenarios.</strong> </li>
+            <li><strong>Collaborative brainstorming.</strong></li>
+          </ul>
+
+          <p>As <a class="citation" href="#ref-ford">Ford (2020)</a> notes: “Competent leaders have grown in their roles and responsibilities and are able to draw out principles that can be generalized across situations and people rather than each situation seeming to be unique” (p. 266). The methods above work toward that kind of generalization, asking managers to draw principles out of their own experience rather than treat each conversation as a one-off problem, and I saw this play out when I attended the first session, “Coaching Others,” virtually. The facilitator gave participants plenty of time to reflect on their own experiences and to work in groups. To me, the value of the reflection time was that it gave managers room to consider how they might use what they were learning in conversations with their own teams.</p>
+
+          <h3>Evaluation</h3>
+          <p>Evaluation of the program unfolds primarily through post-session surveys, which ask participants to rate the session and provide open-ended feedback. The team also tracks attendance and completion, but I found no information about whether or how it formally assesses individual managers’ coaching skills; the team doesn't currently have a systematic approach to evaluating the long-term impact of the training on managers' behavior or team performance. One interviewee noted that while the team has considered follow-up surveys or interviews, they haven't yet implemented a formal process for this type of evaluation.</p>
+
+          This aligns with the literature on Human Resource Development (HRD) training evaluation. <a class="citation" href="#ref-ford">Ford (2020)</a> reports that, among organizations with  leadership development programs, only 55% said they had attempted to measure program effectiveness (p. 265). <a class="citation" href="#ref-lundgren-2021">Lundgren and Poell (2021)</a> describe a related challenge in evaluating transfer: organizations create a setting apart from everyday work so employees can practice a skill, then face the difficulty of tracing how employees use that skill when they return to work (p. 280). I saw that distinction in the coaching session, where managers could practice a conversation with a peer and receive immediate feedback, but the L&amp;D team had no way to understand how managers use those coaching skills in later conversations with their direct reports.
+        </section>
+
+        <section id="scholarship" class="article-section" aria-labelledby="scholarship-title">
+          <div class="section-heading"><span class="section-number">03</span><div><p class="eyebrow">THEORETICAL CONNECTIONS</p><h2 id="scholarship-title">Adult education perspectives</h2></div></div>
+          <p>There were many interesting connections to explore between the L&amp;D team's approach and adult education scholarship that we've covered in EDAE 520, but two felt particularly salient and interesting to me: philosophy of education and motivations to participate.</p>
+          <div class="theory-note">
+            <div class="theory-top"><span class="theory-index">I</span><h3>Philosophy of education</h3></div>
+            <p class="theory-question"><em>Do L&amp;D professionals hold explicit philosophies of education?</em></p>
+            <p>I asked both the director of the L&amp;D team and the manager training developer and facilitator if they held explicit philosophies of education that informed and guided their work. What interested me was whether either educator had had occasion to name the beliefs that guided her work. As Elias and Merriam (2005) explain, “it is advantageous to make these perspectives explicit in order to promote a more reflective form of educational practice” (p. 6). The director described her approach in product terms. She had recently encouraged her team to think of each learning experience they design and facilitate as the “product” and the learner as the “customer.” As <a class="citation" href="#ref-schwartzman">Schwartzman (1995)</a> wrote over thirty years ago, though, "Placing education on the level of a commercial transaction compromises the goals of education" by "confusing short-term satisfaction with long-term learning" (p. 215), which I think is interesting given the L&amp;D team's lack of long-term evaluation of their training programs.</p>
+
+            <p>I came away from both interviews with the impression that neither educator had been encouraged or enabled "to think seriously about educational purpose" <a class="citation" href="#ref-elias">(Silberman, 1970, as cited in Elias &amp; Merriam, 2005, p. 4)</a> in their educator work at the organization.</p>
+
+            <p>That said, the manager training developer expressed interest in learning more about educational philosophy and how it could be applied to the team's work. I told her about the <em>Philosophy of Adult Education Inventory</em> <a class="citation" href="#ref-paei">(n.d.)</a>, a course handout adapted from L. M. Zinn’s work, and she asked if I’d share it with her. A couple weeks later, she reached out to me and shared her results, which I thought was <em>very cool</em> (forgive the informality!). She scored highest in progressive and behaviorist education. I saw a connection to the inventory’s description of progressive education as “education for practical problem-solving” (<em>Philosophy of Adult Education Inventory</em>, n.d., p. 10). In the coaching session, managers drew on their own workplace experiences and practiced conversations they could use with their teams. She offered an explanation for why she "scored" lowest in <strong>radical education</strong>, which I thought was interesting, and perhaps indicated a desire to enact this philosophy more in her role. An interesting research question that emerged for me around this was "Do corporate trainers and L&amp;D professionals experience cognitive dissonance between their personal educational philosophy and the policy constraints imposed onto educational experiences by their organizations?" This is a question that could be explored through utilizing a consciousness-raising activity with L&amp;D professionals, similarly to how <a class="citation" href="#ref-winkler">Winkler (1997)</a> incorporated feminist consciousness-raising into her women's studies classroom.</p>
+          </div>
+          <div class="theory-note">
+            <div class="theory-top"><span class="theory-index">II</span><h3>Motivations to participate</h3></div>
+            <p class="theory-question"><em>How does the facilitator approach learner engagement when attendance is mandatory?</em></p>
+            <p><a class="citation" href="#ref-ross-gordon">Ross-Gordon et al. (2017)</a> note that as our culture has shifted toward neoliberalism, beliefs about whether adults should get to choose if, what, and when they learn have changed, with a pattern now of "business and corporate training for mandatory and required professional development" (p. 35).</p>
+
+            <p>In their discussion of informal and self-directed learning, <a class="citation" href="#ref-ross-gordon">Ross-Gordon et al. (2017)</a> describe adults “pursuing learning for one's own desires and beliefs” (p. 222). That observation raises a question I’ve faced in my own work: When attendance is mandatory, and not all participans are intrinsically motivated to participate, how do I design a workshop that engages all participants?</p>
+
+            <p>At a previous company, I was asked to design and facilitate a two-day workshop for an entire engineering organization. Everyone was required to attend, but participants used the software platform we were studying very differently depending on their roles. My greatest challenge was designing activities that each participant could connect to something they actually wanted or needed to do at work.</p>
+
+            <p>I think the same applies for mandatory corporate leadership training. Participants I interviewed varied in their subjective evaluation of the training, and the theme that emerged was that managers who were <em>not</em> new to management (and rather, simply new to management at this particular company) did not find the training valuable and were actually disgruntled that they had to take time out of every day for an entire week to participate. <a class="citation" href="#ref-lundgren-2021">Lundgren and Poell (2021)</a> describe a <em>learning-network perspective</em> in which employees shape their own learning paths over time, with formal training making up just one part of that process. That perspective makes me wonder where this particular week of training fit into what experienced managers had already learned about coaching other. I didn't ask participants about that history, and knowing more about it would have helped me interpret their reactions. However, I can say from personal experience that mandated company training that is not relevant or needed is frustrating, particularly when it distracts from delivering on work responsibilities.</p>
+
+            <p>Both of these experiences—my own workshop I developed for a diverse audience and the manager training—point to the same design problem: mandatory training holds some learners "hostage" to training that is not meant for them. <a class="citation" href="#ref-renninger">Renninger and Järvelä (2022)</a> frame that problem as two distinct design tasks, asking how educators can help learners develop an initial interest in a topic and, separately, how they can design activities that deepen the interest of learners who are already engaged. Framed that way, the experienced managers and the new managers in the leadership training needed different things from the same session, and the facilitator was responsible for both.</p>
+
+            <p>And indeed, the training facilitator I interviewed described that tension. She believes learning should be voluntary and self-directed, and she expressed doubt about how much she could do to engage participants who had little interest in the training. The company made attendance mandatory through a policy set several levels above her, and she described having little influence over that decision. <a class="citation" href="#ref-lundgren">Lundgren and Poell (2023)</a> distinguish between developing workplace learning policies and organizing learning programs, and they argue that organizational power dynamics shape who has influence over those activities. In this case, the company gave the instructor responsibility for engaging a group of learners whose motivations to participate were not considered, and that rather was determined by a policy she had little power to shape.</p>
+          </div>
+        </section>
+
+        <section id="critical-reflections" class="article-section" aria-labelledby="critical-reflections-title">
+          <div class="section-heading"><span class="section-number">04</span><div><p class="eyebrow">CRITICAL REFLECTIONS</p><h2 id="critical-reflections-title">Critical reflections</h2></div></div>
+          <p>In this section, I reflect critically on what I learned from the site visit, what I think the L&amp;D team does well, where I see room for improvement, and what this assignment clarified for me about my own path as an adult educator.</p>
+
+          <p>One thing I think the wider L&amp;D team does well is proactively eliciting feedback from managers that go through the training program to inform future iterations. The facilitator told me that feedback from managers helped the team recognize a need for AI-literacy training across the company (rather than just in the engineering organization, which has been well ahead of the rest of the company in AI adoption and training).</p>
+
+          <p>Another thing I appreciated was the time set aside during the session I observed for managers to reflect on how they might apply what they learned. Participants were informed at the start of the session that it would end with this reflection, which I felt was a great way to prime the participants to engage with the content and start thinking about those connections from the start.</p>
+
+          <p>In terms of what I think could be improved, I think the team should invest more resources into providing employees with more personalized, relevant, and timely self-paced learning options. The team's LMS implementation was difficult to navigate, gave no indication of how old a course was (which feels especially relevant with technical skills and knowledge changing so rapidly), and felt "under construction" in ways (e.g., there is an entire main menu item titled "Personas" that included only three personas).</p>
+
+          <p>As I reflect on what I gained from doing this site visit, I feel the assignment proved valuable to me in many ways, but two stand out to me. First, it gave me the impetus to do a deep dive on the workplace learning and human resource development literature, which I've been wanting to do for some time. It was interesting to see what kinds of questions researchers are asking and answering via empirical research in this area of adult education, and the methodologies frequently practiced in the discipline to do so. For example, I learned about <em>narrative synthesis approach</em> from <a class="citation" href="#ref-ekuma">Ekuma (2024)</a>, and about <em>critical HRD</em> (CHRD) and <em>critical culural analysis</em> (<a class="citation" href="#ref-lundgren-2021">Lundgren &amp; Poell, 2021</a>). CHRD in particular is an area that I'm eager to explore more, and with publications like <em>The Palgrave Handbook of Critical Human Resource Development</em> (Collins &amp; Callahan, 2023) available through the CSU library, there's no shortage of reading to do here!</p>
+          
+          <p>Perusing the literature also surfaced plently of critiques with the state of HRD, such as the issue surfaced by <a class="citation" href="#ref-andoh">Andoh et al. (2022)</a>; they argue that despite trainers playing a central role in whether training succeeds, the role of their knowledge of training methods remains largely ignored in the literature. <a class="citation" href="#ref-lundgren-2021">Lundgren and Poell (2021)</a> also outline "frictions" (p. 281) between HRD and the broader Adult Education domain, which I began to scratch the surface of with some of my questions around philosophy of education, and that I'm eager to explore more.</p>
+
+          <p>The assignment was also valuable in that it deepened my desire to leave the corporate training context as an educator. There was a time when I thought I might like to transition from technical training for customers to internal L&D. Back in early September, when we all chose our agencies for this assignment, I was sincerely eager to observe how L&amp;D functions from the inside, but that eagerness lessened over the course of the semester as we in this class were exposed to different topics, theories, and perspectives within the adult education domain. Particularly as we've explored the purpose(s) of education, educational philosophy, and the neoliberal forces (including policy) that dictate who gets to learn, what they get to learn, and to what end, I found myself much less interested in the agency I chose to visit. In fact, two programs came to my attention in the last couple months that I wish I had thought to choose instead:</p>
+          <ul class="course-list">
+            <li>The <a href="https://www.heartsandhorses.org/">Hearts and Horses Therapeutic Riding Center</a>, where my neighbor trains both horses and the instructors who utilize the horses during class sessions.</li>
+            <li>The golf instruction program at the golf course where I take lessons. There are multiple instructors there, and I've learned so much from talking to my instructor about the education and training he received to become a golf instructor, and how he continues to learn and improve his craft.</li>
+          </ul>
+          <p>In short, this assignment helped me identify a context of adult education that I <em>don't</em> want to participate in as an adult educator, and I'm sincerely grateful that I was able to learn and work through that via this assignment!</p>
+        </section>
+
+        <section id="methods" class="article-section" aria-labelledby="methods-title">
+          <div class="section-heading"><span class="section-number">05</span><div><p class="eyebrow">METHODOLOGY</p><h2 id="methods-title">Data collection process</h2></div></div>
+          <p>Over the course of the semester, I used the following process to collect data:</p>
+          <ol class="course-list">
+            <li>Researched the team via the company's Human Capital Management (HCM) system to understand its structure and identify individuals to reach out to for interviews.</li>
+            <li>Researched the team's offerings and training programs via the company wiki, and identified an area I was most interested in observing (manager training program).</li>
+            <li>Conducted interviews with the team director and the manager training facilitator.</li>
+            <li>Attended "Coaching Others" virtually and reviewed materials the faciltator shared covering the full five-session program.</li>
+            <li>Interviewed two participants from the manager training.</li>
+            <li>Triangulated data from scholarly research, interview, and observation notes with topics covered in EDAE 520.</li>
+            <li>Drew on EDAE 520 readings about educational philosophy and motivation to interpret what I learned from the interviews, the session I observed, and the program materials.</li>
+          </ol>
+        </section>
+
+        <section id="references" class="article-section references-section" aria-labelledby="references-title">
+          <div class="section-heading"><span class="section-number">06</span><div><p class="eyebrow">SOURCES</p><h2 id="references-title">References</h2></div></div>
+          <div class="reference-list">
+            <p id="ref-andoh">Andoh, R. P. K., Mensah, D. Y., &amp; Owusu, E. A. (2022). Trainers’ pedagogical competencies and trainees’ assimilation of training content. <em>Journal of Workplace Learning, 34</em>(2), 133–149. <a href="https://doi.org/10.1108/JWL-02-2021-0024">https://doi.org/10.1108/JWL-02-2021-0024</a></p>
+            <p id="ref-ekuma">Ekuma, K. (2024). Artificial intelligence and automation in human resource development: A systematic review. <em>Human Resource Development Review, 23</em>(2), 199–229. <a href="https://doi.org/10.1177/15344843231224009">https://doi.org/10.1177/15344843231224009</a></p>
+            <p id="ref-elias">Elias, J. L., &amp; Merriam, S. B. (2005). <em>Philosophical foundations of adult education</em> (3rd ed.). Krieger.</p>
+            <p id="ref-ford">Ford, J. K. (2020). <em>Learning in organizations: An evidence-based approach</em>. Routledge. <a href="https://doi.org/10.4324/9780429260018">https://doi.org/10.4324/9780429260018</a></p>
+            <p id="ref-lundgren-2021">Lundgren, H., &amp; Poell, R. F. (2021). Human resource development and workplace learning. In T. S. Rocco, M. C. Smith, R. C. Mizzi, L. R. Merriweather, &amp; J. D. Hawley (Eds.), <em>The handbook of adult and continuing education</em> (2020 ed., pp. 275–286). Stylus Publishing. <a href="https://doi.org/10.4324/9781003447849-34">https://doi.org/10.4324/9781003447849-34</a></p>
+            <p id="ref-lundgren">Lundgren, H., &amp; Poell, R. F. (2023). How do HRD professionals and business managers interact in organizing HRD activities? <em>Human Resource Development Quarterly, 34</em>(2), 177–199. <a href="https://doi.org/10.1002/hrdq.21485">https://doi.org/10.1002/hrdq.21485</a></p>
+            <p id="ref-paei"><em>Philosophy of adult education inventory</em> [Course handout]. (n.d.). Colorado State University Canvas. <a href="https://canvas.colostate.edu/">https://canvas.colostate.edu/</a></p>
+            <p id="ref-renninger">Renninger, K. A., &amp; Järvelä, S. (2022). Designing for meaningful learning: Interest, motivation, and engagement. In R. K. Sawyer (Ed.), <em>The Cambridge handbook of the learning sciences</em> (3rd ed., pp. 602–618). Cambridge University Press. <a href="https://doi.org/10.1017/9781108888295.037">https://doi.org/10.1017/9781108888295.037</a></p>
+            <p id="ref-ross-gordon">Ross-Gordon, J. M., Rose, A. D., &amp; Kasworm, C. E. (2017). <em>Foundations of adult and continuing education</em>. John Wiley &amp; Sons.</p>
+            <p id="ref-schwartzman">Schwartzman, R. (1995). Are students customers? The metaphoric mismatch between management and education. <em>Education, 116</em>(2), 215–222.</p>
+            <p id="ref-winkler">Winkler, B. S. (1997). Raising C-R: Another look at consciousness-raising in the women’s studies classroom. <em>Transformations: The Journal of Inclusive Scholarship and Pedagogy, 8</em>(2), 66–85.</p>
+          </div>
+        </section>
+        <footer class="article-footer"><p>Learning in the Workplace · EDAE 520 · November 2026</p><a href="#top">Back to top ↑</a></footer>
+      </article>
+    </div>
+  </main>
+
+  <dialog class="disclaimer-modal" id="disclaimer-modal" aria-labelledby="disclaimer-modal-title">
+    <form method="dialog" class="disclaimer-modal-dismiss"><button value="close" aria-label="Close AI Use Disclaimer">&times;</button></form>
+    <h2 id="disclaimer-modal-title">AI Use Disclaimer</h2>
+    <p>During the research phase, I used the AI chatbot built into my company’s wiki to locate pages about the L&amp;D team and its programs.</p>
+    <p>I used Claude to build the initial HTML for this report and to add features such as collapsible sections and links from in-text citations to their corresponding reference entries.</p>
+    <p>On November 21, 2026, I shared copies of my draft with ChatGPT for feedback. We reviewed the report against the assignment criteria, checked APA citations, and worked through grammar, spelling, and mechanics. ChatGPT also suggested wording for individual passages, some of which I incorporated.</p>
+    <p>I drafted and revised the report in VS Code. ChatGPT could read the copies I shared in the conversation, but it had no direct access to my working HTML file and made no changes to it. I decided which suggestions to use and made each edit myself.</p>
+  </dialog>
+</body>
+</html>

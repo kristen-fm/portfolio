@@ -74,6 +74,10 @@ src/
   templates/                   render functions — head/nav/footer shell + per-content-type templates
 /                               index.html — home / About (generated)
 scholarship/                   /scholarship/ (generated)
+  agency-visit/                /scholarship/agency-visit/ — unlisted, noindex;
+                               hand-written, NOT generated and not in the manifest.
+                               Keep it out of src/data/scholarship.js: a generated
+                               entry with slug "agency-visit" would overwrite it.
 learning-design/                /learning-design/ (generated)
 reflections/                   /reflections/  (+ one folder per post) (generated)
 cv/                             /cv/ (generated)
